@@ -67,15 +67,119 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministrarHorarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\HorarioProyeccionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\app.css" />
+    <Content Include="Content\displayTable.css" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\arrow_white.gif" />
+    <Content Include="Content\images\bg_topmenu_h.gif" />
+    <Content Include="Content\images\calendar.gif" />
+    <Content Include="Content\images\fondos\body-background.jpg" />
+    <Content Include="Content\images\fondos\button-grad.JPG" />
+    <Content Include="Content\images\fondos\button-grad.png" />
+    <Content Include="Content\images\fondos\fondobbva.bmp" />
+    <Content Include="Content\images\fondos\fondox.png" />
+    <Content Include="Content\images\fondos\fondox1.png" />
+    <Content Include="Content\images\fondos\fondox2.png" />
+    <Content Include="Content\images\fondos\fondox3.png" />
+    <Content Include="Content\images\fondos\fondox4.png" />
+    <Content Include="Content\images\fondos\fondo_row.png" />
+    <Content Include="Content\images\fondos\footer_grad.png" />
+    <Content Include="Content\images\fondos\header_grad.png" />
+    <Content Include="Content\images\fondos\main-bg.gif" />
+    <Content Include="Content\images\fondos\procesos.png" />
+    <Content Include="Content\images\fondos\tab_b.png" />
+    <Content Include="Content\images\fondos\tab_l.png" />
+    <Content Include="Content\images\fondos\tab_m.png" />
+    <Content Include="Content\images\fondos\tab_r.png" />
+    <Content Include="Content\images\fondos\tab_v.png" />
+    <Content Include="Content\images\fondos\ui-bg_glass_75_79c9ec_1x400.png" />
+    <Content Include="Content\images\iconos\ajax\ajax-loader.gif" />
+    <Content Include="Content\images\iconos\ajax\indicator.gif" />
+    <Content Include="Content\images\iconos\mantenimiento\datos.png" />
+    <Content Include="Content\images\iconos\mantenimiento\editar.png" />
+    <Content Include="Content\images\iconos\mantenimiento\eliminar.png" />
+    <Content Include="Content\images\iconos\mantenimiento\eliminar2.png" />
+    <Content Include="Content\images\iconos\mantenimiento\eliminar3.png" />
+    <Content Include="Content\images\iconos\mantenimiento\guardar.png" />
+    <Content Include="Content\images\iconos\mantenimiento\imprimir.png" />
+    <Content Include="Content\images\iconos\mantenimiento\nuevo.png" />
+    <Content Include="Content\images\iconos\mantenimiento\picture.png" />
+    <Content Include="Content\images\iconos\mantenimiento\subparametros.png" />
+    <Content Include="Content\images\iconos\mantenimiento\ver.png" />
+    <Content Include="Content\images\iconos\mantenimiento\word.png" />
+    <Content Include="Content\images\iconos\mensajes\ok.png" />
+    <Content Include="Content\images\iconos\menu\spinner_bar.gif" />
+    <Content Include="Content\images\iconos\sistema\barra.png" />
+    <Content Include="Content\images\iconos\sistema\barra1.png" />
+    <Content Include="Content\images\iconos\sistema\barra2.png" />
+    <Content Include="Content\images\iconos\sistema\home.png" />
+    <Content Include="Content\images\iconos\sistema\home2.png" />
+    <Content Include="Content\images\iconos\sistema\homeback.png" />
+    <Content Include="Content\images\iconos\sistema\logout.png" />
+    <Content Include="Content\images\iconos\sistema\user-info.png" />
+    <Content Include="Content\images\iconos\sistema\user-info1.png" />
+    <Content Include="Content\images\iconos\validacion\error.png" />
+    <Content Include="Content\images\iconos\validacion\success.png" />
+    <Content Include="Content\images\loading3.gif" />
+    <Content Include="Content\images\loading8.gif" />
+    <Content Include="Content\images\logo\arg_fondo.gif" />
+    <Content Include="Content\images\logo\background.png" />
+    <Content Include="Content\images\logo\bbva.JPG" />
+    <Content Include="Content\images\logo\fondoToolbar.png" />
+    <Content Include="Content\images\logo\logo01.gif" />
+    <Content Include="Content\images\logo\logo02.jpg" />
+    <Content Include="Content\images\logo\logo1-1.png" />
+    <Content Include="Content\images\logo\logo1.png" />
+    <Content Include="Content\images\logo\logo2.png" />
+    <Content Include="Content\images\logo\logo_bbva_peru.gif" />
+    <Content Include="Content\images\logo\logo_bbva_peru1.gif" />
+    <Content Include="Content\images\logo\logo_promo.png" />
+    <Content Include="Content\images\logo\titulo.JPG" />
+    <Content Include="Content\images\logo\titulo.PNG" />
+    <Content Include="Content\images\numericUpdown\BGdownbutton.png" />
+    <Content Include="Content\images\numericUpdown\BGupbutton.png" />
+    <Content Include="Content\images\print_icon.gif" />
+    <Content Include="Content\images\reportes\img_rpt_bbva_el.jpg" />
+    <Content Include="Content\images\fondos\ui-bg_glass_45_0078ae_1x400.png" />
+    <Content Include="Content\menu\fg.menu.css" />
+    <Content Include="Content\start\images\ui-bg_flat_55_999999_40x100.png" />
+    <Content Include="Content\start\images\ui-bg_flat_75_aaaaaa_40x100.png" />
+    <Content Include="Content\start\images\ui-bg_glass_45_0078ae_1x400.png" />
+    <Content Include="Content\start\images\ui-bg_glass_55_f8da4e_1x400.png" />
+    <Content Include="Content\start\images\ui-bg_glass_75_79c9ec_1x400.png" />
+    <Content Include="Content\start\images\ui-bg_gloss-wave_45_e14f1c_500x100.png" />
+    <Content Include="Content\start\images\ui-bg_gloss-wave_50_6eac2c_500x100.png" />
+    <Content Include="Content\start\images\ui-bg_gloss-wave_75_2191c0_500x100.png" />
+    <Content Include="Content\start\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\start\images\ui-icons_0078ae_256x240.png" />
+    <Content Include="Content\start\images\ui-icons_056b93_256x240.png" />
+    <Content Include="Content\start\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\start\images\ui-icons_e0fdff_256x240.png" />
+    <Content Include="Content\start\images\ui-icons_f5e175_256x240.png" />
+    <Content Include="Content\start\images\ui-icons_f7a50d_256x240.png" />
+    <Content Include="Content\start\images\ui-icons_fcd113_256x240.png" />
+    <Content Include="Content\start\jquery-ui-1.8.23.custom.css" />
+    <Content Include="Content\validacion\validationEngine.jquery.css" />
     <Content Include="Global.asax" />
+    <Content Include="Content\fg.menu.css" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-es.min.js" />
+    <Content Include="Scripts\jquery.validationEngine-es.js" />
+    <Content Include="Scripts\jquery.validationEngine.js" />
+    <Content Include="Scripts\fg.menu.js" />
+    <Content Include="validacion\validationEngine.jquery.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -83,7 +187,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -109,6 +212,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\images\fondos\Thumbs.db" />
+    <None Include="Content\images\iconos\ajax\Thumbs.db" />
+    <None Include="Content\images\iconos\mantenimiento\Thumbs.db" />
+    <None Include="Content\images\iconos\mensajes\Thumbs.db" />
+    <None Include="Content\images\iconos\menu\Thumbs.db" />
+    <None Include="Content\images\iconos\sistema\Thumbs.db" />
+    <None Include="Content\images\iconos\validacion\Thumbs.db" />
+    <None Include="Content\images\logo\Thumbs.db" />
+    <None Include="Content\images\numericUpdown\Thumbs.db" />
+    <None Include="Content\images\reportes\Thumbs.db" />
+    <None Include="Content\images\Thumbs.db" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

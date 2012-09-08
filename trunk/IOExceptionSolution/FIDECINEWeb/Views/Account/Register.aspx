@@ -12,7 +12,7 @@
     <p>
         Passwords are required to be a minimum of <%: ViewData["PasswordLength"] %> characters in length.
     </p>
-
+  
     <% using (Html.BeginForm()) { %>
         <%: Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.") %>
         <div>
