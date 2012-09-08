@@ -8,12 +8,11 @@ namespace FIDECINEWeb.Controllers
 {
     public class AdministrarHorarioController : Controller
     {
-        //
-        // GET: /AdministrarHorario/
-
-        public ActionResult Index()
-        {
-            return View();
+        
+        [HttpPost]
+        public JsonResult buscar()
+        {            
+            return Json(null);
         }
 
     }
