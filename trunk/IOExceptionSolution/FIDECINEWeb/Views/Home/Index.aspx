@@ -137,9 +137,24 @@
      function buscar() {
 
          $.post('/AdministrarHorario/buscar', $('#frmBusqueda').serializeArray(), function (data) {
-             alert('Ejecución AJAX');
+             $("#Table1 > tbody").empty();
+
+             $.each(data, function (i, objeto) {
+                 var newRow = '';
+                 newRow = "<tr>";
+                 newRow = newRow + "<td>" + objeto.Pelicula + "</td>";
+                 newRow = newRow + "<td>" + objeto.Sala + "</td>";
+                 newRow = newRow + "<td>" + objeto.FechaHora + "</td>";
+                 newRow = newRow + "<td><img src='../../Content/images/iconos/mantenimiento/eliminar.png'/></td>";
+                 newRow = newRow + "</tr>";
+
+                 $("#Table1").append(newRow);
+
+             });
          },
          "json");
+
+         $("#Table1").styleTable();
 
          return false;
      }
@@ -150,7 +165,6 @@
 		style="width: 99%; margin: 3px 3px 3px 3px;">
 	<div class="ui-widget-header ui-corner-all"><label>Administración de Horarios de Proyección de Películas</label></div>
 	<div align="left" style="margin: 5px 5px 5px 5px;">
-        <form id="frmBusqueda" action=".">
 	     <table width="600px">
             <tr>
                 <td>Película :</td>
@@ -187,7 +201,6 @@
                 </td>
             </tr>     
         </table>
-        </form>
 	</div>
 	</div>
 
@@ -201,7 +214,7 @@
         </div>
 	</div>
 
-	    <table  id="Table1" width="790px" class="ui-styled-table">
+	    <table  id="Table1" width="790px" class="styleTable">
 			<thead>
 			<tr>
 				<th width="300px">Película</th>
