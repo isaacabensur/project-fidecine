@@ -134,13 +134,24 @@
          return false;
      }
 
+     function buscar() {
+
+         $.post('/AdministrarHorario/buscar', $('#frmBusqueda').serializeArray(), function (data) {
+             alert('Ejecución AJAX');
+         },
+         "json");
+
+         return false;
+     }
+
 </script>
 			
 	<div class="ui-widget-content ui-corner-all"
 		style="width: 99%; margin: 3px 3px 3px 3px;">
 	<div class="ui-widget-header ui-corner-all"><label>Administración de Horarios de Proyección de Películas</label></div>
 	<div align="left" style="margin: 5px 5px 5px 5px;">
-	    <table width="600px">
+        <form id="frmBusqueda" action=".">
+	     <table width="600px">
             <tr>
                 <td>Película :</td>
                 <td>
@@ -176,6 +187,7 @@
                 </td>
             </tr>     
         </table>
+        </form>
 	</div>
 	</div>
 
@@ -185,7 +197,7 @@
 	    <div style="margin: 3px 3px 3px 3px;">
 
             <button id="btnNuevo" onclick="return nuevoHorario();">Nuevo</button>
-            <button id="btnBuscar">Buscar</button>            
+            <button id="btnBuscar" onclick="return buscar();">Buscar</button>            
         </div>
 	</div>
 
