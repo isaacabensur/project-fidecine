@@ -33,7 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Librerias\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate">
+      <HintPath>..\Librerias\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -54,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service1.svc" />
+    <Content Include="Service\ServiceCliente.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -63,11 +70,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Cliente.cs" />
+    <Compile Include="Persistencia\BaseDAO.cs" />
+    <Compile Include="Persistencia\ClienteDAO.cs" />
+    <Compile Include="Persistencia\ConexionUtil.cs" />
+    <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IServiceCliente.cs" />
+    <Compile Include="Service\ServiceCliente.svc.cs">
+      <DependentUpon>ServiceCliente.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
