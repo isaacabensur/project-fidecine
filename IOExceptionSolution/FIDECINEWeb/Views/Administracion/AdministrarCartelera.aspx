@@ -1,5 +1,5 @@
 ﻿
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<FIDECINEWeb.Models.HorarioProyeccionModel>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -165,12 +165,13 @@
 	     <table width="600px">
             <tr>
                 <td>Película :</td>
-                <td>
-                    
+                <td>                    
                     <select id="cmbPelicula" name="D1" style="width: 200px;">
-                        <option>Los Invencibles</option>
-                        <option>El Caballero de la Noche</option>
-                        <option>La Era del Rock</option>
+                        <option>---- Todos ----</option>
+                        <% foreach (var item in Model.ListaPelicula)
+                        { %>
+                            <option><%= item.Nombre %></option>
+                        <% } %>
                     </select>
                 </td> 
                 <td>

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FideCineModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FideCineModelStoreContainer">
+          <EntitySet Name="Cartelera" EntityType="FideCineModel.Store.Cartelera" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pelicula" EntityType="FideCineModel.Store.Pelicula" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sala" EntityType="FideCineModel.Store.Sala" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Cartelera_Pelicula" Association="FideCineModel.Store.FK_Cartelera_Pelicula">
+            <End Role="Pelicula" EntitySet="Pelicula" />
+            <End Role="Cartelera" EntitySet="Cartelera" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cartelera_Sala" Association="FideCineModel.Store.FK_Cartelera_Sala">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Cartelera" EntitySet="Cartelera" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cartelera">
+          <Key>
+            <PropertyRef Name="IdCartelera" />
+          </Key>
+          <Property Name="IdCartelera" Type="int" Nullable="false" />
+          <Property Name="IdPelicula" Type="int" Nullable="false" />
+          <Property Name="IdSala" Type="int" Nullable="false" />
+          <Property Name="FechaHora" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="IdPelicula" />
+          </Key>
+          <Property Name="IdPelicula" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Estado" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="IdSala" />
+          </Key>
+          <Property Name="IdSala" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Estado" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_Cartelera_Pelicula">
+          <End Role="Pelicula" Type="FideCineModel.Store.Pelicula" Multiplicity="1" />
+          <End Role="Cartelera" Type="FideCineModel.Store.Cartelera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelicula">
+              <PropertyRef Name="IdPelicula" />
+            </Principal>
+            <Dependent Role="Cartelera">
+              <PropertyRef Name="IdPelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cartelera_Sala">
+          <End Role="Sala" Type="FideCineModel.Store.Sala" Multiplicity="1" />
+          <End Role="Cartelera" Type="FideCineModel.Store.Cartelera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="IdSala" />
+            </Principal>
+            <Dependent Role="Cartelera">
+              <PropertyRef Name="IdSala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FideCineModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FideCineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cartelera" EntityType="FideCineModel.Cartelera" />
+          <EntitySet Name="Pelicula" EntityType="FideCineModel.Pelicula" />
+          <EntitySet Name="Sala" EntityType="FideCineModel.Sala" />
+          <AssociationSet Name="FK_Cartelera_Pelicula" Association="FideCineModel.FK_Cartelera_Pelicula">
+            <End Role="Pelicula" EntitySet="Pelicula" />
+            <End Role="Cartelera" EntitySet="Cartelera" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cartelera_Sala" Association="FideCineModel.FK_Cartelera_Sala">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Cartelera" EntitySet="Cartelera" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cartelera">
+          <Key>
+            <PropertyRef Name="IdCartelera" />
+          </Key>
+          <Property Name="IdCartelera" Type="Int32" Nullable="false" />
+          <Property Name="IdPelicula" Type="Int32" Nullable="false" />
+          <Property Name="IdSala" Type="Int32" Nullable="false" />
+          <Property Name="FechaHora" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Pelicula" Relationship="FideCineModel.FK_Cartelera_Pelicula" FromRole="Cartelera" ToRole="Pelicula" />
+          <NavigationProperty Name="Sala" Relationship="FideCineModel.FK_Cartelera_Sala" FromRole="Cartelera" ToRole="Sala" />
+        </EntityType>
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="IdPelicula" />
+          </Key>
+          <Property Name="IdPelicula" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="Cartelera" Relationship="FideCineModel.FK_Cartelera_Pelicula" FromRole="Pelicula" ToRole="Cartelera" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="IdSala" />
+          </Key>
+          <Property Name="IdSala" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="Cartelera" Relationship="FideCineModel.FK_Cartelera_Sala" FromRole="Sala" ToRole="Cartelera" />
+        </EntityType>
+        <Association Name="FK_Cartelera_Pelicula">
+          <End Role="Pelicula" Type="FideCineModel.Pelicula" Multiplicity="1" />
+          <End Role="Cartelera" Type="FideCineModel.Cartelera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelicula">
+              <PropertyRef Name="IdPelicula" />
+            </Principal>
+            <Dependent Role="Cartelera">
+              <PropertyRef Name="IdPelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cartelera_Sala">
+          <End Role="Sala" Type="FideCineModel.Sala" Multiplicity="1" />
+          <End Role="Cartelera" Type="FideCineModel.Cartelera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="IdSala" />
+            </Principal>
+            <Dependent Role="Cartelera">
+              <PropertyRef Name="IdSala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FideCineModelStoreContainer" CdmEntityContainer="FideCineEntities">
+          <EntitySetMapping Name="Cartelera"><EntityTypeMapping TypeName="FideCineModel.Cartelera"><MappingFragment StoreEntitySet="Cartelera">
+            <ScalarProperty Name="IdCartelera" ColumnName="IdCartelera" />
+            <ScalarProperty Name="IdPelicula" ColumnName="IdPelicula" />
+            <ScalarProperty Name="IdSala" ColumnName="IdSala" />
+            <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Pelicula"><EntityTypeMapping TypeName="FideCineModel.Pelicula"><MappingFragment StoreEntitySet="Pelicula">
+            <ScalarProperty Name="IdPelicula" ColumnName="IdPelicula" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Estado" ColumnName="Estado" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Sala"><EntityTypeMapping TypeName="FideCineModel.Sala"><MappingFragment StoreEntitySet="Sala">
+            <ScalarProperty Name="IdSala" ColumnName="IdSala" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Estado" ColumnName="Estado" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="FideCineBD">
+        <EntityTypeShape EntityType="FideCineModel.Cartelera" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906250005" IsExpanded="true" />
+        <EntityTypeShape EntityType="FideCineModel.Pelicula" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="FideCineModel.Sala" Width="1.5" PointX="0.75" PointY="5.125" Height="1.7879850260416674" IsExpanded="true" />
+        <AssociationConnector Association="FideCineModel.FK_Cartelera_Pelicula" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.0189925130208337" />
+          <ConnectorPoint PointX="3" PointY="2.0189925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="FideCineModel.FK_Cartelera_Sala" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.0189925130208337" />
+          <ConnectorPoint PointX="3.75" PointY="6.0189925130208337" />
+          <ConnectorPoint PointX="3.75" PointY="3.0475878906250005" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIDECINEWeb", "FIDECINEWeb\FIDECINEWeb.csproj", "{AFF159AD-A905-4DBD-B114-51864EA11300}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EB8C0428-9842-4020-9577-F5F2C6E24465} = {EB8C0428-9842-4020-9577-F5F2C6E24465}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIDECINEService", "FIDECINEService\FIDECINEService.csproj", "{EB8C0428-9842-4020-9577-F5F2C6E24465}"
 EndProject

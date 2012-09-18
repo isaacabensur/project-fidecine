@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FIDECINEWeb.Entity;
+using FIDECINEWeb.Models;
+using FIDECINEWeb.FideCineService;
 
 namespace FIDECINEWeb.Controllers
 {
@@ -12,7 +14,11 @@ namespace FIDECINEWeb.Controllers
 
         public ActionResult Index()
         {
-            return View("../Administracion/AdministrarCartelera");
+
+            HorarioProyeccionModel objHorarioProyeccionModel = new HorarioProyeccionModel();
+            objHorarioProyeccionModel.ListaPelicula = new FideCineService.PeliculaServiceClient().listar("","A").ToList<PeliculaBE>();
+
+            return View("../Administracion/AdministrarCartelera", objHorarioProyeccionModel);
         }
 
         [HttpPost]
