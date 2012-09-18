@@ -139,10 +139,10 @@
              $.each(data, function (i, objeto) {
                  var newRow = '';
                  newRow = "<tr>";
-                 newRow = newRow + "<td>" + objeto.Pelicula + "</td>";
-                 newRow = newRow + "<td>" + objeto.Sala + "</td>";
-                 newRow = newRow + "<td>" + objeto.FechaHora + "</td>";
-                 newRow = newRow + "<td><img src='../../Content/images/iconos/mantenimiento/eliminar.png'/></td>";
+                 newRow = newRow + "<td class='ui-widget-content'>" + objeto.Pelicula + "</td>";
+                 newRow = newRow + "<td class='ui-widget-content'>" + objeto.Sala + "</td>";
+                 newRow = newRow + "<td class='ui-widget-content'>" + objeto.FechaHora + "</td>";
+                 newRow = newRow + "<td class='ui-widget-content'><img src='../../Content/images/iconos/mantenimiento/eliminar.png'/></td>";
                  newRow = newRow + "</tr>";
 
                  $("#Table1").append(newRow);
