@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b584bc63-4eee-43f9-a79f-cad7c9a9c722" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:42384/Service/SalaService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SalaService.xsd" MetadataType="Schema" ID="017a2e75-3137-4f7b-a374-ce775ab14cd2" SourceId="1" SourceUrl="http://localhost:42384/Service/SalaService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SalaService1.xsd" MetadataType="Schema" ID="b066e1c3-7a6c-4925-9c2a-476536f0e529" SourceId="1" SourceUrl="http://localhost:42384/Service/SalaService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SalaService2.xsd" MetadataType="Schema" ID="11ff44e8-6e5d-41d5-a12f-11b36a31250f" SourceId="1" SourceUrl="http://localhost:42384/Service/SalaService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SalaService.disco" MetadataType="Disco" ID="e0f56ba6-946c-4fad-93f8-6091411ef2b2" SourceId="1" SourceUrl="http://localhost:42384/Service/SalaService.svc?disco" />
+    <MetadataFile FileName="SalaService.wsdl" MetadataType="Wsdl" ID="a6fd0a78-aa88-4843-92e6-e25fc8b3d19e" SourceId="1" SourceUrl="http://localhost:42384/Service/SalaService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

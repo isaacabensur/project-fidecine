@@ -8,16 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FIDECINEWeb.FideCineService {
+namespace FIDECINEWeb.SalaServiceReference {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PeliculaBE", Namespace="http://schemas.datacontract.org/2004/07/FIDECINEService.Dominio")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SalaBE", Namespace="http://schemas.datacontract.org/2004/07/FIDECINEService.Dominio")]
     [System.SerializableAttribute()]
-    public partial class PeliculaBE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class SalaBE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -26,7 +26,7 @@ namespace FIDECINEWeb.FideCineService {
         private string EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdPeliculaField;
+        private int IdSalaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
@@ -55,14 +55,14 @@ namespace FIDECINEWeb.FideCineService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdPelicula {
+        public int IdSala {
             get {
-                return this.IdPeliculaField;
+                return this.IdSalaField;
             }
             set {
-                if ((this.IdPeliculaField.Equals(value) != true)) {
-                    this.IdPeliculaField = value;
-                    this.RaisePropertyChanged("IdPelicula");
+                if ((this.IdSalaField.Equals(value) != true)) {
+                    this.IdSalaField = value;
+                    this.RaisePropertyChanged("IdSala");
                 }
             }
         }
@@ -91,41 +91,41 @@ namespace FIDECINEWeb.FideCineService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FideCineService.IPeliculaService")]
-    public interface IPeliculaService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SalaServiceReference.ISalaService")]
+    public interface ISalaService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPeliculaService/listar", ReplyAction="http://tempuri.org/IPeliculaService/listarResponse")]
-        FIDECINEWeb.FideCineService.PeliculaBE[] listar(string str_pNombre, string str_pEstado);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISalaService/listar", ReplyAction="http://tempuri.org/ISalaService/listarResponse")]
+        FIDECINEWeb.SalaServiceReference.SalaBE[] listar(string str_pNombre, string str_pEstado);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IPeliculaServiceChannel : FIDECINEWeb.FideCineService.IPeliculaService, System.ServiceModel.IClientChannel {
+    public interface ISalaServiceChannel : FIDECINEWeb.SalaServiceReference.ISalaService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class PeliculaServiceClient : System.ServiceModel.ClientBase<FIDECINEWeb.FideCineService.IPeliculaService>, FIDECINEWeb.FideCineService.IPeliculaService {
+    public partial class SalaServiceClient : System.ServiceModel.ClientBase<FIDECINEWeb.SalaServiceReference.ISalaService>, FIDECINEWeb.SalaServiceReference.ISalaService {
         
-        public PeliculaServiceClient() {
+        public SalaServiceClient() {
         }
         
-        public PeliculaServiceClient(string endpointConfigurationName) : 
+        public SalaServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public PeliculaServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public SalaServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public PeliculaServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public SalaServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public PeliculaServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public SalaServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public FIDECINEWeb.FideCineService.PeliculaBE[] listar(string str_pNombre, string str_pEstado) {
+        public FIDECINEWeb.SalaServiceReference.SalaBE[] listar(string str_pNombre, string str_pEstado) {
             return base.Channel.listar(str_pNombre, str_pEstado);
         }
     }

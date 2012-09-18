@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="345d5fd3-f835-405c-8173-5067ea469e60" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:42384/Service/PeliculaService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PeliculaService.xsd" MetadataType="Schema" ID="a02deb22-de87-40e7-ab42-b8f0b68eb6a3" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PeliculaService.disco" MetadataType="Disco" ID="2de5f040-9ffd-454f-8745-7e3c4b9ad595" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?disco" />
+    <MetadataFile FileName="PeliculaService.wsdl" MetadataType="Wsdl" ID="5ef63b12-d225-4970-8cef-44bb06760bd4" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?wsdl" />
+    <MetadataFile FileName="PeliculaService1.xsd" MetadataType="Schema" ID="0e489414-fc57-450c-b0d4-9d0b44b69b32" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PeliculaService2.xsd" MetadataType="Schema" ID="55d70534-8f9c-4073-94a1-e4e5a2fe0725" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

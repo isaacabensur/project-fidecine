@@ -38,7 +38,25 @@
                 content: $('#flat').next().html(),
                 showSpeed: 400
             });
+
+            $(function () {
+                $("#dialog").dialog({
+                    autoOpen: false,
+                    show: "blind",
+                    hide: "explode",
+                    resizable:false,
+                    closeOnEscape:false,
+                    height:80,
+                    width:200,
+                    dialogClass:"hide-title-bar",
+                    modal: true
+                });
+
+            });
+
         });
+
+        
 	</script>
 
     <script type="text/javascript">
@@ -80,12 +98,27 @@
 
 <body>
 
-
+  
+<div
+			id="dialog" style="display:none;text-align:center;vertical-align: middle;">
+			<table cellpadding="5" cellspacing="0" bgcolor="#ffffff" >
+				<tr>
+					<td align="right" valign="middle" >
+						<img src="../../Content/images/loading8.gif">
+					</td>
+					<td align="left" valign="middle" style="font-weight: bold;">
+						Procesando ...
+					</td>
+				</tr>
+			</table>
+	</div>
 
 <div id="toppanel">
 
 	<div class="content clearfix ui-widget ui-widget-content ui-corner-all" style="width: 800px;background-color: white;">
-		
+	
+    
+    	
 	<table border="0" cellpadding="0" cellspacing="0" align="center" width="800px">
 		<tr>
 			<td colspan="2" width="100%">
@@ -110,7 +143,7 @@
                             <div id="search-engines" class="hidden">
                             <ul>
 	                            <li><a href="#">Registro de Películas</a></li>
-	                            <li><a href="#">Registro de Clientes</a></li>
+	                            <li><a href="/AdministrarCliente/Index">Registro de Clientes</a></li>
 	                            <li><a href="/AdministrarHorario/Index">Administrar Horarios</a></li>
 	                            <li><a href="/GestionOfertas/Index">Gestión de Ofertas</a></li>
                                 <li><a href="#">Registro Visitas</a></li>
@@ -144,6 +177,9 @@
 	</table>
 	</div> 
 </div> 
+
+	
+
 </body>
 
 <script type="text/javascript">
@@ -153,10 +189,10 @@
 
     $(document).ready(function () {
         $(document).ajaxStart(function () {
-            $('#jqDialogCargando').dialog('open');
+            $("#dialog").dialog("open");
         });
         $(document).ajaxStop(function () {
-            $('#jqDialogCargando').dialog('close');
+            $("#dialog").dialog("close");
         });
     });
 </script>

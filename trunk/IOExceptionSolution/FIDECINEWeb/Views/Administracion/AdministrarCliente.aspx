@@ -1,5 +1,5 @@
 ﻿
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<FIDECINEWeb.Models.HorarioProyeccionModel>" %>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -10,19 +10,7 @@
      $(document).ready(function () {
          $("#Table1").styleTable();
 
-
-         $("#txtFechaHoraDesde").datetimepicker({
-             showOn: "button",
-             buttonImage: "../Content/images/calendar.gif",
-             buttonImageOnly: true
-         });
-         $("#txtFechaHoraHasta").datetimepicker({
-             showOn: "button",
-             buttonImage: "../Content/images/calendar.gif",
-             buttonImageOnly: true
-         });
-
-         $("#fechaHora").datetimepicker({
+         $("#fechaHora").datepicker({
              showOn: "button",
              buttonImage: "../Content/images/calendar.gif",
              buttonImageOnly: true
@@ -83,8 +71,8 @@
 
          $("#dialog_modal").dialog({
              autoOpen: false,
-             height: 200,
-             width: 350,
+             height: 350,
+             width: 500,
              modal: true,
              buttons: {
                  "Guardar": function () {
@@ -160,44 +148,33 @@
 			
 	<div class="ui-widget-content ui-corner-all"
 		style="width: 99%; margin: 3px 3px 3px 3px;">
-	<div class="ui-widget-header ui-corner-all"><label>Administración de Horarios de Proyección de Películas</label></div>
+	<div class="ui-widget-header ui-corner-all"><label>Administración de Clientes</label></div>
 	<div align="left" style="margin: 5px 5px 5px 5px;">
 	     <table width="600px">
             <tr>
-                <td>Película :</td>
+                <td>Nombre o Apellidos :</td>
                 <td>                    
-                    <select id="cmbPelicula" name="D1" style="width: 200px;">
-                        <option>---- Todos ----</option>
-                        <% foreach (var item in Model.ListaPelicula)
-                        { %>
-                            <option><%= item.Nombre %></option>
-                        <% } %>
-                    </select>
-                </td> 
-                <td>
-                Sala :
-                </td> 
-                <td>
-                    <select id="cmbSala" name="D2" style="width: 120px;">
-                        <option>---- Todos ----</option>
-                        <% foreach (var item in Model.ListaSala)
-                        { %>
-                            <option><%= item.Nombre %></option>
-                        <% } %>
-                    </select>
+                    <input type="text" style="width: 200px;"/>
                 </td>
+                <td>DNI :</td>
+                <td>                    
+                    <input type="text" style="width: 100px;"/>
+                </td> 
             </tr>   
             <tr>
-                <td>Fecha y Hora : </td>
+                <td>Tipo : </td>
                 <td>
-                    Desde
-                    <input id="txtFechaHoraDesde" type="text"/>
+                    <select id="cmbSala" name="D2" style="width: 100px;">
+                        <option>Premiun</option>
+                        <option>Oro</option>                        
+                    </select>
                 </td>
+                <td>Estado : </td>
                 <td>
-                    Hasta
-                </td>
-                <td>
-                    <input id="txtFechaHoraHasta" type="text"/>
+                    <select id="Select2" name="D2" style="width: 100px;">
+                        <option>Activo</option>
+                        <option>Inactivo</option>                        
+                    </select>
                 </td>
             </tr>     
         </table>
@@ -217,9 +194,13 @@
 	    <table  id="Table1" width="790px" class="styleTable">
 			<thead>
 			<tr>
-				<th width="300px">Película</th>
-				<th width="300px">Sala</th>
-				<th width="170px">Fecha y Hora</th>		
+				<th width="140px">Nombre</th>
+				<th width="120px">Apellito Paterno</th>
+				<th width="130px">Apellido Materno</th>	
+                <th width="80px">DNI</th>		
+                <th width="150px">Fecha de Nacimiento</th>
+                <th width="80px">Tipo</th> 
+                <th width="100px">Estado</th>                
                 <th width="20px"></th>	
 			</tr>
 			</thead>
@@ -228,20 +209,32 @@
                 <td>aa</td>
                 <td>aaa</td>
                 <td>aaaa</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/eliminar.png"/></td>
-            </tr>
-           <tr>
+                <td>aaaa</td>
+                <td>aaaa</td>
+                <td>aaaa</td>
+                 <td>aaaa</td>
+                <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
+            </tr>   
+            <tr>
                 <td>bbbb</td>
+                <td>bbb</td>
                 <td>bbbb</td>
                 <td>bbbbbb</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/eliminar.png"/></td>
-            </tr>
+                <td>bbbbbbbbb</td>
+                <td>bbbbbbbbbbb</td>
+                <td>bbbbbbbbbbb</td>
+                <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
+            </tr> 
             <tr>
-                <td>ccccccc</td>
-                <td>cccccc</td>
-                <td>cccccccc</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/eliminar.png"/></td>
-            </tr>
+                <td>cccccccccc</td>
+                <td>ccccccccccc</td>
+                <td>ccccccccccc</td>
+                <td>ccccccccccc</td>
+                <td>cccccccccccccc</td>
+                <td>ccccccccccccc</td>
+                <td>ccccccccccccc</td>
+                <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
+            </tr>         
 			</tbody>
 			<tfoot>
 			</tfoot>
@@ -249,35 +242,78 @@
     </form>
 
 
-    <div  id="dialog_modal" title="Edición de Horario de Proyección de Película">
+    <div  id="dialog_modal" title="Edición de Cliente">
 		<table>
             <tr>
-                <td>Película :</td>
+                <td>Nombres :</td>
                 <td>
-                    
-                    <select id="Select1" name="D1" style="width: 200px;">
-                        <option>Los Invencibles</option>
-                        <option>El Caballero de la Noche</option>
-                        <option>La Era del Rock</option>
-                    </select>
+                    <input type="text" style="width: 200px;"/>
                 </td> 
             </tr>
             <tr>
+                <td>Apellido Paterno :</td>
                 <td>
-                Sala :
+                    <input type="text" style="width: 200px;"/>
                 </td> 
+            </tr>
+            <tr>
+                <td>Apellido Materno :</td>
                 <td>
-                    <select id="Select2" name="D2" style="width: 100px;">
-                        <option>Sala 01</option>
-                        <option>Sala 02</option>
-                        <option>Sala 03</option>
+                    <input type="text" style="width: 200px;"/>
+                </td> 
+            </tr>
+            <tr>
+                <td>Correo Electrónico :</td>
+                <td>
+                    <input type="text" style="width: 200px;"/>
+                </td> 
+            </tr>
+            <tr>
+                <td>Dirección:</td>
+                <td>
+                    <input type="text" style="width: 300px;"/>
+                </td> 
+            </tr>
+            <tr>
+                <td>DNI :</td>
+                <td>
+                    <input type="text" style="width: 100px;"/>
+                </td> 
+            </tr>
+            <tr>
+                <td>Teléfono Casa :</td>
+                <td>
+                    <input type="text" style="width: 100px;"/>
+                </td> 
+            </tr>
+            <tr>
+                <td>Celular :</td>
+                <td>
+                    <input type="text" style="width: 100px;"/>
+                </td> 
+            </tr>
+            <tr>
+                <td>Fecha de Nacimiento : </td>
+                <td>
+                    <input id="fechaHora" type="text"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Tipo de Cliente : </td>
+                <td>
+                    <select id="Select1" name="D2" style="width: 100px;">
+                        <option>Premiun</option>
+                        <option>Oro</option>                        
                     </select>
                 </td>
             </tr>
             <tr>
-                <td>Fecha y Hora : </td>
+                <td>Estado : </td>
                 <td>
-                    <input id="fechaHora" type="text"/>
+                    <select id="Select3" name="D2" style="width: 100px;">
+                        <option>Activo</option>
+                        <option>Inactivo</option>                        
+                    </select>
                 </td>
             </tr>
         </table>												
