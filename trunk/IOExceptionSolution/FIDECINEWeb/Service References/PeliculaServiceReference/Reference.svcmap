@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="345d5fd3-f835-405c-8173-5067ea469e60" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="031c9199-b085-4f4a-b115-cad9c8ad3d16" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,11 +21,11 @@
     <MetadataSource Address="http://localhost:42384/Service/PeliculaService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PeliculaService.xsd" MetadataType="Schema" ID="a02deb22-de87-40e7-ab42-b8f0b68eb6a3" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?xsd=xsd1" />
-    <MetadataFile FileName="PeliculaService.disco" MetadataType="Disco" ID="2de5f040-9ffd-454f-8745-7e3c4b9ad595" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?disco" />
-    <MetadataFile FileName="PeliculaService.wsdl" MetadataType="Wsdl" ID="5ef63b12-d225-4970-8cef-44bb06760bd4" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?wsdl" />
-    <MetadataFile FileName="PeliculaService1.xsd" MetadataType="Schema" ID="0e489414-fc57-450c-b0d4-9d0b44b69b32" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?xsd=xsd0" />
-    <MetadataFile FileName="PeliculaService2.xsd" MetadataType="Schema" ID="55d70534-8f9c-4073-94a1-e4e5a2fe0725" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PeliculaService.xsd" MetadataType="Schema" ID="a3fbb763-2972-4cbf-a90d-ebc1735cb9f3" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PeliculaService.disco" MetadataType="Disco" ID="9b0770d7-c1e8-4768-a0ee-92d847839af2" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?disco" />
+    <MetadataFile FileName="PeliculaService.wsdl" MetadataType="Wsdl" ID="98b37d83-00d3-45f1-9e8d-64975bf73b68" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?wsdl" />
+    <MetadataFile FileName="PeliculaService1.xsd" MetadataType="Schema" ID="a661680e-20de-4e38-b72d-39328c2ed68c" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PeliculaService2.xsd" MetadataType="Schema" ID="7585a4f6-b99d-44d7-b09f-4d4888825a23" SourceId="1" SourceUrl="http://localhost:42384/Service/PeliculaService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
