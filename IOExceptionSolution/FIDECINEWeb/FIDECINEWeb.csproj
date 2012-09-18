@@ -69,7 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AdministrarHorarioController.cs" />
+    <Compile Include="Controllers\GestionOfertasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Entity\HorarioProyeccion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,6 +199,8 @@
     </None>
     <Content Include="validacion\validationEngine.jquery.css" />
     <Content Include="Views\Administracion\AdministrarCartelera.aspx" />
+    <Content Include="Views\Oferta\GestionOfertas.aspx" />
+    <Content Include="Views\Reportes\ReporteConsultaGeneral.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
