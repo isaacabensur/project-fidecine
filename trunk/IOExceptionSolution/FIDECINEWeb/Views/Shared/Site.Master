@@ -112,9 +112,9 @@
 	                            <li><a href="#">Registro de Películas</a></li>
 	                            <li><a href="#">Registro de Clientes</a></li>
 	                            <li><a href="/AdministrarHorario/Index">Administrar Horarios</a></li>
-	                            <li><a href="#">Gestión de Ofertas</a></li>
+	                            <li><a href="/GestionOfertas/Index">Gestión de Ofertas</a></li>
                                 <li><a href="#">Registro Visitas</a></li>
-                                <li><a href="#">Reporte de Visitas</a></li>
+                                <li><a href="/Reporte/Index">Reporte de Visitas</a></li>
                             </ul>
                             </div>
                         </td>
