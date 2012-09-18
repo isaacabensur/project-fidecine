@@ -32,30 +32,30 @@
             </tr>
             <tr>
                 <td colspan="4" >
-                    <div class="ui-widget-header ui-corner-all"><label>Detalle de Oferta</label></div>
+                    <div ><label>Detalle de Oferta</label></div>
                 </td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td colspan="3" >Por cada 
                     <select id="cmbCantidad" name="D2" style="width: 50px;">
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                        <option>05</option>
-                        <option>06</option>
-                        <option>07</option>
-                        <option>08</option>
-                        <option>09</option>
-                        <option>10</option>
+                        <option>100</option>
+                        <option>150</option>
+                        <option>200</option>
+                        <option>220</option>
+                        <option>230</option>
+                        <option>240</option>
+                        <option>260</option>
+                        <option>280</option>
+                        <option>300</option>
+                        <option>350</option>
                     </select>
                     puntos de consumos, se obsequia un(a)
                     <select id="cmbProductos" name="D2" >
                         <option>Entrada General</option>
                         <option>Entrada 3D</option>
                         <option>Pop Corn</option>
-                        <option>Peluche</option>
+                        <option>Peluchin</option>
                         <option>Gafas</option>
                     </select>
                 </td>
@@ -64,7 +64,42 @@
                 <td colspan="4" ><button id="btnRegistrar" >Registrar Oferta</button>
                 <button id="Button1" >Cancelar</button></td>
             </tr>
-             
+            <tr>
+                <td colspan="4" >
+                        <div class="ui-widget-header ui-corner-all"><label>Ofertas Registradas</label></div>
+                 </td>
+            </tr>
+            <tr>
+                
+                <td colspan="4" >
+                    <table width="100%" border="0">
+                  <tr>
+                    <th width="64" scope="col"><div align="center">Código</div></th>
+                    <th width="580" scope="col"><div align="left">Promoción</div></th>
+                    <th width="100" scope="col"><div align="center">Vigencia Ini</div></th>
+                    <th width="100" scope="col"><div align="center">Vigencia fin</div></th>
+                  </tr>
+                  <tr>
+                    <th scope="row"><div align="center">Pr-001</div></th>
+                    <td><div align="left">Por cada 100 puntos de consumo, gratis por 1 Entraga General</div></td>
+                    <td><div align="center">10/09/2012</div></td>
+                    <td><div align="left">10/10/2012</div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><div align="center">Pr-002</div></th>
+                    <td><div align="left">Por cada 150 puntos de consumo, gratis por 1 Entraga 3D</div></td>
+                    <td><div align="center">10/09/2012</div></td>
+                    <td><div align="left">10/10/2012</div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><p align="center">Pr-003</p></th>
+                    <td><div align="left">Por cada 350 puntos de consumo, gratis por 1 Peluchin</div></td>
+                    <td><div align="center">10/09/2012</div></td>
+                    <td><div align="left">10/10/2012</div></td>
+                  </tr>
+                </table>
+                </td>
+            </tr>
         </table>
 	</div>
 	</div>
