@@ -27,6 +27,16 @@ namespace FIDECINEWeb
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "AdministrarHorario", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
+            routes.MapRoute(
+                "GestionOfertas", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new { controller = "GestionOfertas", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+            routes.MapRoute(
+               "Reporte", // Route name
+               "{controller}/{action}/{id}", // URL with parameters
+               new { controller = "Reporte", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+           );
         }
 
         protected void Application_Start()
