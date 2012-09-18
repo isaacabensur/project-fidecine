@@ -142,7 +142,7 @@
                             <a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="flat"><span class="ui-icon ui-icon-triangle-1-s"></span>Opciones</a>
                             <div id="search-engines" class="hidden">
                             <ul>
-	                            <li><a href="#">Registro de Películas</a></li>
+	                            <li><a href="/AdministrarPelicula/Index">Registro de Películas</a></li>
 	                            <li><a href="/AdministrarCliente/Index">Registro de Clientes</a></li>
 	                            <li><a href="/AdministrarHorario/Index">Administrar Horarios</a></li>
 	                            <li><a href="/GestionOfertas/Index">Gestión de Ofertas</a></li>
