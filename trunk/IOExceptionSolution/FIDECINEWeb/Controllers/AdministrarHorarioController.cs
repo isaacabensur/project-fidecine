@@ -9,7 +9,12 @@ namespace FIDECINEWeb.Controllers
 {
     public class AdministrarHorarioController : Controller
     {
-        
+
+        public ActionResult Index()
+        {
+            return View("../Administracion/AdministrarCartelera");
+        }
+
         [HttpPost]
         public JsonResult buscar()
         {

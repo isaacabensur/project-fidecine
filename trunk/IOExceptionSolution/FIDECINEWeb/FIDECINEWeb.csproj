@@ -181,6 +181,7 @@
     <Content Include="Scripts\jquery.validationEngine.js" />
     <Content Include="Scripts\fg.menu.js" />
     <Content Include="validacion\validationEngine.jquery.css" />
+    <Content Include="Views\Administracion\AdministrarCartelera.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

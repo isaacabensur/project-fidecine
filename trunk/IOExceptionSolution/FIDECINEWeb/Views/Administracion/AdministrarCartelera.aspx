@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
-
+﻿
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -7,29 +7,28 @@
 
  <script type="text/javascript">
 
-     $(document).ready(function () 
-     {
+     $(document).ready(function () {
          $("#Table1").styleTable();
 
 
          $("#txtFechaHoraDesde").datetimepicker({
              showOn: "button",
-             buttonImage: "Content/images/calendar.gif",
+             buttonImage: "../Content/images/calendar.gif",
              buttonImageOnly: true
          });
          $("#txtFechaHoraHasta").datetimepicker({
              showOn: "button",
-             buttonImage: "Content/images/calendar.gif",
+             buttonImage: "../Content/images/calendar.gif",
              buttonImageOnly: true
          });
 
          $("#fechaHora").datetimepicker({
              showOn: "button",
-             buttonImage: "Content/images/calendar.gif",
+             buttonImage: "../Content/images/calendar.gif",
              buttonImageOnly: true
          });
 
-         
+
 
          $("#btnBuscar").button({
              icons: {
@@ -127,8 +126,7 @@
 
      });
 
-    function nuevoHorario() 
-     {
+     function nuevoHorario() {
          $("#create-user").click();
          return false;
      }
