@@ -112,7 +112,7 @@
                             <ul>
 	                            <li><a href="#">Registro de Películas</a></li>
 	                            <li><a href="#">Registro de Clientes</a></li>
-	                            <li><a href="#">Administrar Horarios</a></li>
+	                            <li><a href="/AdministrarHorario/Index">Administrar Horarios</a></li>
 	                            <li><a href="#">Gestión de Ofertas</a></li>
                                 <li><a href="#">Registro Visitas</a></li>
                                 <li><a href="#">Reporte de Visitas</a></li>
