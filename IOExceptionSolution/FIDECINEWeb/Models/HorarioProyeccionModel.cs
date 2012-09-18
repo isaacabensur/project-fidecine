@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using FIDECINEWeb.FideCineService;
+using FIDECINEWeb.PeliculaServiceReference;
+using FIDECINEWeb.SalaServiceReference;
 
 namespace FIDECINEWeb.Models
 {
@@ -11,6 +12,7 @@ namespace FIDECINEWeb.Models
 
         public List<PeliculaBE> ListaPelicula { set; get; }
 
+        public List<SalaBE> ListaSala{ set; get; }
     }
 
 }
