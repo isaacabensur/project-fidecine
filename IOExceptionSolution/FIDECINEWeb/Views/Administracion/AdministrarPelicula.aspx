@@ -118,7 +118,7 @@
          $("#create-user").click();
          return false;
      }
-
+     
      function buscar() {
 
          $.post('/AdministrarHorario/buscar', $('#frmBusqueda').serializeArray(), function (data) {
