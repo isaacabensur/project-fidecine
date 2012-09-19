@@ -8,7 +8,7 @@ using FIDECINEWeb.Models;
 
 namespace FIDECINEWeb.Controllers
 {
-    public class AdministrarClienteController : Controllerss
+    public class AdministrarClienteController : Controller
     {
         public ActionResult Index()
         {
