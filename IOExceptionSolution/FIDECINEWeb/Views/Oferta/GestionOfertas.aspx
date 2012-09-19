@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <form id="form1" runat="server">
     <div class="ui-widget-content ui-corner-all"
 		style="width: 99%; margin: 3px 3px 3px 3px;">
 	<div class="ui-widget-header ui-corner-all"><label>Gestion de Ofertas</label></div>
 	<div align="left" style="margin: 5px 5px 5px 5px;">
-	     <table width="600px">
+	     <table style="width: 783px">
             <tr>
                 <td>Codigo Promocion :</td>
                 <td>                
@@ -32,13 +33,8 @@
             </tr>
             <tr>
                 <td colspan="4" >
-                    <div ><label>Detalle de Oferta</label></div>
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td colspan="3" >Por cada 
-                    <select id="cmbCantidad" name="D2" style="width: 50px;">
+                    <div ><label>Detalle de Oferta :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Por cada 
+                    <select id="cmbCantidad" name="D3" style="width: 50px;">
                         <option>100</option>
                         <option>150</option>
                         <option>200</option>
@@ -55,10 +51,16 @@
                         <option>Entrada General</option>
                         <option>Entrada 3D</option>
                         <option>Pop Corn</option>
-                        <option>Peluchin</option>
+                        <option>Vasos</option>
+                        <option>Peluche</option>
                         <option>Gafas</option>
                     </select>
+                </label>
+                    </div>
                 </td>
+            </tr>
+            <tr>
+                <td colspan="3" >&nbsp;</td>
             </tr>
             <tr>
                 <td colspan="4" ><button id="btnRegistrar" >Registrar Oferta</button>
@@ -76,8 +78,8 @@
                   <tr>
                     <th width="64" scope="col"><div align="center">Código</div></th>
                     <th width="580" scope="col"><div align="left">Promoción</div></th>
-                    <th width="100" scope="col"><div align="center">Vigencia Ini</div></th>
-                    <th width="100" scope="col"><div align="center">Vigencia fin</div></th>
+                    <th width="100" scope="col" style="text-align: left"><div align="center">Vigencia Ini</div></th>
+                    <th width="100" scope="col" style="text-align: left"><div align="center">Vigencia fin</div></th>
                   </tr>
                   <tr>
                     <th scope="row"><div align="center">Pr-001</div></th>
@@ -103,4 +105,5 @@
         </table>
 	</div>
 	</div>
+    </form>
 </asp:Content>
