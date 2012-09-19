@@ -218,6 +218,7 @@
     <Content Include="Views\Administracion\AdministrarCartelera.aspx" />
     <Content Include="Views\Administracion\AdministrarCliente.aspx" />
     <Content Include="Views\Administracion\AdministrarPelicula.aspx" />
+    <Content Include="Views\Administracion\AdministrarVisita.aspx" />
     <Content Include="Views\Oferta\GestionOfertas.aspx" />
     <Content Include="Views\Reportes\ReporteConsultaGeneral.aspx" />
     <Content Include="Web.config" />
