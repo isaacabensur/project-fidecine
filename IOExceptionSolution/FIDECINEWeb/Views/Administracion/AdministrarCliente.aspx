@@ -156,7 +156,7 @@
                 <td>                    
                     <input type="text" style="width: 200px;"/>
                 </td>
-                <td>DNI :aa</td>
+                <td>DNI :</td>
                 <td>                    
                     <input type="text" style="width: 100px;"/>
                 </td> 
