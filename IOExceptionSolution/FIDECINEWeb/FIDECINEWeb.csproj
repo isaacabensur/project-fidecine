@@ -71,6 +71,7 @@
     <Compile Include="Controllers\AdministrarClienteController.cs" />
     <Compile Include="Controllers\AdministrarHorarioController.cs" />
     <Compile Include="Controllers\AdministrarPeliculaController.cs" />
+    <Compile Include="Controllers\AdministrarVisitaController.cs" />
     <Compile Include="Controllers\GestionOfertasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
