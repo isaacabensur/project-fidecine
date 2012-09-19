@@ -1,6 +1,13 @@
 ﻿
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
+<script runat="server">
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+</script>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <form id="form1" runat="server">
@@ -72,7 +79,7 @@
          $("#dialog_modal").dialog({
              autoOpen: false,
              height: 350,
-             width: 500,
+             width: 600,
              modal: true,
              buttons: {
                  "Guardar": function () {
@@ -144,7 +151,11 @@
          return false;
      }
 
-</script>
+     function cmbSala_onclick() {
+
+     }
+
+ </script>
 			
 	<div class="ui-widget-content ui-corner-all"
 		style="width: 99%; margin: 3px 3px 3px 3px;">
@@ -164,9 +175,10 @@
             <tr>
                 <td>Tipo : </td>
                 <td>
-                    <select id="cmbSala" name="D2" style="width: 100px;">
+                    <select id="cmbSala" name="D2" style="width: 100px;" onclick="return cmbSala_onclick()">
                         <option>Premiun</option>
                         <option>Oro</option>                        
+                        <option>Corporativo</option>                        
                     </select>
                 </td>
                 <td>Estado : </td>
@@ -242,7 +254,7 @@
     </form>
 
 
-    <div  id="dialog_modal" title="Edición de Cliente">
+    <div  id="dialog_modal" title="Edición de Cliente" style="height: 325px">
 		<table>
             <tr>
                 <td>Nombres :</td>
@@ -278,7 +290,13 @@
                 <td>DNI :</td>
                 <td>
                     <input type="text" style="width: 100px;"/>
-                </td> 
+                </td>
+            </tr>
+            <tr>
+                <td>RUC :</td>
+                <td>
+                    <input type="text" style="width: 100px;"/>
+                </td>
             </tr>
             <tr>
                 <td>Teléfono Casa :</td>
@@ -303,7 +321,8 @@
                 <td>
                     <select id="Select1" name="D2" style="width: 100px;">
                         <option>Premiun</option>
-                        <option>Oro</option>                        
+                        <option>Oro</option>
+                        <option>Corporativo</option>                        
                     </select>
                 </td>
             </tr>
