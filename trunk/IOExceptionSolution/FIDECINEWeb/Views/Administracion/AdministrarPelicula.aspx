@@ -144,23 +144,30 @@
          return false;
      }
 
-</script>
+     function Select1_onclick() {
+
+     }
+
+ </script>
 			
 	<div class="ui-widget-content ui-corner-all"
 		style="width: 99%; margin: 3px 3px 3px 3px;">
 	<div class="ui-widget-header ui-corner-all"><label>Administración de Películas</label></div>
 	<div align="left" style="margin: 5px 5px 5px 5px;">
-	     <table width="600px">
+	     <table style="width: 783px">
             <tr>
                 <td>Nombre :</td>
                 <td>                    
                     <input type="text" style="width: 200px;"/>
                 </td>
-                <td>Genero :</td>
+                <td style="width: 125px">Genero :</td>
                 <td>                    
                     <select id="Select4" name="D2" style="width: 130px;">
                         <option>Terror</option>
-                        <option>Comedia</option>                        
+                        <option>Comedia</option> 
+                        <option>Accion</option>  
+                        <option>Drama</option> 
+                                               
                     </select>
                 </td> 
             </tr>   
@@ -168,15 +175,39 @@
                 <td>Categoría :</td>
                 <td>                    
                     <select id="Select5" name="D2" style="width: 130px;">
-                        <option>Terror</option>
-                        <option>Comedia</option>                        
+                        <option>HD</option>
+                        <option>3D</option> 
+                        <option>Subtitulada</option> 
+                        <option>Español</option>                        
                     </select>
                 </td>
+
+                
+                <td style="width: 125px">Trailer de la pelicula :</td>
+                <td>                    
+                    <input type="text" style="width: 200px; height: 27px;"/>
+                </td>
+                <td>&nbsp;</td>
+                <td>                    
+                    &nbsp;</td> 
+            </tr>   
+            <tr>
+             <td style="width: 125px; height: 27px;">Descripcion de la pelicula :</td>
+                <td style="height: 27px">                    
+                    &nbsp;<input type="text" style="width: 200px; height: 27px;"/></td>
+                <td style="height: 27px"></td>
+                <td style="height: 27px">                    
+                    &nbsp;</td> 
+            </tr>   
+           <tr>
+           
+                
                 <td>Tipo :</td>
                 <td>                    
                     <select id="Select2" name="D2" style="width: 130px;">
                         <option>Apta todo público</option>
-                        <option>Mayor a 18</option>                        
+                        <option>Mayor a 18</option>   
+                         <option>Mayor a 14</option>                          
                     </select>
                 </td> 
             </tr>  
@@ -188,7 +219,7 @@
                         <option>Inactivo</option>                        
                     </select>
                 </td>
-                <td></td>
+                <td style="width: 125px"></td>
                 <td>                    
                 </td> 
             </tr>              
@@ -261,8 +292,16 @@
                     <input type="text" style="width: 200px;"/>
                 </td> 
             </tr>
+            
             <tr>
-                <td>Página Web :</td>
+                <td>Descripcion :</td>
+                <td>
+                    <input type="text" style="width: 200px;"/>
+                </td> 
+            </tr>
+            
+            <tr>
+                <td>Trailer (Página Web) :</td>
                 <td>
                     <input type="text" style="width: 300px;"/>
                 </td> 
@@ -270,9 +309,11 @@
             <tr>
                 <td>Género: </td>
                 <td>
-                    <select id="Select1" name="D2" style="width: 130px;">
+                    <select id="Select1" name="D2" style="width: 130px;" onclick="return Select1_onclick()">
                         <option>Terror</option>
-                        <option>Comedia</option>                        
+                        <option>Comedia</option> 
+                         <option>Accion</option>  
+                        <option>Drama</option>                        
                     </select>
                 </td>
             </tr>
@@ -280,8 +321,10 @@
                 <td>Categoría :</td>
                 <td>                    
                     <select id="Select6" name="D2" style="width: 130px;">
-                        <option>Terror</option>
-                        <option>Comedia</option>                        
+                        <option>HD</option>
+                        <option>3D</option> 
+                        <option>Subtitulada</option> 
+                        <option>Español</option>                        
                     </select>
                 </td>
             </tr>
@@ -290,7 +333,8 @@
                 <td>                    
                     <select id="Select7" name="D2" style="width: 130px;">
                         <option>Apta todo público</option>
-                        <option>Mayor a 18</option>                        
+                        <option>Mayor a 18</option>   
+                         <option>Mayor a 14</option>                  
                     </select>
                 </td> 
             </tr>
