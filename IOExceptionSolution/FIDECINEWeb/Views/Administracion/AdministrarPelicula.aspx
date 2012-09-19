@@ -181,8 +181,8 @@
                         <option>Español</option>                        
                     </select>
                 </td>
-
-                
+            </tr>
+                <tr>
                 <td style="width: 125px">Trailer de la pelicula :</td>
                 <td>                    
                     <input type="text" style="width: 200px; height: 27px;"/>
@@ -244,8 +244,9 @@
 				<th width="100px">Genero</th>
 				<th width="100px">Categoría</th>	
                 <th width="100px">Tipo</th>		
-                <th width="185px">Página Web</th>   
-                <th width="100px">Estado</th>             
+                <th width="185px">Página Web( trailer) </th>   
+                <th width="100px">Estado</th>  
+                 <th width="100px">Descripcion de la pelicula </th>             
                 <th width="20px"></th>	
 			</tr>
 			</thead>
@@ -253,6 +254,7 @@
             <tr>
                 <td>aa</td>
                 <td>aaa</td>
+                <td>aaaa</td>
                 <td>aaaa</td>
                 <td>aaaa</td>
                 <td>aaaa</td>
@@ -266,6 +268,7 @@
                 <td>bbbbbb</td>
                 <td>bbbbbbbbb</td>
                 <td>bbbbbbbbb</td>
+                <td>bbbbbbbbb</td>
                 <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
             </tr> 
             <tr>
@@ -275,6 +278,7 @@
                 <td>ccccccccccc</td>
                 <td>cccccccccccccc</td>
                 <td>cccccccccccccc</td>
+                 <td>cccccccccccccc</td>
                 <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
             </tr>         
 			</tbody>
