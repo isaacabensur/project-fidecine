@@ -152,47 +152,12 @@
 	<div align="left" style="margin: 5px 5px 5px 5px;">
 	     <table width="600px">
             <tr>
-                <td>Nombre :</td>
+                <td style="width: 68px">DNI :</td>
                 <td>                    
-                    <input type="text" style="width: 200px;"/>
+                    <input type="text" style="width: 156px;"/>
                 </td>
-                <td>Genero :</td>
-                <td>                    
-                    <select id="Select4" name="D2" style="width: 130px;">
-                        <option>Terror</option>
-                        <option>Comedia</option>                        
-                    </select>
-                </td> 
             </tr>   
-            <tr>
-                <td>Categoría :</td>
-                <td>                    
-                    <select id="Select5" name="D2" style="width: 130px;">
-                        <option>Terror</option>
-                        <option>Comedia</option>                        
-                    </select>
-                </td>
-                <td>Tipo :</td>
-                <td>                    
-                    <select id="Select2" name="D2" style="width: 130px;">
-                        <option>Apta todo público</option>
-                        <option>Mayor a 18</option>                        
-                    </select>
-                </td> 
-            </tr>  
-            <tr>
-                <td>Estado :</td>
-                <td>                    
-                    <select id="Select8" name="D2" style="width: 130px;">
-                        <option>Activo</option>
-                        <option>Inactivo</option>                        
-                    </select>
-                </td>
-                <td></td>
-                <td>                    
-                </td> 
-            </tr>              
-        </table>
+            </table>
 	</div>
 	</div>
 
@@ -209,12 +174,10 @@
 	    <table  id="Table1" width="790px" class="styleTable">
 			<thead>
 			<tr>
-				<th width="185px">Nombre</th>
-				<th width="100px">Genero</th>
-				<th width="100px">Categoría</th>	
-                <th width="100px">Tipo</th>		
-                <th width="185px">Página Web</th>   
-                <th width="100px">Estado</th>             
+				<th width="185px">Nombres</th>
+				<th width="100px">Apellidos</th>
+				<th width="100px">Puntos</th>	
+                <th width="100px">Tipo de Cliente</th>		
                 <th width="20px"></th>	
 			</tr>
 			</thead>
@@ -224,8 +187,6 @@
                 <td>aaa</td>
                 <td>aaaa</td>
                 <td>aaaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
                 <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
             </tr>   
             <tr>
@@ -233,8 +194,6 @@
                 <td>bbb</td>
                 <td>bbbb</td>
                 <td>bbbbbb</td>
-                <td>bbbbbbbbb</td>
-                <td>bbbbbbbbb</td>
                 <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
             </tr> 
             <tr>
@@ -242,8 +201,6 @@
                 <td>ccccccccccc</td>
                 <td>ccccccccccc</td>
                 <td>ccccccccccc</td>
-                <td>cccccccccccccc</td>
-                <td>cccccccccccccc</td>
                 <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
             </tr>         
 			</tbody>
@@ -253,10 +210,16 @@
     </form>
 
 
-    <div  id="dialog_modal" title="Edición de Película">
+    <div  id="dialog_modal" title="Nueva Visita">
 		<table>
             <tr>
-                <td>Nombre :</td>
+                <td>DNI Cliente:</td>
+                <td>
+                    <input type="text" style="width: 82px; text-align: left;"/>
+                </td> 
+            </tr>
+            <tr>
+                <td>Película :</td>
                 <td>
                     <input type="text" style="width: 200px;"/>
                 </td> 
@@ -295,7 +258,16 @@
                 </td> 
             </tr>
             <tr>
-                <td>Estado : </td>
+                <td>Sala : </td>
+                <td>
+                    <select id="Select8" name="D3" style="width: 100px;">
+                        <option>Activo</option>
+                        <option>Inactivo</option>                        
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha y Hora : </td>
                 <td>
                     <select id="Select3" name="D2" style="width: 100px;">
                         <option>Activo</option>
