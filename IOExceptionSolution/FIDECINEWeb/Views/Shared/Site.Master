@@ -146,7 +146,7 @@
 	                            <li><a href="/AdministrarCliente/Index">Registro de Clientes</a></li>
 	                            <li><a href="/AdministrarHorario/Index">Administrar Horarios</a></li>
 	                            <li><a href="/GestionOfertas/Index">Gestión de Ofertas</a></li>
-                                <li><a href="#">Registro Visitas</a></li>
+                                <li><a href="/AdministrarVisita/Index">Registro Visitas</a></li>
                                 <li><a href="/Reporte/Index">Reporte de Visitas</a></li>
                             </ul>
                             </div>
