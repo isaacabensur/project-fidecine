@@ -25,6 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{
 		Librerias\NHibernate.dll = Librerias\NHibernate.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseDatos", "BaseDatos", "{4D210845-ECBB-459E-890D-8E498C23905B}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\FideCine.sql = BaseDatos\FideCine.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True

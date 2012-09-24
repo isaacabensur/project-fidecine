@@ -4,11 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FideCineModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="FideCineModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="FideCineModelStoreContainer">
           <EntitySet Name="Cartelera" EntityType="FideCineModel.Store.Cartelera" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CategoriaPelicula" EntityType="FideCineModel.Store.CategoriaPelicula" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cliente" EntityType="FideCineModel.Store.Cliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GeneroPelicula" EntityType="FideCineModel.Store.GeneroPelicula" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Pelicula" EntityType="FideCineModel.Store.Pelicula" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Promocion" EntityType="FideCineModel.Store.Promocion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Sala" EntityType="FideCineModel.Store.Sala" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TarjetaCliente" EntityType="FideCineModel.Store.TarjetaCliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TipoPelicula" EntityType="FideCineModel.Store.TipoPelicula" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VisitaCliente" EntityType="FideCineModel.Store.VisitaCliente" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Cartelera_Pelicula" Association="FideCineModel.Store.FK_Cartelera_Pelicula">
             <End Role="Pelicula" EntitySet="Pelicula" />
             <End Role="Cartelera" EntitySet="Cartelera" />
@@ -17,31 +24,130 @@
             <End Role="Sala" EntitySet="Sala" />
             <End Role="Cartelera" EntitySet="Cartelera" />
           </AssociationSet>
+          <AssociationSet Name="FK_Pelicula_CategoriaPelicula" Association="FideCineModel.Store.FK_Pelicula_CategoriaPelicula">
+            <End Role="CategoriaPelicula" EntitySet="CategoriaPelicula" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pelicula_GeneroPelicula" Association="FideCineModel.Store.FK_Pelicula_GeneroPelicula">
+            <End Role="GeneroPelicula" EntitySet="GeneroPelicula" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pelicula_TipoPelicula" Association="FideCineModel.Store.FK_Pelicula_TipoPelicula">
+            <End Role="TipoPelicula" EntitySet="TipoPelicula" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TarjetaCliente_Cliente" Association="FideCineModel.Store.FK_TarjetaCliente_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="TarjetaCliente" EntitySet="TarjetaCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitaCliente_Cliente" Association="FideCineModel.Store.FK_VisitaCliente_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitaCliente_HorarioPelicula" Association="FideCineModel.Store.FK_VisitaCliente_HorarioPelicula">
+            <End Role="Cartelera" EntitySet="Cartelera" />
+            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitaCliente_TarjetaCliente" Association="FideCineModel.Store.FK_VisitaCliente_TarjetaCliente">
+            <End Role="TarjetaCliente" EntitySet="TarjetaCliente" />
+            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cartelera">
           <Key>
             <PropertyRef Name="IdCartelera" />
           </Key>
-          <Property Name="IdCartelera" Type="int" Nullable="false" />
+          <Property Name="IdCartelera" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdPelicula" Type="int" Nullable="false" />
           <Property Name="IdSala" Type="int" Nullable="false" />
           <Property Name="FechaHora" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoriaPelicula">
+          <Key>
+            <PropertyRef Name="idcategoria" />
+          </Key>
+          <Property Name="idcategoria" Type="int" Nullable="false" />
+          <Property Name="nombreCategoria" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idcliente" />
+          </Key>
+          <Property Name="idcliente" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="apellidoPaterno" Type="varchar" MaxLength="50" />
+          <Property Name="apellidoMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="dni" Type="int" />
+          <Property Name="fechaNacimiento" Type="date" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="tipocliente" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="puntos" Type="int" />
+          <Property Name="estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="GeneroPelicula">
+          <Key>
+            <PropertyRef Name="idgenero" />
+          </Key>
+          <Property Name="idgenero" Type="int" Nullable="false" />
+          <Property Name="nombreGenero" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Pelicula">
           <Key>
             <PropertyRef Name="IdPelicula" />
           </Key>
           <Property Name="IdPelicula" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="Estado" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="idcategoria" Type="int" />
+          <Property Name="trailer" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="nchar" MaxLength="10" />
+          <Property Name="idtipo" Type="int" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idgenero" Type="int" />
+        </EntityType>
+        <EntityType Name="Promocion">
+          <Key>
+            <PropertyRef Name="idpromocion" />
+          </Key>
+          <Property Name="idpromocion" Type="int" Nullable="false" />
+          <Property Name="nombrepromocion" Type="varchar" MaxLength="50" />
+          <Property Name="puntos" Type="int" />
+          <Property Name="regalo" Type="nchar" MaxLength="10" />
+          <Property Name="vigenciaInicio" Type="date" />
+          <Property Name="vigenciaFin" Type="date" />
         </EntityType>
         <EntityType Name="Sala">
           <Key>
             <PropertyRef Name="IdSala" />
           </Key>
-          <Property Name="IdSala" Type="int" Nullable="false" />
+          <Property Name="IdSala" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="Estado" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TarjetaCliente">
+          <Key>
+            <PropertyRef Name="idcliente" />
+          </Key>
+          <Property Name="idcliente" Type="int" Nullable="false" />
+          <Property Name="tipotarjeta" Type="varchar" MaxLength="10" />
+          <Property Name="estado" Type="char" MaxLength="1" />
+          <Property Name="puntos" Type="int" />
+        </EntityType>
+        <EntityType Name="TipoPelicula">
+          <Key>
+            <PropertyRef Name="idtipo" />
+          </Key>
+          <Property Name="idtipo" Type="int" Nullable="false" />
+          <Property Name="nombreTipo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VisitaCliente">
+          <Key>
+            <PropertyRef Name="idvisita" />
+          </Key>
+          <Property Name="idvisita" Type="int" Nullable="false" />
+          <Property Name="idhorario" Type="int" />
+          <Property Name="idcliente" Type="int" />
+          <Property Name="cantidadEntradas" Type="int" />
         </EntityType>
         <Association Name="FK_Cartelera_Pelicula">
           <End Role="Pelicula" Type="FideCineModel.Store.Pelicula" Multiplicity="1" />
@@ -67,15 +173,105 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="FK_Pelicula_CategoriaPelicula">
+          <End Role="CategoriaPelicula" Type="FideCineModel.Store.CategoriaPelicula" Multiplicity="0..1" />
+          <End Role="Pelicula" Type="FideCineModel.Store.Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaPelicula">
+              <PropertyRef Name="idcategoria" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="idcategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pelicula_GeneroPelicula">
+          <End Role="GeneroPelicula" Type="FideCineModel.Store.GeneroPelicula" Multiplicity="0..1" />
+          <End Role="Pelicula" Type="FideCineModel.Store.Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GeneroPelicula">
+              <PropertyRef Name="idgenero" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="idgenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pelicula_TipoPelicula">
+          <End Role="TipoPelicula" Type="FideCineModel.Store.TipoPelicula" Multiplicity="0..1" />
+          <End Role="Pelicula" Type="FideCineModel.Store.Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPelicula">
+              <PropertyRef Name="idtipo" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="idtipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TarjetaCliente_Cliente">
+          <End Role="Cliente" Type="FideCineModel.Store.Cliente" Multiplicity="1" />
+          <End Role="TarjetaCliente" Type="FideCineModel.Store.TarjetaCliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idcliente" />
+            </Principal>
+            <Dependent Role="TarjetaCliente">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitaCliente_Cliente">
+          <End Role="Cliente" Type="FideCineModel.Store.Cliente" Multiplicity="0..1" />
+          <End Role="VisitaCliente" Type="FideCineModel.Store.VisitaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idcliente" />
+            </Principal>
+            <Dependent Role="VisitaCliente">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitaCliente_HorarioPelicula">
+          <End Role="Cartelera" Type="FideCineModel.Store.Cartelera" Multiplicity="0..1" />
+          <End Role="VisitaCliente" Type="FideCineModel.Store.VisitaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cartelera">
+              <PropertyRef Name="IdCartelera" />
+            </Principal>
+            <Dependent Role="VisitaCliente">
+              <PropertyRef Name="idhorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitaCliente_TarjetaCliente">
+          <End Role="TarjetaCliente" Type="FideCineModel.Store.TarjetaCliente" Multiplicity="0..1" />
+          <End Role="VisitaCliente" Type="FideCineModel.Store.VisitaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TarjetaCliente">
+              <PropertyRef Name="idcliente" />
+            </Principal>
+            <Dependent Role="VisitaCliente">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FideCineModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="FideCineEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cartelera" EntityType="FideCineModel.Cartelera" />
+          <EntitySet Name="CategoriaPelicula" EntityType="FideCineModel.CategoriaPelicula" />
+          <EntitySet Name="Cliente" EntityType="FideCineModel.Cliente" />
+          <EntitySet Name="GeneroPelicula" EntityType="FideCineModel.GeneroPelicula" />
           <EntitySet Name="Pelicula" EntityType="FideCineModel.Pelicula" />
+          <EntitySet Name="Promocion" EntityType="FideCineModel.Promocion" />
           <EntitySet Name="Sala" EntityType="FideCineModel.Sala" />
+          <EntitySet Name="TarjetaCliente" EntityType="FideCineModel.TarjetaCliente" />
+          <EntitySet Name="TipoPelicula" EntityType="FideCineModel.TipoPelicula" />
+          <EntitySet Name="VisitaCliente" EntityType="FideCineModel.VisitaCliente" />
           <AssociationSet Name="FK_Cartelera_Pelicula" Association="FideCineModel.FK_Cartelera_Pelicula">
             <End Role="Pelicula" EntitySet="Pelicula" />
             <End Role="Cartelera" EntitySet="Cartelera" />
@@ -84,39 +280,152 @@
             <End Role="Sala" EntitySet="Sala" />
             <End Role="Cartelera" EntitySet="Cartelera" />
           </AssociationSet>
+          <AssociationSet Name="FK_VisitaCliente_HorarioPelicula" Association="FideCineModel.FK_VisitaCliente_HorarioPelicula">
+            <End Role="Cartelera" EntitySet="Cartelera" />
+            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pelicula_CategoriaPelicula" Association="FideCineModel.FK_Pelicula_CategoriaPelicula">
+            <End Role="CategoriaPelicula" EntitySet="CategoriaPelicula" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TarjetaCliente_Cliente" Association="FideCineModel.FK_TarjetaCliente_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="TarjetaCliente" EntitySet="TarjetaCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitaCliente_Cliente" Association="FideCineModel.FK_VisitaCliente_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pelicula_GeneroPelicula" Association="FideCineModel.FK_Pelicula_GeneroPelicula">
+            <End Role="GeneroPelicula" EntitySet="GeneroPelicula" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pelicula_TipoPelicula" Association="FideCineModel.FK_Pelicula_TipoPelicula">
+            <End Role="TipoPelicula" EntitySet="TipoPelicula" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitaCliente_TarjetaCliente" Association="FideCineModel.FK_VisitaCliente_TarjetaCliente">
+            <End Role="TarjetaCliente" EntitySet="TarjetaCliente" />
+            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cartelera">
           <Key>
             <PropertyRef Name="IdCartelera" />
           </Key>
-          <Property Name="IdCartelera" Type="Int32" Nullable="false" />
-          <Property Name="IdPelicula" Type="Int32" Nullable="false" />
-          <Property Name="IdSala" Type="Int32" Nullable="false" />
-          <Property Name="FechaHora" Type="DateTime" Nullable="false" />
+          <Property Type="Int32" Name="IdCartelera" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IdPelicula" Nullable="false" />
+          <Property Type="Int32" Name="IdSala" Nullable="false" />
+          <Property Type="DateTime" Name="FechaHora" Nullable="false" />
           <NavigationProperty Name="Pelicula" Relationship="FideCineModel.FK_Cartelera_Pelicula" FromRole="Cartelera" ToRole="Pelicula" />
           <NavigationProperty Name="Sala" Relationship="FideCineModel.FK_Cartelera_Sala" FromRole="Cartelera" ToRole="Sala" />
+          <NavigationProperty Name="VisitaCliente" Relationship="FideCineModel.FK_VisitaCliente_HorarioPelicula" FromRole="Cartelera" ToRole="VisitaCliente" />
+        </EntityType>
+        <EntityType Name="CategoriaPelicula">
+          <Key>
+            <PropertyRef Name="idcategoria" />
+          </Key>
+          <Property Type="Int32" Name="idcategoria" Nullable="false" />
+          <Property Type="String" Name="nombreCategoria" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pelicula" Relationship="FideCineModel.FK_Pelicula_CategoriaPelicula" FromRole="CategoriaPelicula" ToRole="Pelicula" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idcliente" />
+          </Key>
+          <Property Type="Int32" Name="idcliente" Nullable="false" />
+          <Property Type="String" Name="nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="apellidoPaterno" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="apellidoMaterno" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="dni" />
+          <Property Type="DateTime" Name="fechaNacimiento" />
+          <Property Type="String" Name="correo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="direccion" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="tipocliente" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="puntos" />
+          <Property Type="String" Name="estado" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TarjetaCliente" Relationship="FideCineModel.FK_TarjetaCliente_Cliente" FromRole="Cliente" ToRole="TarjetaCliente" />
+          <NavigationProperty Name="VisitaCliente" Relationship="FideCineModel.FK_VisitaCliente_Cliente" FromRole="Cliente" ToRole="VisitaCliente" />
+        </EntityType>
+        <EntityType Name="GeneroPelicula">
+          <Key>
+            <PropertyRef Name="idgenero" />
+          </Key>
+          <Property Type="Int32" Name="idgenero" Nullable="false" />
+          <Property Type="String" Name="nombreGenero" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pelicula" Relationship="FideCineModel.FK_Pelicula_GeneroPelicula" FromRole="GeneroPelicula" ToRole="Pelicula" />
         </EntityType>
         <EntityType Name="Pelicula">
           <Key>
             <PropertyRef Name="IdPelicula" />
           </Key>
-          <Property Name="IdPelicula" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Type="Int32" Name="IdPelicula" Nullable="false" />
+          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idcategoria" />
+          <Property Type="String" Name="trailer" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="idtipo" />
+          <Property Type="String" Name="Estado" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="idgenero" />
           <NavigationProperty Name="Cartelera" Relationship="FideCineModel.FK_Cartelera_Pelicula" FromRole="Pelicula" ToRole="Cartelera" />
+          <NavigationProperty Name="CategoriaPelicula" Relationship="FideCineModel.FK_Pelicula_CategoriaPelicula" FromRole="Pelicula" ToRole="CategoriaPelicula" />
+          <NavigationProperty Name="GeneroPelicula" Relationship="FideCineModel.FK_Pelicula_GeneroPelicula" FromRole="Pelicula" ToRole="GeneroPelicula" />
+          <NavigationProperty Name="TipoPelicula" Relationship="FideCineModel.FK_Pelicula_TipoPelicula" FromRole="Pelicula" ToRole="TipoPelicula" />
+        </EntityType>
+        <EntityType Name="Promocion">
+          <Key>
+            <PropertyRef Name="idpromocion" />
+          </Key>
+          <Property Type="Int32" Name="idpromocion" Nullable="false" />
+          <Property Type="String" Name="nombrepromocion" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="puntos" />
+          <Property Type="String" Name="regalo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="vigenciaInicio" />
+          <Property Type="DateTime" Name="vigenciaFin" />
         </EntityType>
         <EntityType Name="Sala">
           <Key>
             <PropertyRef Name="IdSala" />
           </Key>
-          <Property Name="IdSala" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Type="Int32" Name="IdSala" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Cartelera" Relationship="FideCineModel.FK_Cartelera_Sala" FromRole="Sala" ToRole="Cartelera" />
         </EntityType>
+        <EntityType Name="TarjetaCliente">
+          <Key>
+            <PropertyRef Name="idcliente" />
+          </Key>
+          <Property Type="Int32" Name="idcliente" Nullable="false" />
+          <Property Type="String" Name="tipotarjeta" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="estado" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="puntos" />
+          <NavigationProperty Name="Cliente" Relationship="FideCineModel.FK_TarjetaCliente_Cliente" FromRole="TarjetaCliente" ToRole="Cliente" />
+          <NavigationProperty Name="VisitaCliente" Relationship="FideCineModel.FK_VisitaCliente_TarjetaCliente" FromRole="TarjetaCliente" ToRole="VisitaCliente" />
+        </EntityType>
+        <EntityType Name="TipoPelicula">
+          <Key>
+            <PropertyRef Name="idtipo" />
+          </Key>
+          <Property Type="Int32" Name="idtipo" Nullable="false" />
+          <Property Type="String" Name="nombreTipo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pelicula" Relationship="FideCineModel.FK_Pelicula_TipoPelicula" FromRole="TipoPelicula" ToRole="Pelicula" />
+        </EntityType>
+        <EntityType Name="VisitaCliente">
+          <Key>
+            <PropertyRef Name="idvisita" />
+          </Key>
+          <Property Type="Int32" Name="idvisita" Nullable="false" />
+          <Property Type="Int32" Name="idhorario" />
+          <Property Type="Int32" Name="idcliente" />
+          <Property Type="Int32" Name="cantidadEntradas" />
+          <NavigationProperty Name="Cartelera" Relationship="FideCineModel.FK_VisitaCliente_HorarioPelicula" FromRole="VisitaCliente" ToRole="Cartelera" />
+          <NavigationProperty Name="Cliente" Relationship="FideCineModel.FK_VisitaCliente_Cliente" FromRole="VisitaCliente" ToRole="Cliente" />
+          <NavigationProperty Name="TarjetaCliente" Relationship="FideCineModel.FK_VisitaCliente_TarjetaCliente" FromRole="VisitaCliente" ToRole="TarjetaCliente" />
+        </EntityType>
         <Association Name="FK_Cartelera_Pelicula">
-          <End Role="Pelicula" Type="FideCineModel.Pelicula" Multiplicity="1" />
-          <End Role="Cartelera" Type="FideCineModel.Cartelera" Multiplicity="*" />
+          <End Type="FideCineModel.Pelicula" Role="Pelicula" Multiplicity="1" />
+          <End Type="FideCineModel.Cartelera" Role="Cartelera" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pelicula">
               <PropertyRef Name="IdPelicula" />
@@ -127,8 +436,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cartelera_Sala">
-          <End Role="Sala" Type="FideCineModel.Sala" Multiplicity="1" />
-          <End Role="Cartelera" Type="FideCineModel.Cartelera" Multiplicity="*" />
+          <End Type="FideCineModel.Sala" Role="Sala" Multiplicity="1" />
+          <End Type="FideCineModel.Cartelera" Role="Cartelera" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sala">
               <PropertyRef Name="IdSala" />
@@ -138,28 +447,202 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_VisitaCliente_HorarioPelicula">
+          <End Type="FideCineModel.Cartelera" Role="Cartelera" Multiplicity="0..1" />
+          <End Type="FideCineModel.VisitaCliente" Role="VisitaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cartelera">
+              <PropertyRef Name="IdCartelera" />
+            </Principal>
+            <Dependent Role="VisitaCliente">
+              <PropertyRef Name="idhorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pelicula_CategoriaPelicula">
+          <End Type="FideCineModel.CategoriaPelicula" Role="CategoriaPelicula" Multiplicity="0..1" />
+          <End Type="FideCineModel.Pelicula" Role="Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaPelicula">
+              <PropertyRef Name="idcategoria" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="idcategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TarjetaCliente_Cliente">
+          <End Type="FideCineModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="FideCineModel.TarjetaCliente" Role="TarjetaCliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idcliente" />
+            </Principal>
+            <Dependent Role="TarjetaCliente">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitaCliente_Cliente">
+          <End Type="FideCineModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="FideCineModel.VisitaCliente" Role="VisitaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idcliente" />
+            </Principal>
+            <Dependent Role="VisitaCliente">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pelicula_GeneroPelicula">
+          <End Type="FideCineModel.GeneroPelicula" Role="GeneroPelicula" Multiplicity="0..1" />
+          <End Type="FideCineModel.Pelicula" Role="Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GeneroPelicula">
+              <PropertyRef Name="idgenero" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="idgenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pelicula_TipoPelicula">
+          <End Type="FideCineModel.TipoPelicula" Role="TipoPelicula" Multiplicity="0..1" />
+          <End Type="FideCineModel.Pelicula" Role="Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPelicula">
+              <PropertyRef Name="idtipo" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="idtipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitaCliente_TarjetaCliente">
+          <End Type="FideCineModel.TarjetaCliente" Role="TarjetaCliente" Multiplicity="0..1" />
+          <End Type="FideCineModel.VisitaCliente" Role="VisitaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TarjetaCliente">
+              <PropertyRef Name="idcliente" />
+            </Principal>
+            <Dependent Role="VisitaCliente">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FideCineModelStoreContainer" CdmEntityContainer="FideCineEntities">
-          <EntitySetMapping Name="Cartelera"><EntityTypeMapping TypeName="FideCineModel.Cartelera"><MappingFragment StoreEntitySet="Cartelera">
-            <ScalarProperty Name="IdCartelera" ColumnName="IdCartelera" />
-            <ScalarProperty Name="IdPelicula" ColumnName="IdPelicula" />
-            <ScalarProperty Name="IdSala" ColumnName="IdSala" />
-            <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Pelicula"><EntityTypeMapping TypeName="FideCineModel.Pelicula"><MappingFragment StoreEntitySet="Pelicula">
-            <ScalarProperty Name="IdPelicula" ColumnName="IdPelicula" />
-            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-            <ScalarProperty Name="Estado" ColumnName="Estado" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Sala"><EntityTypeMapping TypeName="FideCineModel.Sala"><MappingFragment StoreEntitySet="Sala">
-            <ScalarProperty Name="IdSala" ColumnName="IdSala" />
-            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-            <ScalarProperty Name="Estado" ColumnName="Estado" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Cartelera">
+            <EntityTypeMapping TypeName="FideCineModel.Cartelera">
+              <MappingFragment StoreEntitySet="Cartelera">
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="IdSala" ColumnName="IdSala" />
+                <ScalarProperty Name="IdPelicula" ColumnName="IdPelicula" />
+                <ScalarProperty Name="IdCartelera" ColumnName="IdCartelera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriaPelicula">
+            <EntityTypeMapping TypeName="FideCineModel.CategoriaPelicula">
+              <MappingFragment StoreEntitySet="CategoriaPelicula">
+                <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+                <ScalarProperty Name="idcategoria" ColumnName="idcategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="FideCineModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="tipocliente" ColumnName="tipocliente" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneroPelicula">
+            <EntityTypeMapping TypeName="FideCineModel.GeneroPelicula">
+              <MappingFragment StoreEntitySet="GeneroPelicula">
+                <ScalarProperty Name="nombreGenero" ColumnName="nombreGenero" />
+                <ScalarProperty Name="idgenero" ColumnName="idgenero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pelicula">
+            <EntityTypeMapping TypeName="FideCineModel.Pelicula">
+              <MappingFragment StoreEntitySet="Pelicula">
+                <ScalarProperty Name="idgenero" ColumnName="idgenero" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idtipo" ColumnName="idtipo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="trailer" ColumnName="trailer" />
+                <ScalarProperty Name="idcategoria" ColumnName="idcategoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPelicula" ColumnName="IdPelicula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promocion">
+            <EntityTypeMapping TypeName="FideCineModel.Promocion">
+              <MappingFragment StoreEntitySet="Promocion">
+                <ScalarProperty Name="vigenciaFin" ColumnName="vigenciaFin" />
+                <ScalarProperty Name="vigenciaInicio" ColumnName="vigenciaInicio" />
+                <ScalarProperty Name="regalo" ColumnName="regalo" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="nombrepromocion" ColumnName="nombrepromocion" />
+                <ScalarProperty Name="idpromocion" ColumnName="idpromocion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sala">
+            <EntityTypeMapping TypeName="FideCineModel.Sala">
+              <MappingFragment StoreEntitySet="Sala">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdSala" ColumnName="IdSala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TarjetaCliente">
+            <EntityTypeMapping TypeName="FideCineModel.TarjetaCliente">
+              <MappingFragment StoreEntitySet="TarjetaCliente">
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="tipotarjeta" ColumnName="tipotarjeta" />
+                <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPelicula">
+            <EntityTypeMapping TypeName="FideCineModel.TipoPelicula">
+              <MappingFragment StoreEntitySet="TipoPelicula">
+                <ScalarProperty Name="nombreTipo" ColumnName="nombreTipo" />
+                <ScalarProperty Name="idtipo" ColumnName="idtipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitaCliente">
+            <EntityTypeMapping TypeName="FideCineModel.VisitaCliente">
+              <MappingFragment StoreEntitySet="VisitaCliente">
+                <ScalarProperty Name="cantidadEntradas" ColumnName="cantidadEntradas" />
+                <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+                <ScalarProperty Name="idhorario" ColumnName="idhorario" />
+                <ScalarProperty Name="idvisita" ColumnName="idvisita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -180,18 +663,64 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="FideCineBD">
-        <EntityTypeShape EntityType="FideCineModel.Cartelera" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906250005" IsExpanded="true" />
-        <EntityTypeShape EntityType="FideCineModel.Pelicula" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="FideCineModel.Sala" Width="1.5" PointX="0.75" PointY="5.125" Height="1.7879850260416674" IsExpanded="true" />
-        <AssociationConnector Association="FideCineModel.FK_Cartelera_Pelicula" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.0189925130208337" />
-          <ConnectorPoint PointX="3" PointY="2.0189925130208337" />
+      <Diagram Name="FideCineBD" ZoomLevel="67">
+        <EntityTypeShape EntityType="FideCineModel.Cartelera" Width="1.5" PointX="5.25" PointY="1.5" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="FideCineModel.CategoriaPelicula" Width="1.5" PointX="0.75" PointY="1.875" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="FideCineModel.Cliente" Width="1.5" PointX="5.25" PointY="6.875" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="FideCineModel.GeneroPelicula" Width="1.5" PointX="0.75" PointY="5" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="FideCineModel.Pelicula" Width="1.5" PointX="3" PointY="1" Height="3.326396484374996" />
+        <EntityTypeShape EntityType="FideCineModel.Promocion" Width="1.5" PointX="7.75" PointY="4.75" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="FideCineModel.Sala" Width="1.5" PointX="3" PointY="5.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="FideCineModel.TarjetaCliente" Width="1.5" PointX="5.25" PointY="11.25" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="FideCineModel.TipoPelicula" Width="1.5" PointX="0.75" PointY="7.375" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="FideCineModel.VisitaCliente" Width="1.5" PointX="7.5" PointY="1.5" Height="2.3648893229166674" />
+        <AssociationConnector Association="FideCineModel.FK_Cartelera_Pelicula" >
+          <ConnectorPoint PointX="4.5" PointY="2.6824446614583337" />
+          <ConnectorPoint PointX="5.25" PointY="2.6824446614583337" />
         </AssociationConnector>
-        <AssociationConnector Association="FideCineModel.FK_Cartelera_Sala" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="6.0189925130208337" />
-          <ConnectorPoint PointX="3.75" PointY="6.0189925130208337" />
-          <ConnectorPoint PointX="3.75" PointY="3.0475878906250005" />
+        <AssociationConnector Association="FideCineModel.FK_Cartelera_Sala" >
+          <ConnectorPoint PointX="4.5" PointY="5.75" />
+          <ConnectorPoint PointX="4.875" PointY="5.375" />
+          <ConnectorPoint PointX="4.875" PointY="3.3049189921874942" />
+          <ConnectorPoint PointX="5.25" PointY="3.3049189921874942" />
+        </AssociationConnector>
+        <AssociationConnector Association="FideCineModel.FK_VisitaCliente_HorarioPelicula" >
+          <ConnectorPoint PointX="6.75" PointY="2.6824446614583337" />
+          <ConnectorPoint PointX="7.5" PointY="2.6824446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="FideCineModel.FK_Pelicula_CategoriaPelicula" >
+          <ConnectorPoint PointX="2.25" PointY="2.672841796874998" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="2.6728417968749976" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="2.672841796874998" />
+          <ConnectorPoint PointX="3" PointY="2.672841796874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="FideCineModel.FK_TarjetaCliente_Cliente" >
+          <ConnectorPoint PointX="6" PointY="10.393697916666667" />
+          <ConnectorPoint PointX="6" PointY="11.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="FideCineModel.FK_VisitaCliente_Cliente" >
+          <ConnectorPoint PointX="6.75" PointY="8.6893929036458388" />
+          <ConnectorPoint PointX="7.59375" PointY="8.6893929036458388" />
+          <ConnectorPoint PointX="7.59375" PointY="3.8648893229166674" />
+        </AssociationConnector>
+        <AssociationConnector Association="FideCineModel.FK_Pelicula_GeneroPelicula" >
+          <ConnectorPoint PointX="2.25" PointY="5" />
+          <ConnectorPoint PointX="2.625" PointY="4.625" />
+          <ConnectorPoint PointX="2.625" PointY="4.701396484374996" />
+          <ConnectorPoint PointX="2.7535744349011204" PointY="4.5728220494738743" />
+          <ConnectorPoint PointX="2.8714255650988791" PointY="4.4549709192761169" />
+          <ConnectorPoint PointX="3" PointY="4.326396484374996" />
+        </AssociationConnector>
+        <AssociationConnector Association="FideCineModel.FK_Pelicula_TipoPelicula" >
+          <ConnectorPoint PointX="2.25" PointY="7.4373066923076925" />
+          <ConnectorPoint PointX="2.8125" PointY="6.8748066923076934" />
+          <ConnectorPoint PointX="2.8125" PointY="1.8051688984375054" />
+          <ConnectorPoint PointX="3" PointY="1.8051688984375054" />
+        </AssociationConnector>
+        <AssociationConnector Association="FideCineModel.FK_VisitaCliente_TarjetaCliente" >
+          <ConnectorPoint PointX="6.75" PointY="12.336293945312505" />
+          <ConnectorPoint PointX="7.5624975" PointY="12.336293945312505" />
+          <ConnectorPoint PointX="7.5624975" PointY="3.8648893229166674" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
