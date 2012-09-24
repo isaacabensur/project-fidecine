@@ -20,6 +20,13 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Cartelera_Pelicula", "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FIDECINEService.Pelicula), "Cartelera", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Cartelera), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Cartelera_Sala", "Sala", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FIDECINEService.Sala), "Cartelera", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Cartelera), true)]
+[assembly: EdmRelationshipAttribute("FideCineModel", "FK_VisitaCliente_HorarioPelicula", "Cartelera", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.Cartelera), "VisitaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.VisitaCliente), true)]
+[assembly: EdmRelationshipAttribute("FideCineModel", "FK_Pelicula_CategoriaPelicula", "CategoriaPelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.CategoriaPelicula), "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Pelicula), true)]
+[assembly: EdmRelationshipAttribute("FideCineModel", "FK_TarjetaCliente_Cliente", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FIDECINEService.Cliente), "TarjetaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.TarjetaCliente), true)]
+[assembly: EdmRelationshipAttribute("FideCineModel", "FK_VisitaCliente_Cliente", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.Cliente), "VisitaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.VisitaCliente), true)]
+[assembly: EdmRelationshipAttribute("FideCineModel", "FK_Pelicula_GeneroPelicula", "GeneroPelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.GeneroPelicula), "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Pelicula), true)]
+[assembly: EdmRelationshipAttribute("FideCineModel", "FK_Pelicula_TipoPelicula", "TipoPelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.TipoPelicula), "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Pelicula), true)]
+[assembly: EdmRelationshipAttribute("FideCineModel", "FK_VisitaCliente_TarjetaCliente", "TarjetaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.TarjetaCliente), "VisitaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.VisitaCliente), true)]
 
 #endregion
 
@@ -90,6 +97,54 @@ namespace FIDECINEService
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<CategoriaPelicula> CategoriaPelicula
+        {
+            get
+            {
+                if ((_CategoriaPelicula == null))
+                {
+                    _CategoriaPelicula = base.CreateObjectSet<CategoriaPelicula>("CategoriaPelicula");
+                }
+                return _CategoriaPelicula;
+            }
+        }
+        private ObjectSet<CategoriaPelicula> _CategoriaPelicula;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Cliente> Cliente
+        {
+            get
+            {
+                if ((_Cliente == null))
+                {
+                    _Cliente = base.CreateObjectSet<Cliente>("Cliente");
+                }
+                return _Cliente;
+            }
+        }
+        private ObjectSet<Cliente> _Cliente;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<GeneroPelicula> GeneroPelicula
+        {
+            get
+            {
+                if ((_GeneroPelicula == null))
+                {
+                    _GeneroPelicula = base.CreateObjectSet<GeneroPelicula>("GeneroPelicula");
+                }
+                return _GeneroPelicula;
+            }
+        }
+        private ObjectSet<GeneroPelicula> _GeneroPelicula;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Pelicula> Pelicula
         {
             get
@@ -106,6 +161,22 @@ namespace FIDECINEService
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<Promocion> Promocion
+        {
+            get
+            {
+                if ((_Promocion == null))
+                {
+                    _Promocion = base.CreateObjectSet<Promocion>("Promocion");
+                }
+                return _Promocion;
+            }
+        }
+        private ObjectSet<Promocion> _Promocion;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Sala> Sala
         {
             get
@@ -118,6 +189,54 @@ namespace FIDECINEService
             }
         }
         private ObjectSet<Sala> _Sala;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TarjetaCliente> TarjetaCliente
+        {
+            get
+            {
+                if ((_TarjetaCliente == null))
+                {
+                    _TarjetaCliente = base.CreateObjectSet<TarjetaCliente>("TarjetaCliente");
+                }
+                return _TarjetaCliente;
+            }
+        }
+        private ObjectSet<TarjetaCliente> _TarjetaCliente;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TipoPelicula> TipoPelicula
+        {
+            get
+            {
+                if ((_TipoPelicula == null))
+                {
+                    _TipoPelicula = base.CreateObjectSet<TipoPelicula>("TipoPelicula");
+                }
+                return _TipoPelicula;
+            }
+        }
+        private ObjectSet<TipoPelicula> _TipoPelicula;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<VisitaCliente> VisitaCliente
+        {
+            get
+            {
+                if ((_VisitaCliente == null))
+                {
+                    _VisitaCliente = base.CreateObjectSet<VisitaCliente>("VisitaCliente");
+                }
+                return _VisitaCliente;
+            }
+        }
+        private ObjectSet<VisitaCliente> _VisitaCliente;
 
         #endregion
         #region AddTo Methods
@@ -131,6 +250,30 @@ namespace FIDECINEService
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the CategoriaPelicula EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCategoriaPelicula(CategoriaPelicula categoriaPelicula)
+        {
+            base.AddObject("CategoriaPelicula", categoriaPelicula);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Cliente EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCliente(Cliente cliente)
+        {
+            base.AddObject("Cliente", cliente);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the GeneroPelicula EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToGeneroPelicula(GeneroPelicula generoPelicula)
+        {
+            base.AddObject("GeneroPelicula", generoPelicula);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the Pelicula EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToPelicula(Pelicula pelicula)
@@ -139,11 +282,43 @@ namespace FIDECINEService
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the Promocion EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPromocion(Promocion promocion)
+        {
+            base.AddObject("Promocion", promocion);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the Sala EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToSala(Sala sala)
         {
             base.AddObject("Sala", sala);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TarjetaCliente EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTarjetaCliente(TarjetaCliente tarjetaCliente)
+        {
+            base.AddObject("TarjetaCliente", tarjetaCliente);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TipoPelicula EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTipoPelicula(TipoPelicula tipoPelicula)
+        {
+            base.AddObject("TipoPelicula", tipoPelicula);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the VisitaCliente EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToVisitaCliente(VisitaCliente visitaCliente)
+        {
+            base.AddObject("VisitaCliente", visitaCliente);
         }
 
         #endregion
@@ -362,6 +537,598 @@ namespace FIDECINEService
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_HorarioPelicula", "VisitaCliente")]
+        public EntityCollection<VisitaCliente> VisitaCliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "VisitaCliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "VisitaCliente", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="CategoriaPelicula")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CategoriaPelicula : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CategoriaPelicula object.
+        /// </summary>
+        /// <param name="idcategoria">Initial value of the idcategoria property.</param>
+        public static CategoriaPelicula CreateCategoriaPelicula(global::System.Int32 idcategoria)
+        {
+            CategoriaPelicula categoriaPelicula = new CategoriaPelicula();
+            categoriaPelicula.idcategoria = idcategoria;
+            return categoriaPelicula;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idcategoria
+        {
+            get
+            {
+                return _idcategoria;
+            }
+            set
+            {
+                if (_idcategoria != value)
+                {
+                    OnidcategoriaChanging(value);
+                    ReportPropertyChanging("idcategoria");
+                    _idcategoria = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idcategoria");
+                    OnidcategoriaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idcategoria;
+        partial void OnidcategoriaChanging(global::System.Int32 value);
+        partial void OnidcategoriaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombreCategoria
+        {
+            get
+            {
+                return _nombreCategoria;
+            }
+            set
+            {
+                OnnombreCategoriaChanging(value);
+                ReportPropertyChanging("nombreCategoria");
+                _nombreCategoria = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombreCategoria");
+                OnnombreCategoriaChanged();
+            }
+        }
+        private global::System.String _nombreCategoria;
+        partial void OnnombreCategoriaChanging(global::System.String value);
+        partial void OnnombreCategoriaChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_Pelicula_CategoriaPelicula", "Pelicula")]
+        public EntityCollection<Pelicula> Pelicula
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Pelicula>("FideCineModel.FK_Pelicula_CategoriaPelicula", "Pelicula");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Pelicula>("FideCineModel.FK_Pelicula_CategoriaPelicula", "Pelicula", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="Cliente")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Cliente : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Cliente object.
+        /// </summary>
+        /// <param name="idcliente">Initial value of the idcliente property.</param>
+        /// <param name="direccion">Initial value of the direccion property.</param>
+        /// <param name="tipocliente">Initial value of the tipocliente property.</param>
+        public static Cliente CreateCliente(global::System.Int32 idcliente, global::System.String direccion, global::System.String tipocliente)
+        {
+            Cliente cliente = new Cliente();
+            cliente.idcliente = idcliente;
+            cliente.direccion = direccion;
+            cliente.tipocliente = tipocliente;
+            return cliente;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idcliente
+        {
+            get
+            {
+                return _idcliente;
+            }
+            set
+            {
+                if (_idcliente != value)
+                {
+                    OnidclienteChanging(value);
+                    ReportPropertyChanging("idcliente");
+                    _idcliente = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idcliente");
+                    OnidclienteChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idcliente;
+        partial void OnidclienteChanging(global::System.Int32 value);
+        partial void OnidclienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String apellidoPaterno
+        {
+            get
+            {
+                return _apellidoPaterno;
+            }
+            set
+            {
+                OnapellidoPaternoChanging(value);
+                ReportPropertyChanging("apellidoPaterno");
+                _apellidoPaterno = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("apellidoPaterno");
+                OnapellidoPaternoChanged();
+            }
+        }
+        private global::System.String _apellidoPaterno;
+        partial void OnapellidoPaternoChanging(global::System.String value);
+        partial void OnapellidoPaternoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String apellidoMaterno
+        {
+            get
+            {
+                return _apellidoMaterno;
+            }
+            set
+            {
+                OnapellidoMaternoChanging(value);
+                ReportPropertyChanging("apellidoMaterno");
+                _apellidoMaterno = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("apellidoMaterno");
+                OnapellidoMaternoChanged();
+            }
+        }
+        private global::System.String _apellidoMaterno;
+        partial void OnapellidoMaternoChanging(global::System.String value);
+        partial void OnapellidoMaternoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> dni
+        {
+            get
+            {
+                return _dni;
+            }
+            set
+            {
+                OndniChanging(value);
+                ReportPropertyChanging("dni");
+                _dni = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dni");
+                OndniChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _dni;
+        partial void OndniChanging(Nullable<global::System.Int32> value);
+        partial void OndniChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> fechaNacimiento
+        {
+            get
+            {
+                return _fechaNacimiento;
+            }
+            set
+            {
+                OnfechaNacimientoChanging(value);
+                ReportPropertyChanging("fechaNacimiento");
+                _fechaNacimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fechaNacimiento");
+                OnfechaNacimientoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _fechaNacimiento;
+        partial void OnfechaNacimientoChanging(Nullable<global::System.DateTime> value);
+        partial void OnfechaNacimientoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String correo
+        {
+            get
+            {
+                return _correo;
+            }
+            set
+            {
+                OncorreoChanging(value);
+                ReportPropertyChanging("correo");
+                _correo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("correo");
+                OncorreoChanged();
+            }
+        }
+        private global::System.String _correo;
+        partial void OncorreoChanging(global::System.String value);
+        partial void OncorreoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String direccion
+        {
+            get
+            {
+                return _direccion;
+            }
+            set
+            {
+                OndireccionChanging(value);
+                ReportPropertyChanging("direccion");
+                _direccion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("direccion");
+                OndireccionChanged();
+            }
+        }
+        private global::System.String _direccion;
+        partial void OndireccionChanging(global::System.String value);
+        partial void OndireccionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String tipocliente
+        {
+            get
+            {
+                return _tipocliente;
+            }
+            set
+            {
+                OntipoclienteChanging(value);
+                ReportPropertyChanging("tipocliente");
+                _tipocliente = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("tipocliente");
+                OntipoclienteChanged();
+            }
+        }
+        private global::System.String _tipocliente;
+        partial void OntipoclienteChanging(global::System.String value);
+        partial void OntipoclienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> puntos
+        {
+            get
+            {
+                return _puntos;
+            }
+            set
+            {
+                OnpuntosChanging(value);
+                ReportPropertyChanging("puntos");
+                _puntos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("puntos");
+                OnpuntosChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _puntos;
+        partial void OnpuntosChanging(Nullable<global::System.Int32> value);
+        partial void OnpuntosChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.String _estado;
+        partial void OnestadoChanging(global::System.String value);
+        partial void OnestadoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_TarjetaCliente_Cliente", "TarjetaCliente")]
+        public TarjetaCliente TarjetaCliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TarjetaCliente>("FideCineModel.FK_TarjetaCliente_Cliente", "TarjetaCliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TarjetaCliente>("FideCineModel.FK_TarjetaCliente_Cliente", "TarjetaCliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TarjetaCliente> TarjetaClienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TarjetaCliente>("FideCineModel.FK_TarjetaCliente_Cliente", "TarjetaCliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TarjetaCliente>("FideCineModel.FK_TarjetaCliente_Cliente", "TarjetaCliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_Cliente", "VisitaCliente")]
+        public EntityCollection<VisitaCliente> VisitaCliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_Cliente", "VisitaCliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_Cliente", "VisitaCliente", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="GeneroPelicula")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class GeneroPelicula : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new GeneroPelicula object.
+        /// </summary>
+        /// <param name="idgenero">Initial value of the idgenero property.</param>
+        public static GeneroPelicula CreateGeneroPelicula(global::System.Int32 idgenero)
+        {
+            GeneroPelicula generoPelicula = new GeneroPelicula();
+            generoPelicula.idgenero = idgenero;
+            return generoPelicula;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idgenero
+        {
+            get
+            {
+                return _idgenero;
+            }
+            set
+            {
+                if (_idgenero != value)
+                {
+                    OnidgeneroChanging(value);
+                    ReportPropertyChanging("idgenero");
+                    _idgenero = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idgenero");
+                    OnidgeneroChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idgenero;
+        partial void OnidgeneroChanging(global::System.Int32 value);
+        partial void OnidgeneroChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombreGenero
+        {
+            get
+            {
+                return _nombreGenero;
+            }
+            set
+            {
+                OnnombreGeneroChanging(value);
+                ReportPropertyChanging("nombreGenero");
+                _nombreGenero = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombreGenero");
+                OnnombreGeneroChanged();
+            }
+        }
+        private global::System.String _nombreGenero;
+        partial void OnnombreGeneroChanging(global::System.String value);
+        partial void OnnombreGeneroChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_Pelicula_GeneroPelicula", "Pelicula")]
+        public EntityCollection<Pelicula> Pelicula
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Pelicula>("FideCineModel.FK_Pelicula_GeneroPelicula", "Pelicula");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Pelicula>("FideCineModel.FK_Pelicula_GeneroPelicula", "Pelicula", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -380,14 +1147,10 @@ namespace FIDECINEService
         /// Create a new Pelicula object.
         /// </summary>
         /// <param name="idPelicula">Initial value of the IdPelicula property.</param>
-        /// <param name="nombre">Initial value of the Nombre property.</param>
-        /// <param name="estado">Initial value of the Estado property.</param>
-        public static Pelicula CreatePelicula(global::System.Int32 idPelicula, global::System.String nombre, global::System.String estado)
+        public static Pelicula CreatePelicula(global::System.Int32 idPelicula)
         {
             Pelicula pelicula = new Pelicula();
             pelicula.IdPelicula = idPelicula;
-            pelicula.Nombre = nombre;
-            pelicula.Estado = estado;
             return pelicula;
         }
 
@@ -424,7 +1187,7 @@ namespace FIDECINEService
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Nombre
         {
@@ -436,7 +1199,7 @@ namespace FIDECINEService
             {
                 OnNombreChanging(value);
                 ReportPropertyChanging("Nombre");
-                _Nombre = StructuralObject.SetValidValue(value, false);
+                _Nombre = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Nombre");
                 OnNombreChanged();
             }
@@ -448,7 +1211,103 @@ namespace FIDECINEService
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idcategoria
+        {
+            get
+            {
+                return _idcategoria;
+            }
+            set
+            {
+                OnidcategoriaChanging(value);
+                ReportPropertyChanging("idcategoria");
+                _idcategoria = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idcategoria");
+                OnidcategoriaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idcategoria;
+        partial void OnidcategoriaChanging(Nullable<global::System.Int32> value);
+        partial void OnidcategoriaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String trailer
+        {
+            get
+            {
+                return _trailer;
+            }
+            set
+            {
+                OntrailerChanging(value);
+                ReportPropertyChanging("trailer");
+                _trailer = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("trailer");
+                OntrailerChanged();
+            }
+        }
+        private global::System.String _trailer;
+        partial void OntrailerChanging(global::System.String value);
+        partial void OntrailerChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idtipo
+        {
+            get
+            {
+                return _idtipo;
+            }
+            set
+            {
+                OnidtipoChanging(value);
+                ReportPropertyChanging("idtipo");
+                _idtipo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idtipo");
+                OnidtipoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idtipo;
+        partial void OnidtipoChanging(Nullable<global::System.Int32> value);
+        partial void OnidtipoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Estado
         {
@@ -460,7 +1319,7 @@ namespace FIDECINEService
             {
                 OnEstadoChanging(value);
                 ReportPropertyChanging("Estado");
-                _Estado = StructuralObject.SetValidValue(value, false);
+                _Estado = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Estado");
                 OnEstadoChanged();
             }
@@ -468,6 +1327,30 @@ namespace FIDECINEService
         private global::System.String _Estado;
         partial void OnEstadoChanging(global::System.String value);
         partial void OnEstadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idgenero
+        {
+            get
+            {
+                return _idgenero;
+            }
+            set
+            {
+                OnidgeneroChanging(value);
+                ReportPropertyChanging("idgenero");
+                _idgenero = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idgenero");
+                OnidgeneroChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idgenero;
+        partial void OnidgeneroChanging(Nullable<global::System.Int32> value);
+        partial void OnidgeneroChanged();
 
         #endregion
     
@@ -494,8 +1377,297 @@ namespace FIDECINEService
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_Pelicula_CategoriaPelicula", "CategoriaPelicula")]
+        public CategoriaPelicula CategoriaPelicula
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CategoriaPelicula>("FideCineModel.FK_Pelicula_CategoriaPelicula", "CategoriaPelicula").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CategoriaPelicula>("FideCineModel.FK_Pelicula_CategoriaPelicula", "CategoriaPelicula").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<CategoriaPelicula> CategoriaPeliculaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CategoriaPelicula>("FideCineModel.FK_Pelicula_CategoriaPelicula", "CategoriaPelicula");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CategoriaPelicula>("FideCineModel.FK_Pelicula_CategoriaPelicula", "CategoriaPelicula", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_Pelicula_GeneroPelicula", "GeneroPelicula")]
+        public GeneroPelicula GeneroPelicula
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GeneroPelicula>("FideCineModel.FK_Pelicula_GeneroPelicula", "GeneroPelicula").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GeneroPelicula>("FideCineModel.FK_Pelicula_GeneroPelicula", "GeneroPelicula").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GeneroPelicula> GeneroPeliculaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GeneroPelicula>("FideCineModel.FK_Pelicula_GeneroPelicula", "GeneroPelicula");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GeneroPelicula>("FideCineModel.FK_Pelicula_GeneroPelicula", "GeneroPelicula", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_Pelicula_TipoPelicula", "TipoPelicula")]
+        public TipoPelicula TipoPelicula
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TipoPelicula>("FideCineModel.FK_Pelicula_TipoPelicula", "TipoPelicula").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TipoPelicula>("FideCineModel.FK_Pelicula_TipoPelicula", "TipoPelicula").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TipoPelicula> TipoPeliculaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TipoPelicula>("FideCineModel.FK_Pelicula_TipoPelicula", "TipoPelicula");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TipoPelicula>("FideCineModel.FK_Pelicula_TipoPelicula", "TipoPelicula", value);
+                }
+            }
+        }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="Promocion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Promocion : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Promocion object.
+        /// </summary>
+        /// <param name="idpromocion">Initial value of the idpromocion property.</param>
+        public static Promocion CreatePromocion(global::System.Int32 idpromocion)
+        {
+            Promocion promocion = new Promocion();
+            promocion.idpromocion = idpromocion;
+            return promocion;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idpromocion
+        {
+            get
+            {
+                return _idpromocion;
+            }
+            set
+            {
+                if (_idpromocion != value)
+                {
+                    OnidpromocionChanging(value);
+                    ReportPropertyChanging("idpromocion");
+                    _idpromocion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idpromocion");
+                    OnidpromocionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idpromocion;
+        partial void OnidpromocionChanging(global::System.Int32 value);
+        partial void OnidpromocionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombrepromocion
+        {
+            get
+            {
+                return _nombrepromocion;
+            }
+            set
+            {
+                OnnombrepromocionChanging(value);
+                ReportPropertyChanging("nombrepromocion");
+                _nombrepromocion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombrepromocion");
+                OnnombrepromocionChanged();
+            }
+        }
+        private global::System.String _nombrepromocion;
+        partial void OnnombrepromocionChanging(global::System.String value);
+        partial void OnnombrepromocionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> puntos
+        {
+            get
+            {
+                return _puntos;
+            }
+            set
+            {
+                OnpuntosChanging(value);
+                ReportPropertyChanging("puntos");
+                _puntos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("puntos");
+                OnpuntosChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _puntos;
+        partial void OnpuntosChanging(Nullable<global::System.Int32> value);
+        partial void OnpuntosChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String regalo
+        {
+            get
+            {
+                return _regalo;
+            }
+            set
+            {
+                OnregaloChanging(value);
+                ReportPropertyChanging("regalo");
+                _regalo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("regalo");
+                OnregaloChanged();
+            }
+        }
+        private global::System.String _regalo;
+        partial void OnregaloChanging(global::System.String value);
+        partial void OnregaloChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> vigenciaInicio
+        {
+            get
+            {
+                return _vigenciaInicio;
+            }
+            set
+            {
+                OnvigenciaInicioChanging(value);
+                ReportPropertyChanging("vigenciaInicio");
+                _vigenciaInicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("vigenciaInicio");
+                OnvigenciaInicioChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _vigenciaInicio;
+        partial void OnvigenciaInicioChanging(Nullable<global::System.DateTime> value);
+        partial void OnvigenciaInicioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> vigenciaFin
+        {
+            get
+            {
+                return _vigenciaFin;
+            }
+            set
+            {
+                OnvigenciaFinChanging(value);
+                ReportPropertyChanging("vigenciaFin");
+                _vigenciaFin = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("vigenciaFin");
+                OnvigenciaFinChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _vigenciaFin;
+        partial void OnvigenciaFinChanging(Nullable<global::System.DateTime> value);
+        partial void OnvigenciaFinChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
@@ -623,6 +1795,544 @@ namespace FIDECINEService
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Cartelera>("FideCineModel.FK_Cartelera_Sala", "Cartelera", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="TarjetaCliente")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TarjetaCliente : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TarjetaCliente object.
+        /// </summary>
+        /// <param name="idcliente">Initial value of the idcliente property.</param>
+        public static TarjetaCliente CreateTarjetaCliente(global::System.Int32 idcliente)
+        {
+            TarjetaCliente tarjetaCliente = new TarjetaCliente();
+            tarjetaCliente.idcliente = idcliente;
+            return tarjetaCliente;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idcliente
+        {
+            get
+            {
+                return _idcliente;
+            }
+            set
+            {
+                if (_idcliente != value)
+                {
+                    OnidclienteChanging(value);
+                    ReportPropertyChanging("idcliente");
+                    _idcliente = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idcliente");
+                    OnidclienteChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idcliente;
+        partial void OnidclienteChanging(global::System.Int32 value);
+        partial void OnidclienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String tipotarjeta
+        {
+            get
+            {
+                return _tipotarjeta;
+            }
+            set
+            {
+                OntipotarjetaChanging(value);
+                ReportPropertyChanging("tipotarjeta");
+                _tipotarjeta = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("tipotarjeta");
+                OntipotarjetaChanged();
+            }
+        }
+        private global::System.String _tipotarjeta;
+        partial void OntipotarjetaChanging(global::System.String value);
+        partial void OntipotarjetaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.String _estado;
+        partial void OnestadoChanging(global::System.String value);
+        partial void OnestadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> puntos
+        {
+            get
+            {
+                return _puntos;
+            }
+            set
+            {
+                OnpuntosChanging(value);
+                ReportPropertyChanging("puntos");
+                _puntos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("puntos");
+                OnpuntosChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _puntos;
+        partial void OnpuntosChanging(Nullable<global::System.Int32> value);
+        partial void OnpuntosChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_TarjetaCliente_Cliente", "Cliente")]
+        public Cliente Cliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("FideCineModel.FK_TarjetaCliente_Cliente", "Cliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("FideCineModel.FK_TarjetaCliente_Cliente", "Cliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Cliente> ClienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("FideCineModel.FK_TarjetaCliente_Cliente", "Cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("FideCineModel.FK_TarjetaCliente_Cliente", "Cliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_TarjetaCliente", "VisitaCliente")]
+        public EntityCollection<VisitaCliente> VisitaCliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "VisitaCliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "VisitaCliente", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="TipoPelicula")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TipoPelicula : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TipoPelicula object.
+        /// </summary>
+        /// <param name="idtipo">Initial value of the idtipo property.</param>
+        public static TipoPelicula CreateTipoPelicula(global::System.Int32 idtipo)
+        {
+            TipoPelicula tipoPelicula = new TipoPelicula();
+            tipoPelicula.idtipo = idtipo;
+            return tipoPelicula;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idtipo
+        {
+            get
+            {
+                return _idtipo;
+            }
+            set
+            {
+                if (_idtipo != value)
+                {
+                    OnidtipoChanging(value);
+                    ReportPropertyChanging("idtipo");
+                    _idtipo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idtipo");
+                    OnidtipoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idtipo;
+        partial void OnidtipoChanging(global::System.Int32 value);
+        partial void OnidtipoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombreTipo
+        {
+            get
+            {
+                return _nombreTipo;
+            }
+            set
+            {
+                OnnombreTipoChanging(value);
+                ReportPropertyChanging("nombreTipo");
+                _nombreTipo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombreTipo");
+                OnnombreTipoChanged();
+            }
+        }
+        private global::System.String _nombreTipo;
+        partial void OnnombreTipoChanging(global::System.String value);
+        partial void OnnombreTipoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_Pelicula_TipoPelicula", "Pelicula")]
+        public EntityCollection<Pelicula> Pelicula
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Pelicula>("FideCineModel.FK_Pelicula_TipoPelicula", "Pelicula");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Pelicula>("FideCineModel.FK_Pelicula_TipoPelicula", "Pelicula", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="VisitaCliente")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class VisitaCliente : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new VisitaCliente object.
+        /// </summary>
+        /// <param name="idvisita">Initial value of the idvisita property.</param>
+        public static VisitaCliente CreateVisitaCliente(global::System.Int32 idvisita)
+        {
+            VisitaCliente visitaCliente = new VisitaCliente();
+            visitaCliente.idvisita = idvisita;
+            return visitaCliente;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idvisita
+        {
+            get
+            {
+                return _idvisita;
+            }
+            set
+            {
+                if (_idvisita != value)
+                {
+                    OnidvisitaChanging(value);
+                    ReportPropertyChanging("idvisita");
+                    _idvisita = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idvisita");
+                    OnidvisitaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idvisita;
+        partial void OnidvisitaChanging(global::System.Int32 value);
+        partial void OnidvisitaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idhorario
+        {
+            get
+            {
+                return _idhorario;
+            }
+            set
+            {
+                OnidhorarioChanging(value);
+                ReportPropertyChanging("idhorario");
+                _idhorario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idhorario");
+                OnidhorarioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idhorario;
+        partial void OnidhorarioChanging(Nullable<global::System.Int32> value);
+        partial void OnidhorarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idcliente
+        {
+            get
+            {
+                return _idcliente;
+            }
+            set
+            {
+                OnidclienteChanging(value);
+                ReportPropertyChanging("idcliente");
+                _idcliente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idcliente");
+                OnidclienteChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idcliente;
+        partial void OnidclienteChanging(Nullable<global::System.Int32> value);
+        partial void OnidclienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> cantidadEntradas
+        {
+            get
+            {
+                return _cantidadEntradas;
+            }
+            set
+            {
+                OncantidadEntradasChanging(value);
+                ReportPropertyChanging("cantidadEntradas");
+                _cantidadEntradas = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cantidadEntradas");
+                OncantidadEntradasChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _cantidadEntradas;
+        partial void OncantidadEntradasChanging(Nullable<global::System.Int32> value);
+        partial void OncantidadEntradasChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_HorarioPelicula", "Cartelera")]
+        public Cartelera Cartelera
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cartelera>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "Cartelera").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cartelera>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "Cartelera").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Cartelera> CarteleraReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cartelera>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "Cartelera");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cartelera>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "Cartelera", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_Cliente", "Cliente")]
+        public Cliente Cliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("FideCineModel.FK_VisitaCliente_Cliente", "Cliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("FideCineModel.FK_VisitaCliente_Cliente", "Cliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Cliente> ClienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("FideCineModel.FK_VisitaCliente_Cliente", "Cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("FideCineModel.FK_VisitaCliente_Cliente", "Cliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_TarjetaCliente", "TarjetaCliente")]
+        public TarjetaCliente TarjetaCliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TarjetaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "TarjetaCliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TarjetaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "TarjetaCliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TarjetaCliente> TarjetaClienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TarjetaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "TarjetaCliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TarjetaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "TarjetaCliente", value);
                 }
             }
         }
