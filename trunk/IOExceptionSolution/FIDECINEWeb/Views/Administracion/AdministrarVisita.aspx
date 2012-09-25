@@ -154,7 +154,7 @@
             <tr>
                 <td style="width: 68px">DNI :</td>
                 <td>                    
-                    <input type="text" style="width: 156px;"/>
+                    <input type="text" style="width: 156px;"/>&nbsp;
                 </td>
             </tr>   
             </table>
