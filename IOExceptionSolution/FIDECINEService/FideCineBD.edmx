@@ -96,7 +96,7 @@
           <Key>
             <PropertyRef Name="IdPelicula" />
           </Key>
-          <Property Name="IdPelicula" Type="int" Nullable="false" />
+          <Property Name="IdPelicula" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="idcategoria" Type="int" />
           <Property Name="trailer" Type="varchar" MaxLength="50" />
@@ -104,6 +104,7 @@
           <Property Name="idtipo" Type="int" />
           <Property Name="Estado" Type="char" MaxLength="1" />
           <Property Name="idgenero" Type="int" />
+          <Property Name="duracion" Type="int" />
         </EntityType>
         <EntityType Name="Promocion">
           <Key>
@@ -371,6 +372,7 @@
           <NavigationProperty Name="CategoriaPelicula" Relationship="FideCineModel.FK_Pelicula_CategoriaPelicula" FromRole="Pelicula" ToRole="CategoriaPelicula" />
           <NavigationProperty Name="GeneroPelicula" Relationship="FideCineModel.FK_Pelicula_GeneroPelicula" FromRole="Pelicula" ToRole="GeneroPelicula" />
           <NavigationProperty Name="TipoPelicula" Relationship="FideCineModel.FK_Pelicula_TipoPelicula" FromRole="Pelicula" ToRole="TipoPelicula" />
+          <Property Type="Int32" Name="duracion" />
         </EntityType>
         <EntityType Name="Promocion">
           <Key>
@@ -583,6 +585,7 @@
           <EntitySetMapping Name="Pelicula">
             <EntityTypeMapping TypeName="FideCineModel.Pelicula">
               <MappingFragment StoreEntitySet="Pelicula">
+                <ScalarProperty Name="duracion" ColumnName="duracion" />
                 <ScalarProperty Name="idgenero" ColumnName="idgenero" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="idtipo" ColumnName="idtipo" />

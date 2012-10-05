@@ -68,6 +68,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Constantes.cs" />
+    <Compile Include="Common\GenericModel.cs" />
     <Compile Include="Controllers\AdministrarClienteController.cs" />
     <Compile Include="Controllers\AdministrarHorarioController.cs" />
     <Compile Include="Controllers\AdministrarPeliculaController.cs" />
@@ -215,7 +217,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="validacion\validationEngine.jquery.css" />
     <Content Include="Views\Administracion\AdministrarCartelera.aspx" />
     <Content Include="Views\Administracion\AdministrarCliente.aspx" />
     <Content Include="Views\Administracion\AdministrarPelicula.aspx" />
@@ -303,7 +304,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>37873</DevelopmentServerPort>
+          <DevelopmentServerPort>12136</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
