@@ -1351,6 +1351,30 @@ namespace FIDECINEService
         private Nullable<global::System.Int32> _idgenero;
         partial void OnidgeneroChanging(Nullable<global::System.Int32> value);
         partial void OnidgeneroChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> duracion
+        {
+            get
+            {
+                return _duracion;
+            }
+            set
+            {
+                OnduracionChanging(value);
+                ReportPropertyChanging("duracion");
+                _duracion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("duracion");
+                OnduracionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _duracion;
+        partial void OnduracionChanging(Nullable<global::System.Int32> value);
+        partial void OnduracionChanged();
 
         #endregion
     

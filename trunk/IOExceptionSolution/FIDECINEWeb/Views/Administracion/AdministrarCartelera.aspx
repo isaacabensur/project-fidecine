@@ -7,8 +7,12 @@
 
  <script type="text/javascript">
 
+
      $(document).ready(function () {
-         $("#Table1").styleTable();
+
+
+
+         $("#tbCartelera").styleTable();
 
 
          $("#txtFechaHoraDesde").datetimepicker({
@@ -28,6 +32,7 @@
              buttonImageOnly: true
          });
 
+         $.datepicker.regional['es'];
 
 
          $("#btnBuscar").button({
@@ -191,13 +196,13 @@
                 <td>Fecha y Hora : </td>
                 <td>
                     Desde
-                    <input id="txtFechaHoraDesde" type="text"/>
+                    <input id="txtFechaHoraDesde" type="text" readonly="readonly"/>
                 </td>
                 <td>
                     Hasta
                 </td>
                 <td>
-                    <input id="txtFechaHoraHasta" type="text"/>
+                    <input id="txtFechaHoraHasta" type="text" readonly="readonly"/>
                 </td>
             </tr>     
         </table>
@@ -214,7 +219,7 @@
         </div>
 	</div>
 
-	    <table  id="Table1" width="790px" class="styleTable">
+	    <table  id="tbCartelera" width="790px" class="styleTable">
 			<thead>
 			<tr>
 				<th width="300px">Película</th>

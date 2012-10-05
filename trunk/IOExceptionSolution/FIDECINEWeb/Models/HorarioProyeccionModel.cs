@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using FIDECINEWeb.PeliculaServiceReference;
 using FIDECINEWeb.SalaServiceReference;
+using FIDECINEWeb.Common;
 
 namespace FIDECINEWeb.Models
 {
-    public class HorarioProyeccionModel
+    public class HorarioProyeccionModel : GenericModel
     {
 
         public List<PeliculaBE> ListaPelicula { set; get; }
