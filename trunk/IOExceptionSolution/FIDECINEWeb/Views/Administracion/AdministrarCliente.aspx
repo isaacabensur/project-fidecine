@@ -293,12 +293,6 @@
                 </td>
             </tr>
             <tr>
-                <td>RUC :</td>
-                <td>
-                    <input type="text" style="width: 100px;"/>
-                </td>
-            </tr>
-            <tr>
                 <td>Teléfono Casa :</td>
                 <td>
                     <input type="text" style="width: 100px;"/>
