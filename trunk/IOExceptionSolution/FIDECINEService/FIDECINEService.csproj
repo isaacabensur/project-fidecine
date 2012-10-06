@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service\CarteleraService.svc" />
+    <Content Include="Service\ClienteService.svc" />
     <Content Include="Service\PeliculaService.svc" />
     <Content Include="Service\SalaService.svc" />
     <Content Include="Service\ServiceCliente.svc" />
@@ -94,7 +95,11 @@
     <Compile Include="Service\CarteleraService.svc.cs">
       <DependentUpon>CarteleraService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Service\ClienteService.svc.cs">
+      <DependentUpon>ClienteService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Service\ICarteleraService.cs" />
+    <Compile Include="Service\IClienteService.cs" />
     <Compile Include="Service\IPeliculaService.cs" />
     <Compile Include="Service\ISalaService.cs" />
     <Compile Include="Service\IServiceCliente.cs" />
