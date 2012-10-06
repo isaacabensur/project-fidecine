@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1e2f9101-5db2-4c83-9372-5722037ae2d5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:12139/Service/CarteleraService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CarteleraService.xsd" MetadataType="Schema" ID="92591b2d-3136-4b23-9c9c-0d60fb290664" SourceId="1" SourceUrl="http://localhost:12139/Service/CarteleraService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CarteleraService1.xsd" MetadataType="Schema" ID="09148948-72d9-4992-9319-ffa56a49d6c4" SourceId="1" SourceUrl="http://localhost:12139/Service/CarteleraService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CarteleraService.disco" MetadataType="Disco" ID="31718617-6185-472c-99fb-aff8256a3576" SourceId="1" SourceUrl="http://localhost:12139/Service/CarteleraService.svc?disco" />
+    <MetadataFile FileName="CarteleraService.wsdl" MetadataType="Wsdl" ID="e36e14a0-2760-4e41-836b-0b99b2fd8e37" SourceId="1" SourceUrl="http://localhost:12139/Service/CarteleraService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
