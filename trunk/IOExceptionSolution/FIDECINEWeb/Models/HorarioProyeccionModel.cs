@@ -5,6 +5,7 @@ using System.Web;
 using FIDECINEWeb.PeliculaServiceReference;
 using FIDECINEWeb.SalaServiceReference;
 using FIDECINEWeb.Common;
+using FIDECINEService;
 
 namespace FIDECINEWeb.Models
 {
@@ -13,7 +14,11 @@ namespace FIDECINEWeb.Models
 
         public List<PeliculaBE> ListaPelicula { set; get; }
 
-        public List<SalaBE> ListaSala{ set; get; }
+        public List<SalaBE> ListaSala { set; get; }
+
+        public List<PromocionesBE> ListaPromocion { set; get; }
+
+
     }
 
 }
