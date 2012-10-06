@@ -7,7 +7,10 @@ using FIDECINEWeb.Entity;
 using FIDECINEWeb.Models;
 using FIDECINEWeb.PeliculaServiceReference;
 using FIDECINEWeb.SalaServiceReference;
+using FIDECINEWeb.CarteleraServiceReference;
+
 using System.Threading;
+using FIDECINEWeb.Common;
 
 namespace FIDECINEWeb.Controllers
 {
@@ -36,6 +39,33 @@ namespace FIDECINEWeb.Controllers
             Thread.Sleep(2000);//Borrar
 
             return Json(listaHorarios);
+        }
+
+        [HttpPost]
+        public JsonResult nuevoHorario()
+        {
+   
+            HorarioProyeccionModel objHorarioProyeccionModel = new HorarioProyeccionModel();
+            objHorarioProyeccionModel.ListaPelicula = new PeliculaServiceClient().listar("", "A").ToList<PeliculaBE>();
+            objHorarioProyeccionModel.ListaSala = new SalaServiceClient().listar("", "A").ToList<SalaBE>();
+
+            return Json(objHorarioProyeccionModel);
+
+        }
+
+
+        [HttpPost]
+        public JsonResult insertarHorario(int IdPelicula, int IdSala, string FechaHora)
+        {
+
+            new CarteleraServiceClient().insertar(IdPelicula, IdSala, FechaHora);
+
+            HorarioProyeccionModel objHorarioProyeccionModel = new HorarioProyeccionModel();
+            objHorarioProyeccionModel.Mensaje = "El Horario de Proyección fue ingresado exitosamente";
+            objHorarioProyeccionModel.Resultado = Constantes.EXITO;
+
+            return Json(objHorarioProyeccionModel);
+
         }
 
     }

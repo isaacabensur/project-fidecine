@@ -83,6 +83,11 @@
     </Compile>
     <Compile Include="Models\HorarioProyeccionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\CarteleraServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\PeliculaServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -140,10 +145,13 @@
     <Content Include="Content\images\iconos\sistema\barra.png" />
     <Content Include="Content\images\iconos\sistema\barra1.png" />
     <Content Include="Content\images\iconos\sistema\barra2.png" />
+    <Content Include="Content\images\iconos\sistema\error.png" />
     <Content Include="Content\images\iconos\sistema\home.png" />
     <Content Include="Content\images\iconos\sistema\home2.png" />
     <Content Include="Content\images\iconos\sistema\homeback.png" />
+    <Content Include="Content\images\iconos\sistema\informacion.png" />
     <Content Include="Content\images\iconos\sistema\logout.png" />
+    <Content Include="Content\images\iconos\sistema\pregunta.png" />
     <Content Include="Content\images\iconos\sistema\user-info.png" />
     <Content Include="Content\images\iconos\sistema\user-info1.png" />
     <Content Include="Content\images\iconos\validacion\error.png" />
@@ -197,6 +205,13 @@
     <Content Include="Scripts\jquery.validationEngine-es.js" />
     <Content Include="Scripts\jquery.validationEngine.js" />
     <Content Include="Scripts\fg.menu.js" />
+    <None Include="Service References\CarteleraServiceReference\CarteleraService.wsdl" />
+    <None Include="Service References\CarteleraServiceReference\CarteleraService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CarteleraServiceReference\CarteleraService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\PeliculaServiceReference\FIDECINEWeb.PeliculaServiceReference.PeliculaBE.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -214,6 +229,13 @@
     <None Include="Service References\SalaServiceReference\configuration91.svcinfo" />
     <None Include="Service References\SalaServiceReference\configuration.svcinfo" />
     <None Include="Service References\SalaServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CarteleraServiceReference\CarteleraService.disco" />
+    <None Include="Service References\CarteleraServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\CarteleraServiceReference\configuration.svcinfo" />
+    <None Include="Service References\CarteleraServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -245,9 +267,7 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\Site.Master" />
-    <None Include="Service References\PeliculaServiceReference\PeliculaService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Service References\PeliculaServiceReference\PeliculaService.wsdl" />
     <None Include="Service References\PeliculaServiceReference\PeliculaService2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -277,8 +297,10 @@
     <None Include="Content\images\numericUpdown\Thumbs.db" />
     <None Include="Content\images\reportes\Thumbs.db" />
     <None Include="Content\images\Thumbs.db" />
-    <None Include="Service References\PeliculaServiceReference\PeliculaService.wsdl" />
     <None Include="Service References\PeliculaServiceReference\PeliculaService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PeliculaServiceReference\PeliculaService1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -286,6 +308,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CarteleraServiceReference\" />
     <WCFMetadataStorage Include="Service References\PeliculaServiceReference\" />
     <WCFMetadataStorage Include="Service References\SalaServiceReference\" />
   </ItemGroup>

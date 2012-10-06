@@ -11,9 +11,7 @@
      $(document).ready(function () {
 
 
-
          $("#tbCartelera").styleTable();
-
 
          $("#txtFechaHoraDesde").datetimepicker({
              showOn: "button",
@@ -26,14 +24,13 @@
              buttonImageOnly: true
          });
 
-         $("#fechaHora").datetimepicker({
+         $("#txtFechaHoraEdicion").datetimepicker({
              showOn: "button",
              buttonImage: "../Content/images/calendar.gif",
              buttonImageOnly: true
          });
 
          $.datepicker.regional['es'];
-
 
          $("#btnBuscar").button({
              icons: {
@@ -47,99 +44,83 @@
              }
          });
 
-         // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
-         $("#dialog:ui-dialog").dialog("destroy");
 
-         var name = $("#name"),
-			email = $("#email"),
-			password = $("#password"),
-			allFields = $([]).add(name).add(email).add(password),
-			tips = $(".validateTips");
-
-         function updateTips(t) {
-             tips
-				.text(t)
-				.addClass("ui-state-highlight");
-             setTimeout(function () {
-                 tips.removeClass("ui-state-highlight", 1500);
-             }, 500);
-         }
-
-         function checkLength(o, n, min, max) {
-             if (o.val().length > max || o.val().length < min) {
-                 o.addClass("ui-state-error");
-                 updateTips("Length of " + n + " must be between " +
-					min + " and " + max + ".");
-                 return false;
-             } else {
-                 return true;
-             }
-         }
-
-         function checkRegexp(o, regexp, n) {
-             if (!(regexp.test(o.val()))) {
-                 o.addClass("ui-state-error");
-                 updateTips(n);
-                 return false;
-             } else {
-                 return true;
-             }
-         }
-
-         $("#dialog_modal").dialog({
+         $("#dialog_EditarCartelera").dialog({
              autoOpen: false,
-             height: 200,
+             height: 210,
              width: 350,
              modal: true,
+             resizable: false,
              buttons: {
                  "Guardar": function () {
-                     var bValid = true;
-                     allFields.removeClass("ui-state-error");
 
-                     bValid = bValid && checkLength(name, "username", 3, 16);
-                     bValid = bValid && checkLength(email, "email", 6, 80);
-                     bValid = bValid && checkLength(password, "password", 5, 16);
+                     var esValido = true;
 
-                     bValid = bValid && checkRegexp(name, /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter.");
-                     // From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
-                     bValid = bValid && checkRegexp(email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com");
-                     bValid = bValid && checkRegexp(password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9");
+                     esValido = $("#frmEdicionCartelera").validationEngine('validate');
 
-                     if (bValid) {
-                         $("#users tbody").append("<tr>" +
-							"<td>" + name.val() + "</td>" +
-							"<td>" + email.val() + "</td>" +
-							"<td>" + password.val() + "</td>" +
-						"</tr>");
-                         $(this).dialog("close");
+                     if (esValido) {
+
+                         $('#btnSi').unbind('click');
+                         $("#btnSi").click(function () {
+
+                             $.post('/AdministrarHorario/insertarHorario', $('#frmEdicionCartelera').serializeArray(), function (data) {
+
+                                 informacion(data.Mensaje);
+                                 $("#dialog_EditarCartelera").dialog("close");
+
+                             },
+                            "json");
+
+                         });
+
+                         confirmacion('¿Desea guardar los datos ingresados?');
                      }
+
                  },
-                 Cancel: function () {
+                 "Cancelar": function () {
                      $(this).dialog("close");
                  }
              },
              close: function () {
-                 allFields.val("").removeClass("ui-state-error");
+                 $("#frmEdicionCartelera").validationEngine('hideAll');
              }
          });
 
-         $("#create-user")
-			.button()
-			.click(function () {
-			    $("#dialog_modal").dialog("open");
-			});
-
      });
 
-     function nuevoHorario() {
-         $("#create-user").click();
+     function nuevoHorario() 
+     {
+         $.post('/AdministrarHorario/nuevoHorario', function (data) {
+
+             $('#cmbPeliculaEdicion').empty();
+             $('#cmbPeliculaEdicion').append($('<option>', { value: '' }).text('---- Seleccione ----'));
+
+             $.each(data.ListaPelicula, function (i, objeto) {
+                 $('#cmbPeliculaEdicion').append($('<option>', { value: objeto.IdPelicula }).text(objeto.Nombre));
+             });
+
+             $('#cmbSalaEdicion').empty();
+             $('#cmbSalaEdicion').append($('<option>', { value: '' }).text('---- Seleccione ----'));
+
+             $.each(data.ListaSala, function (i, objeto) {
+                 $('#cmbSalaEdicion').append($('<option>', { value: objeto.IdSala }).text(objeto.Nombre));
+             });
+
+             $("#txtFechaHoraEdicion").val('');
+             $("#dialog_EditarCartelera").dialog("open");
+
+         },
+         "json");
+
+         
+
          return false;
      }
 
      function buscar() {
 
          $.post('/AdministrarHorario/buscar', $('#frmBusqueda').serializeArray(), function (data) {
-             $("#Table1 > tbody").empty();
+             $("#tbCartelera > tbody").empty();
 
              $.each(data, function (i, objeto) {
                  var newRow = '';
@@ -150,16 +131,21 @@
                  newRow = newRow + "<td class='ui-widget-content'><img src='../../Content/images/iconos/mantenimiento/eliminar.png'/></td>";
                  newRow = newRow + "</tr>";
 
-                 $("#Table1").append(newRow);
+                 $("#tbCartelera").append(newRow);
 
              });
          },
          "json");
 
-         $("#Table1").styleTable();
+         $("#tbCartelera").styleTable();
 
          return false;
      }
+
+
+     function validarPelicula() { $("#frmEdicionCartelera").validationEngine("validateField", "#cmbPeliculaEdicion"); }
+     function validarSala() { $("#frmEdicionCartelera").validationEngine("validateField", "#cmbSalaEdicion"); }
+     function validarFechaHora() { $("#frmEdicionCartelera").validationEngine("validateField", "#txtFechaHoraEdicion"); }
 
 </script>
 			
@@ -254,16 +240,14 @@
     </form>
 
 
-    <div  id="dialog_modal" title="Edición de Horario de Proyección de Película">
-		<table>
+    <div  id="dialog_EditarCartelera" title="Edición de Horario de Proyección de Película" style="display:none;">
+    <form id="frmEdicionCartelera" action="#">    
+		<table cellpadding="3" cellspacing="3">
             <tr>
                 <td>Película :</td>
                 <td>
                     
-                    <select id="Select1" name="D1" style="width: 200px;">
-                        <option>Los Invencibles</option>
-                        <option>El Caballero de la Noche</option>
-                        <option>La Era del Rock</option>
+                    <select id="cmbPeliculaEdicion"  style="width: 200px;" class="validate[required]" onchange="validarPelicula()" name="IdPelicula">
                     </select>
                 </td> 
             </tr>
@@ -272,23 +256,18 @@
                 Sala :
                 </td> 
                 <td>
-                    <select id="Select2" name="D2" style="width: 100px;">
-                        <option>Sala 01</option>
-                        <option>Sala 02</option>
-                        <option>Sala 03</option>
+                    <select id="cmbSalaEdicion" style="width: 200px;" class="validate[required]" onchange="validarSala() " name="IdSala">
                     </select>
                 </td>
             </tr>
             <tr>
                 <td>Fecha y Hora : </td>
                 <td>
-                    <input id="fechaHora" type="text"/>
+                    <input id="txtFechaHoraEdicion" type="text" readonly="readonly" class="validate[required]" onchange="validarFechaHora()" name="FechaHora"/>
                 </td>
             </tr>
         </table>												
+    </form>
 	</div>
 	
-	<button id="create-user" style="display:none;">Create new user</button>
-
-
 </asp:Content>

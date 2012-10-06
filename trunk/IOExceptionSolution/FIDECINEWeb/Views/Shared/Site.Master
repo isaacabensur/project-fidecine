@@ -30,8 +30,7 @@
         var EXITO = "EXITO";
         var ERROR = "ERROR";
 
-        $(function () 
-        {
+        $(function () {
             // BUTTON
             $('.fg-button').hover(
     		function () { $(this).removeClass('ui-state-default').addClass('ui-state-focus'); },
@@ -44,24 +43,68 @@
                 showSpeed: 400
             });
 
-            $(function () {
-                $("#dialog").dialog({
-                    autoOpen: false,
-                    show: "blind",
-                    hide: "explode",
-                    resizable:false,
-                    closeOnEscape:false,
-                    height:80,
-                    width:200,
-                    dialogClass:"hide-title-bar",
-                    modal: true
-                });
-
+            $("#dialog").dialog({
+                autoOpen: false,
+                resizable: false,
+                closeOnEscape: false,
+                height: 80,
+                width: 200,
+                dialogClass: "hide-title-bar",
+                modal: true
             });
+
+            $("#dialog_Confirmacion").dialog({
+                autoOpen: false,
+                resizable: false,
+                closeOnEscape: false,
+                height: 220,
+                width: 420,
+                modal: true,
+                buttons:
+                        {
+                            "Aceptar": function () {
+                                $("#dialog_Confirmacion").dialog("close");
+                                $('#btnSi').click();
+                                
+                            },
+                            "Cancelar": function () {
+                                $(this).dialog("close");
+                            }
+                        }
+            });
+
+                    $("#dialog_Informacion").dialog({
+                        autoOpen: false,
+                        resizable: false,
+                        closeOnEscape: false,
+                        height: 220,
+                        width: 420,
+                        modal: true,
+                        buttons:
+                        {
+                            "Aceptar": function () {
+                                $(this).dialog("close");
+
+                            }
+                        }
+                    });
 
         });
 
         
+        function confirmacion(msg)
+        {
+            $('#lblPregunta').text(msg);
+            $('#lblPregunta').html(msg);
+            $("#dialog_Confirmacion").dialog("open");
+        }
+
+        function informacion(msg) {
+            $('#lblInformacion').text(msg);
+            $('#lblInformacion').html(msg);
+            $("#dialog_Informacion").dialog("open");
+        }
+
 	</script>
 
     <script type="text/javascript">
@@ -116,6 +159,33 @@
 					</td>
 				</tr>
 			</table>
+	</div>
+
+    <div  id="dialog_Confirmacion" title="Confirmación" style="display:none;"> 
+		<table cellpadding="5" cellspacing="0" bgcolor="#ffffff" >
+				<tr>
+					<td align="right" valign="middle" >
+						<img src="../../Content/images/iconos/sistema/pregunta.png"/>
+					</td>
+					<td align="center" valign="middle" style="font-weight: bold;">
+						<label id="lblPregunta"></label>
+					</td>
+				</tr>
+			</table>											
+	</div>
+    <button id="btnSi" style="display:none;"></button>
+
+    <div  id="dialog_Informacion" title="Información" style="display:none;"> 
+		<table cellpadding="5" cellspacing="0" bgcolor="#ffffff" >
+				<tr>
+					<td align="right" valign="middle" >
+						<img src="../../Content/images/iconos/sistema/informacion.png"/>
+					</td>
+					<td align="center" valign="middle" style="font-weight: bold;">
+						<label id="lblInformacion"></label>
+					</td>
+				</tr>
+			</table>											
 	</div>
 
 <div id="toppanel">
