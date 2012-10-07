@@ -38,6 +38,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -46,7 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestTestCliente.cs" />
     <Compile Include="UnitTest1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FIDECINEService\FIDECINEService.csproj">
+      <Project>{EB8C0428-9842-4020-9577-F5F2C6E24465}</Project>
+      <Name>FIDECINEService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
