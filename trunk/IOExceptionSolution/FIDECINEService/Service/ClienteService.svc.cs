@@ -9,15 +9,16 @@ using FIDECINEService.Persistencia;
 
 namespace FIDECINEService.Service
 {
-    public class Cliente : IClienteService
+    public class ClienteService : IClienteService
     {
         private ClienteDAO dao = new ClienteDAO();
 
-        public Cliente CrearAlumno(Cliente alumnoACrear)
+        public Cliente InsertarCliente(Cliente objCliente)
         {
-            return dao.Crear(alumnoACrear);
+            dao.insertar(objCliente);
+            return null;
         }
-
+        /*
         public Cliente ObtenerAlumno(string codigo)
         {
             return dao.Obtener(codigo);
@@ -36,6 +37,6 @@ namespace FIDECINEService.Service
         public List<Cliente> ListarAlumnos()
         {
             return dao.ListarTodos();
-        }
+        }*/
     }
 }

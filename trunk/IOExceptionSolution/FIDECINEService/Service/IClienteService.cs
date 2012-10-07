@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.ServiceModel.Web;
 
 namespace FIDECINEService.Service
 {
@@ -12,6 +13,8 @@ namespace FIDECINEService.Service
     public interface IClienteService
     {
         [OperationContract]
-        void DoWork();
+        [WebInvoke(Method = "POST", UriTemplate = "Cliente", ResponseFormat = WebMessageFormat.Json)]
+        Cliente InsertarCliente(Cliente objCliente);
+     
     }
 }
