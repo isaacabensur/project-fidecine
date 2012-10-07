@@ -16,7 +16,7 @@ namespace FIDECINEWeb.Models
 
         public List<SalaBE> ListaSala { set; get; }
 
-        public List<PromocionesBE> ListaPromocion { set; get; }
+       // public List<PromocionesBE> ListaPromocion { set; get; }
 
 
     }
