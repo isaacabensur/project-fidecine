@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using FIDECINEWeb.PeliculaServiceReference;
-using FIDECINEWeb.SalaServiceReference;
+
 using FIDECINEWeb.Common;
-using FIDECINEService;
+using FIDECINEService.Dominio;
+
 
 namespace FIDECINEWeb.Models
 {
@@ -16,7 +16,7 @@ namespace FIDECINEWeb.Models
 
         public List<SalaBE> ListaSala { set; get; }
 
-       // public List<PromocionesBE> ListaPromocion { set; get; }
+        public List<CarteleraBE> ListaCartelera { set; get; }
 
 
     }
