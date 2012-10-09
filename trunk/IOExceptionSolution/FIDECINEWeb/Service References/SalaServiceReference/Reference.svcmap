@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4722f513-5d17-46ec-b544-86255f734951" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="718c537a-b147-4d6d-b31b-aa3596d4780a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,11 +21,11 @@
     <MetadataSource Address="http://localhost:12139/Service/SalaService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SalaService.wsdl" MetadataType="Wsdl" ID="ad00f322-6015-4e9c-a3bf-a766601c5809" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?wsdl" />
-    <MetadataFile FileName="SalaService.disco" MetadataType="Disco" ID="7ea9d074-0cd1-44d1-99d4-96c5bd348e63" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?disco" />
-    <MetadataFile FileName="SalaService.xsd" MetadataType="Schema" ID="12eee8d4-20cf-43e3-98d8-7a149f5603ef" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?xsd=xsd0" />
-    <MetadataFile FileName="SalaService1.xsd" MetadataType="Schema" ID="57fbc627-dcda-464d-b5a4-fe9b8c6005bf" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?xsd=xsd2" />
-    <MetadataFile FileName="SalaService2.xsd" MetadataType="Schema" ID="99fcaebe-d672-430e-bd66-233d438092ee" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SalaService.wsdl" MetadataType="Wsdl" ID="aa6a1c62-ad08-4515-923a-d2620b9a0cb1" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?wsdl" />
+    <MetadataFile FileName="SalaService.disco" MetadataType="Disco" ID="24d6f4d2-f6b5-4e0c-9dae-ba51c946604a" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?disco" />
+    <MetadataFile FileName="SalaService.xsd" MetadataType="Schema" ID="b713ee42-9193-4ff5-944d-a4b56ca6e599" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SalaService1.xsd" MetadataType="Schema" ID="3cd78326-0537-469b-a940-bb62bbb5141d" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SalaService2.xsd" MetadataType="Schema" ID="acde5f9c-ad4d-4fda-a37a-690414fd542d" SourceId="1" SourceUrl="http://localhost:12139/Service/SalaService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

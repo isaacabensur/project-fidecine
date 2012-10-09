@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:12139/Service/CarteleraService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FIDECINEService.Dominio" />
+  <xs:element name="insertar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="int_pIdPelicula" type="xs:int" />
+        <xs:element minOccurs="0" name="int_pIdSala" type="xs:int" />
+        <xs:element minOccurs="0" name="str_pFechaHora" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="insertarResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="int_pIdPelicula" type="xs:int" />
+        <xs:element minOccurs="0" name="int_pIdSala" type="xs:int" />
+        <xs:element minOccurs="0" name="str_pFechaInicio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="str_pFechaFin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/FIDECINEService.Dominio" minOccurs="0" name="listarResult" nillable="true" type="q1:ArrayOfCarteleraBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
