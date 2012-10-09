@@ -11,6 +11,9 @@ namespace FIDECINEService.Dominio
     {
 
         [DataMember]
+        public int IdCartelera { get; set; }
+
+        [DataMember]
         public int IdPelicula { get; set; }
 
         [DataMember]
@@ -18,6 +21,12 @@ namespace FIDECINEService.Dominio
 
         [DataMember]
         public String FechaHora { get; set; }
+
+        [DataMember]
+        public string PeliculaNombre { get; set; }
+
+        [DataMember]
+        public string SalaNombre { get; set; }
 
     }
 }

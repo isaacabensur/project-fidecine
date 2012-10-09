@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 using FIDECINEWeb.Entity;
 using FIDECINEWeb.Models;
+
 using FIDECINEWeb.PeliculaServiceReference;
 using FIDECINEWeb.SalaServiceReference;
 using FIDECINEWeb.CarteleraServiceReference;
 
 using System.Threading;
+
 using FIDECINEWeb.Common;
+using FIDECINEService.Dominio;
 
 namespace FIDECINEWeb.Controllers
 {
@@ -28,17 +32,12 @@ namespace FIDECINEWeb.Controllers
         }
 
         [HttpPost]
-        public JsonResult buscar()
+        public JsonResult buscarHorario(int IdPelicula, int IdSala, string FechaInicio, string FechaFin)
         {
 
-            List<HorarioProyeccion> listaHorarios = new List<HorarioProyeccion>();
-            listaHorarios.Add(new HorarioProyeccion() { Pelicula = "Los Invensibles", Sala = "Sala 01", FechaHora = "15/09/2012 16:30" });
-            listaHorarios.Add(new HorarioProyeccion() { Pelicula = "La Era del Rock", Sala = "Sala 01", FechaHora = "15/09/2012 18:30" });
-            listaHorarios.Add(new HorarioProyeccion() { Pelicula = "Los Pitufos 3D", Sala = "Sala 01", FechaHora = "15/09/2012 20:30" });
-
-            Thread.Sleep(2000);//Borrar
-
-            return Json(listaHorarios);
+            HorarioProyeccionModel objHorarioProyeccionModel = new HorarioProyeccionModel();
+            objHorarioProyeccionModel.ListaCartelera = new CarteleraServiceClient().listar(IdPelicula, IdSala, FechaInicio, FechaFin).ToList<CarteleraBE>();
+            return Json(objHorarioProyeccionModel);
         }
 
         [HttpPost]
