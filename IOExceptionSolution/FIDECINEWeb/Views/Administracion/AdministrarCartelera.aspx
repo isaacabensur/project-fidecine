@@ -3,13 +3,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <form id="form1" runat="server">
-
  <script type="text/javascript">
 
 
      $(document).ready(function () {
-
 
          $("#tbCartelera").styleTable();
 
@@ -69,7 +66,8 @@
                                  $("#dialog_EditarCartelera").dialog("close");
 
                              },
-                            "json");
+                            "json")
+                            .success(function () { buscarHorarios() });
 
                          });
 
@@ -117,23 +115,12 @@
          return false;
      }
 
-     function buscar() {
+     function buscarHorarios() {
 
-         $.post('/AdministrarHorario/buscar', $('#frmBusqueda').serializeArray(), function (data) {
-             $("#tbCartelera > tbody").empty();
+         $.post('/AdministrarHorario/buscarHorario', $('#frmBuscarCartelera').serializeArray(), function (data) {
 
-             $.each(data, function (i, objeto) {
-                 var newRow = '';
-                 newRow = "<tr>";
-                 newRow = newRow + "<td class='ui-widget-content'>" + objeto.Pelicula + "</td>";
-                 newRow = newRow + "<td class='ui-widget-content'>" + objeto.Sala + "</td>";
-                 newRow = newRow + "<td class='ui-widget-content'>" + objeto.FechaHora + "</td>";
-                 newRow = newRow + "<td class='ui-widget-content'><img src='../../Content/images/iconos/mantenimiento/eliminar.png'/></td>";
-                 newRow = newRow + "</tr>";
+             procesarLista(data.ListaCartelera);
 
-                 $("#tbCartelera").append(newRow);
-
-             });
          },
          "json");
 
@@ -142,6 +129,23 @@
          return false;
      }
 
+     function procesarLista(lista) {
+
+         $("#tbCartelera > tbody").empty();
+
+         $.each(lista, function (i, objeto) {
+             var newRow = '';
+             newRow = "<tr>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.PeliculaNombre + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.SalaNombre + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.FechaHora + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'><img src='../../Content/images/iconos/mantenimiento/eliminar.png'/></td>";
+             newRow = newRow + "</tr>";
+
+             $("#tbCartelera").append(newRow);
+
+         });
+     }
 
      function validarPelicula() { $("#frmEdicionCartelera").validationEngine("validateField", "#cmbPeliculaEdicion"); }
      function validarSala() { $("#frmEdicionCartelera").validationEngine("validateField", "#cmbSalaEdicion"); }
@@ -153,15 +157,16 @@
 		style="width: 99%; margin: 3px 3px 3px 3px;">
 	<div class="ui-widget-header ui-corner-all"><label>Administración de Horarios de Proyección de Películas</label></div>
 	<div align="left" style="margin: 5px 5px 5px 5px;">
+    <form id="frmBuscarCartelera" action="#"> 
 	     <table width="600px">
             <tr>
                 <td>Película :</td>
                 <td>                    
-                    <select id="cmbPelicula" name="D1" style="width: 200px;">
-                        <option>---- Todos ----</option>
+                    <select id="cmbPelicula" name="IdPelicula" style="width: 200px;">
+                        <option value="0">---- Todos ----</option>
                         <% foreach (var item in Model.ListaPelicula)
                         { %>
-                            <option><%= item.Nombre %></option>
+                            <option value="<%= item.IdPelicula %>"><%= item.Nombre %></option>
                         <% } %>
                     </select>
                 </td> 
@@ -169,11 +174,11 @@
                 Sala :
                 </td> 
                 <td>
-                    <select id="cmbSala" name="D2" style="width: 120px;">
-                        <option>---- Todos ----</option>
+                    <select id="cmbSala" name="IdSala" style="width: 120px;">
+                        <option value="0">---- Todos ----</option>
                         <% foreach (var item in Model.ListaSala)
                         { %>
-                            <option><%= item.Nombre %></option>
+                            <option value="<%= item.IdSala %>"><%= item.Nombre %></option>
                         <% } %>
                     </select>
                 </td>
@@ -182,16 +187,17 @@
                 <td>Fecha y Hora : </td>
                 <td>
                     Desde
-                    <input id="txtFechaHoraDesde" type="text" readonly="readonly"/>
+                    <input id="txtFechaHoraDesde" type="text" readonly="readonly" name="FechaInicio"/>
                 </td>
                 <td>
                     Hasta
                 </td>
                 <td>
-                    <input id="txtFechaHoraHasta" type="text" readonly="readonly"/>
+                    <input id="txtFechaHoraHasta" type="text" readonly="readonly" name="FechaFin"/>
                 </td>
             </tr>     
         </table>
+    </form>
 	</div>
 	</div>
 
@@ -201,7 +207,7 @@
 	    <div style="margin: 3px 3px 3px 3px;">
 
             <button id="btnNuevo" onclick="return nuevoHorario();">Nuevo</button>
-            <button id="btnBuscar" onclick="return buscar();">Buscar</button>            
+            <button id="btnBuscar" onclick="return buscarHorarios();">Buscar</button>            
         </div>
 	</div>
 
@@ -214,31 +220,9 @@
                 <th width="20px"></th>	
 			</tr>
 			</thead>
-			<tbody>
-            <tr>
-                <td>aa</td>
-                <td>aaa</td>
-                <td>aaaa</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/eliminar.png"/></td>
-            </tr>
-           <tr>
-                <td>bbbb</td>
-                <td>bbbb</td>
-                <td>bbbbbb</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/eliminar.png"/></td>
-            </tr>
-            <tr>
-                <td>ccccccc</td>
-                <td>cccccc</td>
-                <td>cccccccc</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/eliminar.png"/></td>
-            </tr>
+			<tbody>            
 			</tbody>
-			<tfoot>
-			</tfoot>
 	    </table>
-    </form>
-
 
     <div  id="dialog_EditarCartelera" title="Edición de Horario de Proyección de Película" style="display:none;">
     <form id="frmEdicionCartelera" action="#">    

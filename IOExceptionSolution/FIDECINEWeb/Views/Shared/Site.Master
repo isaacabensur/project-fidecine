@@ -154,7 +154,7 @@
 					<td align="right" valign="middle" >
 						<img src="../../Content/images/loading8.gif">
 					</td>
-					<td align="left" valign="middle" style="font-weight: bold;">
+					<td align="left" valign="left" style="font-weight: bold;">
 						Procesando ...
 					</td>
 				</tr>
@@ -167,7 +167,7 @@
 					<td align="right" valign="middle" >
 						<img src="../../Content/images/iconos/sistema/pregunta.png"/>
 					</td>
-					<td align="center" valign="middle" style="font-weight: bold;">
+					<td align="center" valign="left" style="font-weight: bold;">
 						<label id="lblPregunta"></label>
 					</td>
 				</tr>
