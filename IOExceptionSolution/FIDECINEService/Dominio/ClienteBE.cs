@@ -19,26 +19,31 @@ namespace FIDECINEService.Dominio
 
 
     }*/
-
     [DataContract]
-    public class Cliente
+    public class ClienteBE
     {
         [DataMember]
-        public int cliId { get; set; }
+        public int idcliente { get; set; }
         [DataMember]
-        public char cliTipo { get; set; }
+        public string nombre { get; set; }
         [DataMember]
-        public char cliTipoDoc { get; set; }
+        public string apellidoPaterno { get; set; }
         [DataMember]
-        public string cliNroDoc { get; set; }
+        public string apellidoMaterno { get; set; }
         [DataMember]
-        public string cliNombComp { get; set; }
+        public int dni { get; set; }
         [DataMember]
-        public string cliMail { get; set; }
+        public string fechaNacimiento { get; set; }
         [DataMember]
-        public string cliTelf { get; set; }
+        public string correo { get; set; }
         [DataMember]
-        public string cliDirec { get; set; }
+        public string direccion { get; set; }
+        [DataMember]
+        public string tipocliente { get; set; }
+        [DataMember]
+        public int puntos { get; set; }
+        [DataMember]
+        public string estado { get; set; }
     }
 
 }

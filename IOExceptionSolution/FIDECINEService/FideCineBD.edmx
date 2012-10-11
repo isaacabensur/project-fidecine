@@ -73,7 +73,7 @@
           <Key>
             <PropertyRef Name="idcliente" />
           </Key>
-          <Property Name="idcliente" Type="int" Nullable="false" />
+          <Property Name="idcliente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="varchar" MaxLength="50" />
           <Property Name="apellidoPaterno" Type="varchar" MaxLength="50" />
           <Property Name="apellidoMaterno" Type="varchar" MaxLength="50" />

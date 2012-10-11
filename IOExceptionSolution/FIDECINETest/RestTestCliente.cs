@@ -10,7 +10,6 @@ using FIDECINEService;
 
 namespace FIDECINETest
 {
-  
     [TestClass]
     public class RestTestCliente
     {
@@ -18,7 +17,7 @@ namespace FIDECINETest
         public void CRUDClienteTest()
         {
             // Prueba de creación de alumno vía HTTP POST
-            string postdata = "{\"idcliente\":\"1\",\"nombre\":\"Juan\",\"apellidoPaterno\":\"Juan\",\"apellidoMaterno\":\"Juan\",\"dni\":\"Juan\",\"estado\":\"Juan\"}"; //JSON
+            string postdata = "{\"idcliente\":\"1\",\"nombre\":\"Juan\",\"apellidoPaterno\":\"Juan\",\"apellidoMaterno\":\"Juan\",\"dni\":\"7\",\"direccion\":\"AvS\",\"tipocliente\":\"P\",\"estado\":\"A\"}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
                 .Create("http://localhost:12139/Service/ClienteService.svc/Cliente");
