@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="FIDECINEService.Service.ClienteService" CodeBehind="ClienteService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="FIDECINEService.Service.ClienteService" CodeBehind="ClienteService.svc.cs" Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>

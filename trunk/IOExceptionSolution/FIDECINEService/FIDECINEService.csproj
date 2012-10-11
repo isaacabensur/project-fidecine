@@ -76,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\CarteleraBE.cs" />
-    <Compile Include="Dominio\Cliente.cs" />
+    <Compile Include="Dominio\ClienteBE.cs" />
     <Compile Include="Dominio\PeliculaBE.cs" />
     <Compile Include="Dominio\SalaBE.cs" />
     <Compile Include="FideCineBD.Designer.cs">
