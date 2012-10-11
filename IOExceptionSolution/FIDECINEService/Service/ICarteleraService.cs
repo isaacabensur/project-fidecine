@@ -16,6 +16,9 @@ namespace FIDECINEService.Service
         void insertar(int int_pIdPelicula, int int_pIdSala, string str_pFechaHora);
 
         [OperationContract]
+        void eliminar(int int_pIdCartelera);
+
+        [OperationContract]
         List<CarteleraBE> listar(int int_pIdPelicula, int int_pIdSala, string str_pFechaInicio, string str_pFechaFin);
 
     }

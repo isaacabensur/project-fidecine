@@ -115,6 +115,26 @@
          return false;
      }
 
+     function eliminarHorario(idCartelera) {
+
+         $('#btnSi').unbind('click');
+         $("#btnSi").click(function () {
+
+             $.post('/AdministrarHorario/eliminarHorario', { 'IdCartelera': idCartelera }, function (data) {
+
+                 informacion(data.Mensaje);
+                 $("#dialog_EditarCartelera").dialog("close");
+
+             },
+             "json")
+             .success(function () { buscarHorarios() });
+
+         });
+
+         confirmacion('¿Desea eliminar el Horario de Proyección seleccionado?');
+
+     }
+
      function buscarHorarios() {
 
          $.post('/AdministrarHorario/buscarHorario', $('#frmBuscarCartelera').serializeArray(), function (data) {
@@ -139,7 +159,7 @@
              newRow = newRow + "<td class='ui-widget-content'>" + objeto.PeliculaNombre + "</td>";
              newRow = newRow + "<td class='ui-widget-content'>" + objeto.SalaNombre + "</td>";
              newRow = newRow + "<td class='ui-widget-content'>" + objeto.FechaHora + "</td>";
-             newRow = newRow + "<td class='ui-widget-content'><img src='../../Content/images/iconos/mantenimiento/eliminar.png'/></td>";
+             newRow = newRow + "<td class='ui-widget-content' align='center' valign='middle'><img src='../../Content/images/iconos/mantenimiento/eliminar.png' onclick='eliminarHorario(" + objeto.IdCartelera + ");' title='eliminar' style='cursor:hand;'/></td>";
              newRow = newRow + "</tr>";
 
              $("#tbCartelera").append(newRow);
