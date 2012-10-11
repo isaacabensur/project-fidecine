@@ -22,6 +22,16 @@ namespace FIDECINEService.Persistencia
             }            
         }
 
+        public void eliminar(int int_pIdCartelera)
+        {
+
+            using (var context = new FideCineEntities())
+            {
+                context.Cartelera.DeleteObject(context.Cartelera.Where(" it.IdCartelera = @pi_IdCartelera", new ObjectParameter[] { new ObjectParameter("pi_IdCartelera", int_pIdCartelera) }).First<Cartelera>());
+                context.SaveChanges();
+            }
+        }
+
         public List<Cartelera> listar(int int_pIdPelicula, int int_pIdSala, string str_pFechaInicio, string str_pFechaFin)
         {
             StringBuilder sbScript = new StringBuilder("");

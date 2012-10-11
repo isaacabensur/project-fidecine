@@ -24,6 +24,10 @@ namespace FIDECINEService.Service
             new CarteleraDAO().insertar(objCartelera);
         }
 
+        public void eliminar(int int_pIdCartelera)
+        {
+            new CarteleraDAO().eliminar(int_pIdCartelera);
+        }
 
         public List<CarteleraBE> listar(int int_pIdPelicula, int int_pIdSala, string str_pFechaInicio, string str_pFechaFin)
         {
