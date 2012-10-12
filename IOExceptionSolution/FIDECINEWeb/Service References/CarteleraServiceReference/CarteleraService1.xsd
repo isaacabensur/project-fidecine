@@ -15,6 +15,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="eliminar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="int_pIdCartelera" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eliminarResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="listar">
     <xs:complexType>
       <xs:sequence>

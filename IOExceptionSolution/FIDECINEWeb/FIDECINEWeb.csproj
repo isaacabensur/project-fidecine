@@ -72,9 +72,9 @@
     <Compile Include="Common\GenericModel.cs" />
     <Compile Include="Controllers\AdministrarClienteController.cs" />
     <Compile Include="Controllers\AdministrarHorarioController.cs" />
+    <Compile Include="Controllers\AdministrarOfertaController.cs" />
     <Compile Include="Controllers\AdministrarPeliculaController.cs" />
     <Compile Include="Controllers\AdministrarVisitaController.cs" />
-    <Compile Include="Controllers\GestionOfertasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Entity\HorarioProyeccion.cs" />
@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\HorarioProyeccionModel.cs" />
+    <Compile Include="Models\OfertaPromocionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\CarteleraServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -90,6 +91,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\PeliculaServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductoServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -208,6 +214,7 @@
     <Content Include="Scripts\fg.menu.js" />
     <None Include="Properties\DataSources\FIDECINEService.Dominio.CarteleraBE.datasource" />
     <None Include="Properties\DataSources\FIDECINEService.Dominio.PeliculaBE.datasource" />
+    <None Include="Properties\DataSources\FIDECINEService.Dominio.ProductoBE.datasource" />
     <None Include="Properties\DataSources\FIDECINEService.Dominio.SalaBE.datasource" />
     <None Include="Service References\CarteleraServiceReference\CarteleraService.wsdl" />
     <None Include="Service References\CarteleraServiceReference\CarteleraService.xsd">
@@ -226,6 +233,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\ProductoServiceReference\ProductoService.wsdl" />
+    <None Include="Service References\ProductoServiceReference\ProductoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductoServiceReference\ProductoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductoServiceReference\ProductoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SalaServiceReference\SalaService.disco" />
     <None Include="Service References\SalaServiceReference\configuration91.svcinfo" />
     <None Include="Service References\SalaServiceReference\configuration.svcinfo" />
@@ -240,11 +257,18 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\ProductoServiceReference\ProductoService.disco" />
+    <None Include="Service References\ProductoServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ProductoServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ProductoServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Views\Administracion\AdministrarCartelera.aspx" />
     <Content Include="Views\Administracion\AdministrarCliente.aspx" />
+    <Content Include="Views\Administracion\AdministrarOfertas.aspx" />
     <Content Include="Views\Administracion\AdministrarPelicula.aspx" />
     <Content Include="Views\Administracion\AdministrarVisita.aspx" />
-    <Content Include="Views\Oferta\GestionOfertas.aspx" />
     <Content Include="Views\Reportes\ReporteConsultaGeneral.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -317,6 +341,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\CarteleraServiceReference\" />
     <WCFMetadataStorage Include="Service References\PeliculaServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ProductoServiceReference\" />
     <WCFMetadataStorage Include="Service References\SalaServiceReference\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -18,6 +18,9 @@ namespace FIDECINEWeb.CarteleraServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICarteleraService/insertar", ReplyAction="http://tempuri.org/ICarteleraService/insertarResponse")]
         void insertar(int int_pIdPelicula, int int_pIdSala, string str_pFechaHora);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICarteleraService/eliminar", ReplyAction="http://tempuri.org/ICarteleraService/eliminarResponse")]
+        void eliminar(int int_pIdCartelera);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICarteleraService/listar", ReplyAction="http://tempuri.org/ICarteleraService/listarResponse")]
         FIDECINEService.Dominio.CarteleraBE[] listar(int int_pIdPelicula, int int_pIdSala, string str_pFechaInicio, string str_pFechaFin);
     }
@@ -51,6 +54,10 @@ namespace FIDECINEWeb.CarteleraServiceReference {
         
         public void insertar(int int_pIdPelicula, int int_pIdSala, string str_pFechaHora) {
             base.Channel.insertar(int_pIdPelicula, int_pIdSala, str_pFechaHora);
+        }
+        
+        public void eliminar(int int_pIdCartelera) {
+            base.Channel.eliminar(int_pIdCartelera);
         }
         
         public FIDECINEService.Dominio.CarteleraBE[] listar(int int_pIdPelicula, int int_pIdSala, string str_pFechaInicio, string str_pFechaFin) {

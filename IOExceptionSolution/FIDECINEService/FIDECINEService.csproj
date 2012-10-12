@@ -64,6 +64,8 @@
     <Content Include="Service\CarteleraService.svc" />
     <Content Include="Service\ClienteService.svc" />
     <Content Include="Service\PeliculaService.svc" />
+    <Content Include="Service\ProductoService.svc" />
+    <Content Include="Service\PromocionService.svc" />
     <Content Include="Service\SalaService.svc" />
     <Content Include="Service\ServiceCliente.svc" />
     <Content Include="Web.config" />
@@ -78,6 +80,9 @@
     <Compile Include="Dominio\CarteleraBE.cs" />
     <Compile Include="Dominio\ClienteBE.cs" />
     <Compile Include="Dominio\PeliculaBE.cs" />
+    <Compile Include="Dominio\ProductoBE.cs" />
+    <Compile Include="Dominio\PromocionBE.cs" />
+    <Compile Include="Dominio\ResultadoBE.cs" />
     <Compile Include="Dominio\SalaBE.cs" />
     <Compile Include="FideCineBD.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -90,6 +95,8 @@
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Persistencia\PeliculaDAO.cs" />
+    <Compile Include="Persistencia\ProductoDAO.cs" />
+    <Compile Include="Persistencia\PromocionDAO.cs" />
     <Compile Include="Persistencia\SalaDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CarteleraService.svc.cs">
@@ -101,10 +108,18 @@
     <Compile Include="Service\ICarteleraService.cs" />
     <Compile Include="Service\IClienteService.cs" />
     <Compile Include="Service\IPeliculaService.cs" />
+    <Compile Include="Service\IProductoService.cs" />
+    <Compile Include="Service\IPromocionService.cs" />
     <Compile Include="Service\ISalaService.cs" />
     <Compile Include="Service\IServiceCliente.cs" />
     <Compile Include="Service\PeliculaService.svc.cs">
       <DependentUpon>PeliculaService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ProductoService.svc.cs">
+      <DependentUpon>ProductoService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\PromocionService.svc.cs">
+      <DependentUpon>PromocionService.svc</DependentUpon>
     </Compile>
     <Compile Include="Service\SalaService.svc.cs">
       <DependentUpon>SalaService.svc</DependentUpon>

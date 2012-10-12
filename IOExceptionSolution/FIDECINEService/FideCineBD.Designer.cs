@@ -26,6 +26,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_VisitaCliente_Cliente", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.Cliente), "VisitaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.VisitaCliente), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Pelicula_GeneroPelicula", "GeneroPelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.GeneroPelicula), "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Pelicula), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Pelicula_TipoPelicula", "TipoPelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.TipoPelicula), "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Pelicula), true)]
+[assembly: EdmRelationshipAttribute("FideCineModel", "FK_Promocion_Producto", "Producto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FIDECINEService.Producto), "Promocion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Promocion), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_VisitaCliente_TarjetaCliente", "TarjetaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.TarjetaCliente), "VisitaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.VisitaCliente), true)]
 
 #endregion
@@ -161,6 +162,22 @@ namespace FIDECINEService
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<Producto> Producto
+        {
+            get
+            {
+                if ((_Producto == null))
+                {
+                    _Producto = base.CreateObjectSet<Producto>("Producto");
+                }
+                return _Producto;
+            }
+        }
+        private ObjectSet<Producto> _Producto;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Promocion> Promocion
         {
             get
@@ -279,6 +296,14 @@ namespace FIDECINEService
         public void AddToPelicula(Pelicula pelicula)
         {
             base.AddObject("Pelicula", pelicula);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Producto EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToProducto(Producto producto)
+        {
+            base.AddObject("Producto", producto);
         }
     
         /// <summary>
@@ -1522,6 +1547,138 @@ namespace FIDECINEService
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="Producto")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Producto : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Producto object.
+        /// </summary>
+        /// <param name="idProducto">Initial value of the IdProducto property.</param>
+        /// <param name="nombre">Initial value of the Nombre property.</param>
+        /// <param name="estado">Initial value of the Estado property.</param>
+        public static Producto CreateProducto(global::System.Int32 idProducto, global::System.String nombre, global::System.String estado)
+        {
+            Producto producto = new Producto();
+            producto.IdProducto = idProducto;
+            producto.Nombre = nombre;
+            producto.Estado = estado;
+            return producto;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdProducto
+        {
+            get
+            {
+                return _IdProducto;
+            }
+            set
+            {
+                if (_IdProducto != value)
+                {
+                    OnIdProductoChanging(value);
+                    ReportPropertyChanging("IdProducto");
+                    _IdProducto = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IdProducto");
+                    OnIdProductoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdProducto;
+        partial void OnIdProductoChanging(global::System.Int32 value);
+        partial void OnIdProductoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private global::System.String _Estado;
+        partial void OnEstadoChanging(global::System.String value);
+        partial void OnEstadoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_Promocion_Producto", "Promocion")]
+        public EntityCollection<Promocion> Promocion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Promocion>("FideCineModel.FK_Promocion_Producto", "Promocion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Promocion>("FideCineModel.FK_Promocion_Producto", "Promocion", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="Promocion")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1532,11 +1689,19 @@ namespace FIDECINEService
         /// <summary>
         /// Create a new Promocion object.
         /// </summary>
-        /// <param name="idpromocion">Initial value of the idpromocion property.</param>
-        public static Promocion CreatePromocion(global::System.Int32 idpromocion)
+        /// <param name="idPromocion">Initial value of the IdPromocion property.</param>
+        /// <param name="puntos">Initial value of the Puntos property.</param>
+        /// <param name="vigenciaInicio">Initial value of the vigenciaInicio property.</param>
+        /// <param name="vigenciaFin">Initial value of the vigenciaFin property.</param>
+        /// <param name="idProducto">Initial value of the IdProducto property.</param>
+        public static Promocion CreatePromocion(global::System.Int32 idPromocion, global::System.Int32 puntos, global::System.DateTime vigenciaInicio, global::System.DateTime vigenciaFin, global::System.Int32 idProducto)
         {
             Promocion promocion = new Promocion();
-            promocion.idpromocion = idpromocion;
+            promocion.IdPromocion = idPromocion;
+            promocion.Puntos = puntos;
+            promocion.vigenciaInicio = vigenciaInicio;
+            promocion.vigenciaFin = vigenciaFin;
+            promocion.IdProducto = idProducto;
             return promocion;
         }
 
@@ -1548,106 +1713,58 @@ namespace FIDECINEService
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 idpromocion
+        public global::System.Int32 IdPromocion
         {
             get
             {
-                return _idpromocion;
+                return _IdPromocion;
             }
             set
             {
-                if (_idpromocion != value)
+                if (_IdPromocion != value)
                 {
-                    OnidpromocionChanging(value);
-                    ReportPropertyChanging("idpromocion");
-                    _idpromocion = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idpromocion");
-                    OnidpromocionChanged();
+                    OnIdPromocionChanging(value);
+                    ReportPropertyChanging("IdPromocion");
+                    _IdPromocion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IdPromocion");
+                    OnIdPromocionChanged();
                 }
             }
         }
-        private global::System.Int32 _idpromocion;
-        partial void OnidpromocionChanging(global::System.Int32 value);
-        partial void OnidpromocionChanged();
+        private global::System.Int32 _IdPromocion;
+        partial void OnIdPromocionChanging(global::System.Int32 value);
+        partial void OnIdPromocionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String nombrepromocion
+        public global::System.Int32 Puntos
         {
             get
             {
-                return _nombrepromocion;
+                return _Puntos;
             }
             set
             {
-                OnnombrepromocionChanging(value);
-                ReportPropertyChanging("nombrepromocion");
-                _nombrepromocion = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("nombrepromocion");
-                OnnombrepromocionChanged();
+                OnPuntosChanging(value);
+                ReportPropertyChanging("Puntos");
+                _Puntos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Puntos");
+                OnPuntosChanged();
             }
         }
-        private global::System.String _nombrepromocion;
-        partial void OnnombrepromocionChanging(global::System.String value);
-        partial void OnnombrepromocionChanged();
+        private global::System.Int32 _Puntos;
+        partial void OnPuntosChanging(global::System.Int32 value);
+        partial void OnPuntosChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> puntos
-        {
-            get
-            {
-                return _puntos;
-            }
-            set
-            {
-                OnpuntosChanging(value);
-                ReportPropertyChanging("puntos");
-                _puntos = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("puntos");
-                OnpuntosChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _puntos;
-        partial void OnpuntosChanging(Nullable<global::System.Int32> value);
-        partial void OnpuntosChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String regalo
-        {
-            get
-            {
-                return _regalo;
-            }
-            set
-            {
-                OnregaloChanging(value);
-                ReportPropertyChanging("regalo");
-                _regalo = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("regalo");
-                OnregaloChanged();
-            }
-        }
-        private global::System.String _regalo;
-        partial void OnregaloChanging(global::System.String value);
-        partial void OnregaloChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> vigenciaInicio
+        public global::System.DateTime vigenciaInicio
         {
             get
             {
@@ -1662,16 +1779,16 @@ namespace FIDECINEService
                 OnvigenciaInicioChanged();
             }
         }
-        private Nullable<global::System.DateTime> _vigenciaInicio;
-        partial void OnvigenciaInicioChanging(Nullable<global::System.DateTime> value);
+        private global::System.DateTime _vigenciaInicio;
+        partial void OnvigenciaInicioChanging(global::System.DateTime value);
         partial void OnvigenciaInicioChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> vigenciaFin
+        public global::System.DateTime vigenciaFin
         {
             get
             {
@@ -1686,12 +1803,77 @@ namespace FIDECINEService
                 OnvigenciaFinChanged();
             }
         }
-        private Nullable<global::System.DateTime> _vigenciaFin;
-        partial void OnvigenciaFinChanging(Nullable<global::System.DateTime> value);
+        private global::System.DateTime _vigenciaFin;
+        partial void OnvigenciaFinChanging(global::System.DateTime value);
         partial void OnvigenciaFinChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdProducto
+        {
+            get
+            {
+                return _IdProducto;
+            }
+            set
+            {
+                OnIdProductoChanging(value);
+                ReportPropertyChanging("IdProducto");
+                _IdProducto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdProducto");
+                OnIdProductoChanged();
+            }
+        }
+        private global::System.Int32 _IdProducto;
+        partial void OnIdProductoChanging(global::System.Int32 value);
+        partial void OnIdProductoChanged();
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_Promocion_Producto", "Producto")]
+        public Producto Producto
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Producto>("FideCineModel.FK_Promocion_Producto", "Producto").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Producto>("FideCineModel.FK_Promocion_Producto", "Producto").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Producto> ProductoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Producto>("FideCineModel.FK_Promocion_Producto", "Producto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Producto>("FideCineModel.FK_Promocion_Producto", "Producto", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>

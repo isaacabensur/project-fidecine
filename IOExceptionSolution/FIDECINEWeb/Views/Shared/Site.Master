@@ -89,6 +89,23 @@
                         }
                     });
 
+
+                    $("#dialog_Error").dialog({
+                        autoOpen: false,
+                        resizable: false,
+                        closeOnEscape: false,
+                        height: 220,
+                        width: 420,
+                        modal: true,
+                        buttons:
+                        {
+                            "Aceptar": function () {
+                                $(this).dialog("close");
+
+                            }
+                        }
+                    });
+
         });
 
         
@@ -103,6 +120,12 @@
             $('#lblInformacion').text(msg);
             $('#lblInformacion').html(msg);
             $("#dialog_Informacion").dialog("open");
+        }
+
+        function error(msg) {
+            $('#lblError').text(msg);
+            $('#lblError').html(msg);
+            $("#dialog_Error").dialog("open");
         }
 
 	</script>
@@ -154,7 +177,7 @@
 					<td align="right" valign="middle" >
 						<img src="../../Content/images/loading8.gif">
 					</td>
-					<td align="left" valign="left" style="font-weight: bold;">
+					<td align="left" valign="middle" style="font-weight: bold;">
 						Procesando ...
 					</td>
 				</tr>
@@ -167,7 +190,7 @@
 					<td align="right" valign="middle" >
 						<img src="../../Content/images/iconos/sistema/pregunta.png"/>
 					</td>
-					<td align="center" valign="left" style="font-weight: bold;">
+					<td align="center" valign="middle" style="font-weight: bold;">
 						<label id="lblPregunta"></label>
 					</td>
 				</tr>
@@ -183,6 +206,19 @@
 					</td>
 					<td align="center" valign="middle" style="font-weight: bold;">
 						<label id="lblInformacion"></label>
+					</td>
+				</tr>
+			</table>											
+	</div>
+
+     <div  id="dialog_Error" title="Error" style="display:none;"> 
+		<table cellpadding="5" cellspacing="0" bgcolor="#ffffff" >
+				<tr>
+					<td align="right" valign="middle" >
+						<img src="../../Content/images/iconos/sistema/error.png"/>
+					</td>
+					<td align="center" valign="middle" style="font-weight: bold;">
+						<label id="lblError"></label>
 					</td>
 				</tr>
 			</table>											
@@ -220,7 +256,7 @@
 	                            <li><a href="/AdministrarPelicula/Index">Registro de Películas</a></li>
 	                            <li><a href="/AdministrarCliente/Index">Registro de Clientes</a></li>
 	                            <li><a href="/AdministrarHorario/Index">Administrar Horarios</a></li>
-	                            <li><a href="/GestionOfertas/Index">Gestión de Ofertas</a></li>
+	                            <li><a href="/AdministrarOferta/Index">Gestión de Ofertas</a></li>
                                 <li><a href="/AdministrarVisita/Index">Registro Visitas</a></li>
                                 <li><a href="/Reporte/Index">Reporte de Visitas</a></li>
                             </ul>
