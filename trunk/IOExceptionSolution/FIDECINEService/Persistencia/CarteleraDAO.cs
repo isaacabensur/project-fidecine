@@ -77,6 +77,6 @@ namespace FIDECINEService.Persistencia
                 return (new FideCineEntities().Cartelera.ToList<Cartelera>());
         
         }
-
+        
     }
 }

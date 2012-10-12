@@ -13,6 +13,12 @@
   <wsdl:message name="ICarteleraService_insertar_OutputMessage">
     <wsdl:part name="parameters" element="tns:insertarResponse" />
   </wsdl:message>
+  <wsdl:message name="ICarteleraService_eliminar_InputMessage">
+    <wsdl:part name="parameters" element="tns:eliminar" />
+  </wsdl:message>
+  <wsdl:message name="ICarteleraService_eliminar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:eliminarResponse" />
+  </wsdl:message>
   <wsdl:message name="ICarteleraService_listar_InputMessage">
     <wsdl:part name="parameters" element="tns:listar" />
   </wsdl:message>
@@ -24,6 +30,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICarteleraService/insertar" message="tns:ICarteleraService_insertar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICarteleraService/insertarResponse" message="tns:ICarteleraService_insertar_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="eliminar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICarteleraService/eliminar" message="tns:ICarteleraService_eliminar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICarteleraService/eliminarResponse" message="tns:ICarteleraService_eliminar_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="listar">
       <wsdl:input wsaw:Action="http://tempuri.org/ICarteleraService/listar" message="tns:ICarteleraService_listar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICarteleraService/listarResponse" message="tns:ICarteleraService_listar_OutputMessage" />
@@ -33,6 +43,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="insertar">
       <soap:operation soapAction="http://tempuri.org/ICarteleraService/insertar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminar">
+      <soap:operation soapAction="http://tempuri.org/ICarteleraService/eliminar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

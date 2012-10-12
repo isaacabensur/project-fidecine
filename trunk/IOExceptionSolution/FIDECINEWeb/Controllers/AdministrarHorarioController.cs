@@ -67,5 +67,19 @@ namespace FIDECINEWeb.Controllers
 
         }
 
+        [HttpPost]
+        public JsonResult eliminarHorario(int IdCartelera)
+        {
+
+            new CarteleraServiceClient().eliminar(IdCartelera);
+
+            HorarioProyeccionModel objHorarioProyeccionModel = new HorarioProyeccionModel();
+            objHorarioProyeccionModel.Mensaje = "El Horario de Proyección fue eliminado exitosamente";
+            objHorarioProyeccionModel.Resultado = Constantes.EXITO;
+
+            return Json(objHorarioProyeccionModel);
+
+        }
+
     }
 }
