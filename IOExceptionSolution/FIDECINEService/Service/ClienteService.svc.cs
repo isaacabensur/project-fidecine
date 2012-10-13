@@ -35,25 +35,108 @@ namespace FIDECINEService.Service
             dao.insertar(objClienteEntity);
             return null;
         }
-        /*
-        public Cliente ObtenerAlumno(string codigo)
+
+        public ClienteBE ObtenerCliente(string idcliente)
         {
-            return dao.Obtener(codigo);
+            Cliente objCliente = new Cliente();
+            objCliente.idcliente = Int32.Parse(idcliente);
+            objCliente = dao.obtener(objCliente);
+            ClienteBE ojbClienteBE = new ClienteBE()
+            {
+                idcliente = objCliente.idcliente,
+                nombre = objCliente.nombre,
+                apellidoPaterno = objCliente.apellidoPaterno,
+                apellidoMaterno = objCliente.apellidoMaterno,
+                dni = (int)objCliente.dni,
+                fechaNacimiento = ((DateTime)objCliente.fechaNacimiento).ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo),
+                correo = objCliente.correo,
+                direccion = objCliente.direccion,
+                tipocliente = objCliente.tipocliente,
+                puntos = (int)objCliente.puntos,
+                estado = objCliente.estado,
+
+            };
+            return ojbClienteBE;
         }
 
-        public Cliente ModificarAlumno(Cliente alumnoAModificar)
+        public ClienteBE ModificarCliente(ClienteBE objClienteBE)
         {
-            return dao.Modificar(alumnoAModificar);
+            Cliente objCliente = new Cliente()
+            {
+                idcliente = objClienteBE.idcliente,
+                nombre = objClienteBE.nombre,
+                apellidoPaterno = objClienteBE.apellidoPaterno,
+                apellidoMaterno = objClienteBE.apellidoMaterno,
+                correo = objClienteBE.correo,
+                direccion = objClienteBE.direccion,
+                tipocliente = objClienteBE.tipocliente,
+                estado = objClienteBE.estado,
+            };
+            if(!string.IsNullOrEmpty(objClienteBE.fechaNacimiento)){
+                objCliente.fechaNacimiento = DateTime.ParseExact(objClienteBE.fechaNacimiento, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            }
+            if (objClienteBE.dni != null && objClienteBE.dni!=0)
+            {
+                objCliente.dni = (int)objClienteBE.dni;
+            }
+            if (objClienteBE.puntos != null && objClienteBE.puntos != 0)
+            {
+                objCliente.puntos = (int)objClienteBE.puntos;
+            }
+            objCliente = dao.actualizar(objCliente);
+            ClienteBE ojbClienteBE = new ClienteBE()
+            {
+                idcliente = objCliente.idcliente,
+                nombre = objCliente.nombre,
+                apellidoPaterno = objCliente.apellidoPaterno,
+                apellidoMaterno = objCliente.apellidoMaterno,
+                dni = (int)objCliente.dni,
+                fechaNacimiento = ((DateTime)objCliente.fechaNacimiento).ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo),
+                correo = objCliente.correo,
+                direccion = objCliente.direccion,
+                tipocliente = objCliente.tipocliente,
+                puntos = (int)objCliente.puntos,
+                estado = objCliente.estado,
+
+            };
+            return ojbClienteBE;
         }
 
-        public void EliminarAlumno(string codigo)
+        public void EliminarCliente(string idcliente)
         {
-            dao.Eliminar(dao.Obtener(codigo));
+            dao.eliminar(Int32.Parse(idcliente));
         }
 
-        public List<Cliente> ListarAlumnos()
+        public List<ClienteBE> ListarClientes(string nombre, string dni, string tipocliente, string estado)
         {
-            return dao.ListarTodos();
-        }*/
+            ClienteBE objClienteBE = new ClienteBE(){
+                nombre = nombre,
+                dni = Int32.Parse(dni),
+                tipocliente = tipocliente,
+                estado = estado
+            };
+
+            List<ClienteBE> lstClienteBE = new List<ClienteBE>();
+            foreach (Cliente objCliente in dao.listar(objClienteBE))
+            {
+                ClienteBE objTempBE = new ClienteBE()
+                {
+                    idcliente = objClienteBE.idcliente,
+                    nombre = objClienteBE.nombre,
+                    apellidoPaterno = objClienteBE.apellidoPaterno,
+                    apellidoMaterno = objClienteBE.apellidoMaterno,
+                    dni = (int)objClienteBE.dni,
+                    fechaNacimiento = ((DateTime)objCliente.fechaNacimiento).ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo),
+                    correo = objClienteBE.correo,
+                    direccion = objClienteBE.direccion,
+                    tipocliente = objClienteBE.tipocliente,
+                    puntos = (int)objClienteBE.puntos,
+                    estado = objClienteBE.estado,
+                };
+                lstClienteBE.Add(objTempBE);
+                
+            }
+            return lstClienteBE;
+        }
     }
 }
