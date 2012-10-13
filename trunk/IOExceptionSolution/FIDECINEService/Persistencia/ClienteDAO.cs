@@ -5,6 +5,8 @@ using System.Web;
 using System.Text;
 using System.Data.Objects;
 using System.Data.SqlClient;
+using System.Globalization;
+using FIDECINEService.Dominio;
 
 namespace FIDECINEService.Persistencia
 {
@@ -19,55 +21,62 @@ namespace FIDECINEService.Persistencia
                 context.SaveChanges();
             }
         }
-        /*
-        public Cliente obtenerCliente(Cliente objCliente)
+        public Cliente obtener(Cliente objCliente)
+        {   
+            return new FideCineEntities().Cliente.Where(" it.idcliente = @pi_IdCliente", new ObjectParameter[] { new ObjectParameter("pi_IdCliente", objCliente.idcliente) }).First<Cliente>();
+        }
+
+        public void eliminar(int int_pIdCartelera)
         {
 
+            using (var context = new FideCineEntities())
+            {
+                context.Cliente.DeleteObject(context.Cliente.Where(" it.idcliente = @pi_IdCliente", new ObjectParameter[] { new ObjectParameter("pi_IdCliente", int_pIdCartelera) }).First<Cliente>());
+                context.SaveChanges();
+            }
+        }
+
+        public List<Cliente> listar(ClienteBE objClienteBE)
+        {
             StringBuilder sbScript = new StringBuilder("");
             List<ObjectParameter> lstParameters = new List<ObjectParameter>();
 
-            if (!string.IsNullOrEmpty(objCliente.estado))
+
+            if (objClienteBE.idcliente != 0)
             {
-                sbScript.Append(" ( ToUpper(it.estado) = @pi_estado )");
-                sbScript.Append(" ( ToUpper(it.idcliente) = @pi_idcliente )");
-                lstParameters.Add(new ObjectParameter("pi_Estado", objCliente.estado.ToUpper()));
+                sbScript.Append(" ( it.idcliente = @pi_idcliente )");
+                lstParameters.Add(new ObjectParameter("pi_idcliente", objClienteBE.idcliente));
             }
 
-            return null;
+            if (!string.IsNullOrEmpty(objClienteBE.nombre))
+            {
 
-        }*/
-        /* public Cliente obtenerCliente(int idCliente)
-         {
-             Cliente objCliente = null;
-             string sql = " WHERE idcliente = @idcliente";
-             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
-             {
-                 con.Open();
-                 using (SqlCommand com = new SqlCommand(sql, con))
-                 {
-                     com.Parameters.Add(new SqlParameter("@ID_ITINERARIO", ID_ITINERARIO));
-                     using (SqlDataReader resultado = com.ExecuteReader())
-                     {
-                         if (resultado.Read())
-                         {
-                             itinerarioEncontrado = new Itinerario()
-                             {
-                                 Id_Itinerario = (int)resultado["ID_ITINERARIO"],
-                                 Id_Origen = (int)resultado["ID_ORIGEN"],
-                                 Descripcion_Origen = (string)resultado["DESCRIPCION_ORIGEN"],
-                                 Id_Destino = (int)resultado["ID_DESTINO"],
-                                 Descripcion_Destino = (string)resultado["DESCRIPCION_DESTINO"],
-                                 Salida = (DateTime)resultado["SALIDA"],
-                                 Llegada = (DateTime)resultado["LLEGADA"],
-                                 Total_Asiento = int.Parse(resultado["TOTAL_ASIENTO"].ToString()),
-                                 Estado = (string)resultado["ESTADO"]
-                             };
-                         }
-                     }
-                 }
-             }
-             return itinerarioEncontrado;
-         }*/
+                if (lstParameters.Count > 0) sbScript.Append(" and ");
+
+                sbScript.Append(" ( it.nombre = @pi_nombre )");
+                lstParameters.Add(new ObjectParameter("pi_nombre", objClienteBE.nombre));
+            }
+            if (objClienteBE.dni != 0)
+            {
+                sbScript.Append(" ( it.dni = @pi_dni )");
+                lstParameters.Add(new ObjectParameter("pi_dni", objClienteBE.dni));
+            }
+            if (lstParameters.Count > 0)
+                return (new FideCineEntities().Cliente.Where(sbScript.ToString(), lstParameters.ToArray()).ToList<Cliente>());
+            else
+                return (new FideCineEntities().Cliente.ToList<Cliente>());
+        }
+        public Cliente actualizar(Cliente objCliente)
+        {
+
+            using (var context = new FideCineEntities())
+            {
+                context.Cliente.Attach(objCliente);
+                context.SaveChanges();
+            }
+            return obtener(objCliente);
+
+        }
 
     }
 }
