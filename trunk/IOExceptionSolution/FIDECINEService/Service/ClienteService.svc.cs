@@ -33,7 +33,8 @@ namespace FIDECINEService.Service
             objClienteEntity.estado = objCliente.estado;
 
             dao.insertar(objClienteEntity);
-            return null;
+            return;
+
         }
 
         public ClienteBE ObtenerCliente(string idcliente)
