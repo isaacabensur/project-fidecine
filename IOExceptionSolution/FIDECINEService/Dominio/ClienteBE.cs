@@ -6,16 +6,16 @@ using System.Runtime.Serialization;
 
 namespace FIDECINEService.Dominio
 {
-  /*  public class Cliente
+    /*public class Cliente
     {
-        public int cliId {get; set;}
-        public char cliTipo {get; set;}
-        public char cliTipoDoc {get; set;}
-        public string cliNroDoc { get; set; }
-        public string cliNombComp { get; set; }
-        public string cliMail { get; set; }
-        public string cliTelf { get; set; }
-        public string cliDirec { get; set; }
+        public int CLI_ID {get; set;}
+        public char CLI_TIPO {get; set;}
+        public char CLI_TIPODOC {get; set;}
+        public string CLI_NRODOC { get; set; }
+        public string CLI_NOMBCOMP { get; set; }
+        public string CLI_MAIL{ get; set; }
+        public string CLI_TELF { get; set; }
+        public string CLI_DIREC { get; set; }
 
 
     }*/
