@@ -13,10 +13,5 @@ namespace FIDECINEWeb.Common
         public string Resultado { set; get; }
         public string Mensaje { set; get; }
 
-        public string BaseUrlRest
-        {
-            get { return WebConfigurationManager.AppSettings["baseUrlRest"]; }
-        }
-
     }
 }

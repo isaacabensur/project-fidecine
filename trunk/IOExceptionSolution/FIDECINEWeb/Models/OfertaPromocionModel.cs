@@ -11,5 +11,6 @@ namespace FIDECINEWeb.Models
     public class OfertaPromocionModel : GenericModel
     {
         public List<ProductoBE> ListaProducto{ set; get; }
+        public List<PromocionBE> ListaPromocion { set; get; }
     }
 }
