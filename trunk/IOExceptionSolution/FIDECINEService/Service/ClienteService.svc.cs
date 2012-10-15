@@ -76,11 +76,13 @@ namespace FIDECINEService.Service
             if(!string.IsNullOrEmpty(objClienteBE.fechaNacimiento)){
                 objCliente.fechaNacimiento = DateTime.ParseExact(objClienteBE.fechaNacimiento, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
-            if (objClienteBE.dni != null && objClienteBE.dni!=0)
+            //if (objClienteBE.dni != null && objClienteBE.dni!= 0)
+            if (objClienteBE.dni != 0)
             {
                 objCliente.dni = (int)objClienteBE.dni;
             }
-            if (objClienteBE.puntos != null && objClienteBE.puntos != 0)
+            //if (objClienteBE.puntos != null && objClienteBE.puntos != 0)
+            if (objClienteBE.puntos != 0)
             {
                 objCliente.puntos = (int)objClienteBE.puntos;
             }
