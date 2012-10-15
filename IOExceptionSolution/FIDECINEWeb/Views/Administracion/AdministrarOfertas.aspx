@@ -4,9 +4,14 @@
  <script type="text/javascript">
 
 
+
      $(document).ready(function () {
 
-         $("#tbCartelera").styleTable();
+         $("#txtPuntajeEdicion").keydown(function (event) {
+             soloNumeros(event);
+         });
+
+         $("#tbOferta").styleTable();
 
          $("#txtFechaDesde").datepicker({
              showOn: "button",
@@ -46,6 +51,7 @@
          });
 
 
+
          $("#dialog_EditarOferta").dialog({
              autoOpen: false,
              height: 250,
@@ -64,14 +70,15 @@
                          $('#btnSi').unbind('click');
                          $("#btnSi").click(function () {
 
-                             $.post('/AdministrarHorario/insertarHorario', $('#frmEdicionCartelera').serializeArray(), function (data) {
+
+                             $.post('/AdministrarOferta/insertarOferta', $('#frmEdicionOferta').serializeArray(), function (data) {
 
                                  informacion(data.Mensaje);
-                                 $("#dialog_EditarCartelera").dialog("close");
+                                 $("#dialog_EditarOferta").dialog("close");
 
                              },
                             "json")
-                            .success(function () { buscarHorarios() });
+                            .success(function () { buscarOfertas() });
 
                          });
 
@@ -114,54 +121,54 @@
          return false;
      }
 
-     function eliminarHorario(idCartelera) {
+     function eliminarPromocion(idPromocion) {
 
          $('#btnSi').unbind('click');
          $("#btnSi").click(function () {
 
-             $.post('/AdministrarHorario/eliminarHorario', { 'IdCartelera': idCartelera }, function (data) {
+             $.post('/AdministrarOferta/eliminarOferta', { 'IdPromocion': idPromocion }, function (data) {
 
                  informacion(data.Mensaje);
-                 $("#dialog_EditarCartelera").dialog("close");
 
              },
              "json")
-             .success(function () { buscarHorarios() });
+             .success(function () { buscarOfertas(); });
 
          });
 
-         confirmacion('¿Desea eliminar el Horario de Proyección seleccionado?');
+         confirmacion('¿Desea eliminar la Oferta seleccionada?');
 
      }
 
-     function buscarHorarios() {
+     function buscarOfertas() {
 
-         $.post('/AdministrarHorario/buscarHorario', $('#frmBuscarCartelera').serializeArray(), function (data) {
+         $.post('/AdministrarOferta/buscarOferta', $('#frmBuscarOferta').serializeArray(), function (data) {
 
-             procesarLista(data.ListaCartelera);
+             procesarLista(data.ListaPromocion);
 
          },
          "json");
 
-         $("#tbCartelera").styleTable();
+         $("#tbOferta").styleTable();
 
          return false;
      }
 
      function procesarLista(lista) {
 
-         $("#tbCartelera > tbody").empty();
+         $("#tbOferta > tbody").empty();
 
          $.each(lista, function (i, objeto) {
              var newRow = '';
              newRow = "<tr>";
-             newRow = newRow + "<td class='ui-widget-content'>" + objeto.PeliculaNombre + "</td>";
-             newRow = newRow + "<td class='ui-widget-content'>" + objeto.SalaNombre + "</td>";
-             newRow = newRow + "<td class='ui-widget-content'>" + objeto.FechaHora + "</td>";
-             newRow = newRow + "<td class='ui-widget-content' align='center' valign='middle'><img src='../../Content/images/iconos/mantenimiento/eliminar.png' onclick='eliminarHorario(" + objeto.IdCartelera + ");' title='eliminar' style='cursor:hand;'/></td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.ProductoNombre + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.Puntos + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.VigenciaInicio + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.VigenciaFin + "</td>";
+             newRow = newRow + "<td class='ui-widget-content' align='center' valign='middle'><img src='../../Content/images/iconos/mantenimiento/eliminar.png' onclick='eliminarPromocion(" + objeto.IdPromocion + ");' title='eliminar' style='cursor:hand;'/></td>";
              newRow = newRow + "</tr>";
 
-             $("#tbCartelera").append(newRow);
+             $("#tbOferta").append(newRow);
 
          });
      }
@@ -177,7 +184,7 @@
 		style="width: 99%; margin: 3px 3px 3px 3px;">
 	<div class="ui-widget-header ui-corner-all"><label>Gestión de Ofertas</label></div>
 	<div align="left" style="margin: 5px 5px 5px 5px;">
-    <form id="frmBuscarCartelera" action="#"> 
+    <form id="frmBuscarOferta" action="#"> 
 	     <table width="600px">  
             <tr>
                 <td>Fecha de Vigencia : </td>
@@ -204,11 +211,11 @@
 	    <div style="margin: 3px 3px 3px 3px;">
 
             <button id="btnNuevo" onclick="return nuevaOferta();">Nuevo</button>
-            <button id="btnBuscar" onclick="return buscarHorarios();">Buscar</button>            
+            <button id="btnBuscar" onclick="return buscarOfertas();">Buscar</button>            
         </div>
 	</div>
 
-	    <table  id="tbCartelera" width="790px" class="styleTable">
+	    <table  id="tbOferta" width="790px" class="styleTable">
 			<thead>
 			<tr>
 				<th width="270px">Producto</th>
@@ -235,19 +242,19 @@
             <tr>
                 <td>Puntaje :</td>
                 <td>                    
-                    <input id="txtPuntajeEdicion" class="validate[required]" name="Puntaje" onchange="validarPuntaje()"/>
+                    <input id="txtPuntajeEdicion" class="validate[required]" name="Puntos" onchange="validarPuntaje()"/>
                 </td> 
             </tr>
             <tr>
                 <td>Fecha de Vigencia - Inicio : </td>
                 <td>
-                    <input id="txtFechaVigenciaInicioEdicion" type="text" readonly="readonly" class="validate[required]" onchange="validarFechaVigenciaInicio()" name="vigenciaInicio"/>
+                    <input id="txtFechaVigenciaInicioEdicion" type="text" readonly="readonly" class="validate[required]" onchange="validarFechaVigenciaInicio()" name="VigenciaInicio"/>
                 </td>
             </tr>
             <tr>
                 <td>Fecha de Vigencia - Fin : </td>
                 <td>
-                    <input id="txtFechaVigenciaFinEdicion" type="text" readonly="readonly" class="validate[required]" onchange="validarFechaVigenciaFin()" name="vigenciaFin"/>
+                    <input id="txtFechaVigenciaFinEdicion" type="text" readonly="readonly" class="validate[required]" onchange="validarFechaVigenciaFin()" name="VigenciaFin"/>
                 </td>
             </tr>
         </table>												

@@ -162,7 +162,24 @@
                 });
             };
         })(jQuery);
-        
+
+        function soloNumeros(event) {
+            // 8 -> borrado
+            // 9 -> tabulador
+            // 37-40 -> flechas
+            // 188 -> .
+            // 190 -> ,    
+            if (event.keyCode == 8 || event.keyCode == 9 || (event.keyCode >= 37 && event.keyCode <= 40)
+            || event.keyCode == 188 || event.keyCode == 190) {
+                // permitimos determinadas teclas, no hacemos nada
+            } else {
+                // Nos aseguramos que sea un numero, sino evitamos la accion
+                if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                }
+            }
+        }
+
 </script>
 
 </head>
@@ -305,6 +322,40 @@
         $(document).ajaxStop(function () {
             $("#dialog").dialog("close");
         });
+        $.ajaxSetup({
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            }
+        });
+
+        $.ajaxSetup({
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            error: function (jqXHR, exception) {
+
+                alert('EEROR ' + jqXHR.status);
+
+                if (jqXHR.status === 0) {
+                    alert('Not connect.\n Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found. [404]');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error [500].');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error.\n' + jqXHR.responseText);
+                }
+            }
+        });
+
     });
 </script>
 

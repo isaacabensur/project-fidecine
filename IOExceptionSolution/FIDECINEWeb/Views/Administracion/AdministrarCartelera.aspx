@@ -123,7 +123,6 @@
              $.post('/AdministrarHorario/eliminarHorario', { 'IdCartelera': idCartelera }, function (data) {
 
                  informacion(data.Mensaje);
-                 $("#dialog_EditarCartelera").dialog("close");
 
              },
              "json")

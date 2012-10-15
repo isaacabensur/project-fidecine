@@ -21,38 +21,25 @@ namespace FIDECINEService.Persistencia
             }
         }
 
-        public void actualizar(Promocion objPromocion)
+        public void eliminar(int int_pIdPromocion)
         {
 
             using (var context = new FideCineEntities())
             {
-                context.Promocion.Attach(objPromocion);
+                context.Promocion.DeleteObject(context.Promocion.Where(" it.IdPromocion = @pi_IdPromocion", new ObjectParameter[] { new ObjectParameter("pi_IdPromocion", int_pIdPromocion) }).First<Promocion>());
                 context.SaveChanges();
             }
+
         }
 
-        public Promocion obtener(int int_pIdPromocion)
-        {
-
-            return new FideCineEntities().Promocion.Where(" it.IdPromocion = @pi_IdPromocion", new ObjectParameter[] { new ObjectParameter("pi_IdPromocion", int_pIdPromocion) }).First<Promocion>();
-        }
-
-        public List<Promocion> listar(string str_pFechaInicio, string str_pFechaFin, string str_pEstado)
+        public List<Promocion> listar(string str_pFechaInicio, string str_pFechaFin)
         {
             StringBuilder sbScript = new StringBuilder("");
             List<ObjectParameter> lstParameters = new List<ObjectParameter>();
 
 
-            if (!string.IsNullOrEmpty(str_pEstado))
-            {
-                sbScript.Append(" ( it.Estado = @pi_Estado)");
-                lstParameters.Add(new ObjectParameter("pi_Estado", str_pEstado));
-            }
-
             if (!string.IsNullOrEmpty(str_pFechaInicio))
             {
-
-                if (lstParameters.Count > 0) sbScript.Append(" and ");
 
                 sbScript.Append(" ( it.vigenciaInicio >= @pi_FechaInicio )");
                 lstParameters.Add(new ObjectParameter("pi_FechaInicio", DateTime.ParseExact(str_pFechaInicio, "dd/MM/yyyy", CultureInfo.InvariantCulture)));
