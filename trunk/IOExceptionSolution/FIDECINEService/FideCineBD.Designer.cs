@@ -20,14 +20,13 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Cartelera_Pelicula", "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FIDECINEService.Pelicula), "Cartelera", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Cartelera), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Cartelera_Sala", "Sala", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FIDECINEService.Sala), "Cartelera", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Cartelera), true)]
-[assembly: EdmRelationshipAttribute("FideCineModel", "FK_VisitaCliente_HorarioPelicula", "Cartelera", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.Cartelera), "VisitaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.VisitaCliente), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Pelicula_CategoriaPelicula", "CategoriaPelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.CategoriaPelicula), "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Pelicula), true)]
+[assembly: EdmRelationshipAttribute("FideCineModel", "FK_PuntajeAcumulado_Cliente", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FIDECINEService.Cliente), "PuntajeAcumulado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.PuntajeAcumulado), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_TarjetaCliente_Cliente", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FIDECINEService.Cliente), "TarjetaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.TarjetaCliente), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_VisitaCliente_Cliente", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.Cliente), "VisitaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.VisitaCliente), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Pelicula_GeneroPelicula", "GeneroPelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.GeneroPelicula), "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Pelicula), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Pelicula_TipoPelicula", "TipoPelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.TipoPelicula), "Pelicula", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Pelicula), true)]
 [assembly: EdmRelationshipAttribute("FideCineModel", "FK_Promocion_Producto", "Producto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FIDECINEService.Producto), "Promocion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.Promocion), true)]
-[assembly: EdmRelationshipAttribute("FideCineModel", "FK_VisitaCliente_TarjetaCliente", "TarjetaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(FIDECINEService.TarjetaCliente), "VisitaCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FIDECINEService.VisitaCliente), true)]
 
 #endregion
 
@@ -194,6 +193,22 @@ namespace FIDECINEService
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<PuntajeAcumulado> PuntajeAcumulado
+        {
+            get
+            {
+                if ((_PuntajeAcumulado == null))
+                {
+                    _PuntajeAcumulado = base.CreateObjectSet<PuntajeAcumulado>("PuntajeAcumulado");
+                }
+                return _PuntajeAcumulado;
+            }
+        }
+        private ObjectSet<PuntajeAcumulado> _PuntajeAcumulado;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Sala> Sala
         {
             get
@@ -312,6 +327,14 @@ namespace FIDECINEService
         public void AddToPromocion(Promocion promocion)
         {
             base.AddObject("Promocion", promocion);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PuntajeAcumulado EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPuntajeAcumulado(PuntajeAcumulado puntajeAcumulado)
+        {
+            base.AddObject("PuntajeAcumulado", puntajeAcumulado);
         }
     
         /// <summary>
@@ -559,28 +582,6 @@ namespace FIDECINEService
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Sala>("FideCineModel.FK_Cartelera_Sala", "Sala", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_HorarioPelicula", "VisitaCliente")]
-        public EntityCollection<VisitaCliente> VisitaCliente
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "VisitaCliente");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "VisitaCliente", value);
                 }
             }
         }
@@ -990,6 +991,44 @@ namespace FIDECINEService
         #endregion
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_PuntajeAcumulado_Cliente", "PuntajeAcumulado")]
+        public PuntajeAcumulado PuntajeAcumulado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PuntajeAcumulado>("FideCineModel.FK_PuntajeAcumulado_Cliente", "PuntajeAcumulado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PuntajeAcumulado>("FideCineModel.FK_PuntajeAcumulado_Cliente", "PuntajeAcumulado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PuntajeAcumulado> PuntajeAcumuladoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PuntajeAcumulado>("FideCineModel.FK_PuntajeAcumulado_Cliente", "PuntajeAcumulado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PuntajeAcumulado>("FideCineModel.FK_PuntajeAcumulado_Cliente", "PuntajeAcumulado", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1879,6 +1918,128 @@ namespace FIDECINEService
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="PuntajeAcumulado")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PuntajeAcumulado : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new PuntajeAcumulado object.
+        /// </summary>
+        /// <param name="idcliente">Initial value of the idcliente property.</param>
+        /// <param name="puntos">Initial value of the Puntos property.</param>
+        public static PuntajeAcumulado CreatePuntajeAcumulado(global::System.Int32 idcliente, global::System.Int32 puntos)
+        {
+            PuntajeAcumulado puntajeAcumulado = new PuntajeAcumulado();
+            puntajeAcumulado.idcliente = idcliente;
+            puntajeAcumulado.Puntos = puntos;
+            return puntajeAcumulado;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idcliente
+        {
+            get
+            {
+                return _idcliente;
+            }
+            set
+            {
+                if (_idcliente != value)
+                {
+                    OnidclienteChanging(value);
+                    ReportPropertyChanging("idcliente");
+                    _idcliente = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idcliente");
+                    OnidclienteChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idcliente;
+        partial void OnidclienteChanging(global::System.Int32 value);
+        partial void OnidclienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Puntos
+        {
+            get
+            {
+                return _Puntos;
+            }
+            set
+            {
+                OnPuntosChanging(value);
+                ReportPropertyChanging("Puntos");
+                _Puntos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Puntos");
+                OnPuntosChanged();
+            }
+        }
+        private global::System.Int32 _Puntos;
+        partial void OnPuntosChanging(global::System.Int32 value);
+        partial void OnPuntosChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_PuntajeAcumulado_Cliente", "Cliente")]
+        public Cliente Cliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("FideCineModel.FK_PuntajeAcumulado_Cliente", "Cliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("FideCineModel.FK_PuntajeAcumulado_Cliente", "Cliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Cliente> ClienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("FideCineModel.FK_PuntajeAcumulado_Cliente", "Cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("FideCineModel.FK_PuntajeAcumulado_Cliente", "Cliente", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="FideCineModel", Name="Sala")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -2172,28 +2333,6 @@ namespace FIDECINEService
                 }
             }
         }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_TarjetaCliente", "VisitaCliente")]
-        public EntityCollection<VisitaCliente> VisitaCliente
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "VisitaCliente");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VisitaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "VisitaCliente", value);
-                }
-            }
-        }
 
         #endregion
     }
@@ -2315,11 +2454,11 @@ namespace FIDECINEService
         /// <summary>
         /// Create a new VisitaCliente object.
         /// </summary>
-        /// <param name="idvisita">Initial value of the idvisita property.</param>
-        public static VisitaCliente CreateVisitaCliente(global::System.Int32 idvisita)
+        /// <param name="idVisitaCliente">Initial value of the IdVisitaCliente property.</param>
+        public static VisitaCliente CreateVisitaCliente(global::System.Int32 idVisitaCliente)
         {
             VisitaCliente visitaCliente = new VisitaCliente();
-            visitaCliente.idvisita = idvisita;
+            visitaCliente.IdVisitaCliente = idVisitaCliente;
             return visitaCliente;
         }
 
@@ -2331,51 +2470,51 @@ namespace FIDECINEService
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 idvisita
+        public global::System.Int32 IdVisitaCliente
         {
             get
             {
-                return _idvisita;
+                return _IdVisitaCliente;
             }
             set
             {
-                if (_idvisita != value)
+                if (_IdVisitaCliente != value)
                 {
-                    OnidvisitaChanging(value);
-                    ReportPropertyChanging("idvisita");
-                    _idvisita = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idvisita");
-                    OnidvisitaChanged();
+                    OnIdVisitaClienteChanging(value);
+                    ReportPropertyChanging("IdVisitaCliente");
+                    _IdVisitaCliente = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IdVisitaCliente");
+                    OnIdVisitaClienteChanged();
                 }
             }
         }
-        private global::System.Int32 _idvisita;
-        partial void OnidvisitaChanging(global::System.Int32 value);
-        partial void OnidvisitaChanged();
+        private global::System.Int32 _IdVisitaCliente;
+        partial void OnIdVisitaClienteChanging(global::System.Int32 value);
+        partial void OnIdVisitaClienteChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> idhorario
+        public Nullable<global::System.Int32> IdCartelera
         {
             get
             {
-                return _idhorario;
+                return _IdCartelera;
             }
             set
             {
-                OnidhorarioChanging(value);
-                ReportPropertyChanging("idhorario");
-                _idhorario = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idhorario");
-                OnidhorarioChanged();
+                OnIdCarteleraChanging(value);
+                ReportPropertyChanging("IdCartelera");
+                _IdCartelera = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdCartelera");
+                OnIdCarteleraChanged();
             }
         }
-        private Nullable<global::System.Int32> _idhorario;
-        partial void OnidhorarioChanging(Nullable<global::System.Int32> value);
-        partial void OnidhorarioChanged();
+        private Nullable<global::System.Int32> _IdCartelera;
+        partial void OnIdCarteleraChanging(Nullable<global::System.Int32> value);
+        partial void OnIdCarteleraChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2406,66 +2545,28 @@ namespace FIDECINEService
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> cantidadEntradas
+        public Nullable<global::System.Int32> CantidadEntradas
         {
             get
             {
-                return _cantidadEntradas;
+                return _CantidadEntradas;
             }
             set
             {
-                OncantidadEntradasChanging(value);
-                ReportPropertyChanging("cantidadEntradas");
-                _cantidadEntradas = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("cantidadEntradas");
-                OncantidadEntradasChanged();
+                OnCantidadEntradasChanging(value);
+                ReportPropertyChanging("CantidadEntradas");
+                _CantidadEntradas = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CantidadEntradas");
+                OnCantidadEntradasChanged();
             }
         }
-        private Nullable<global::System.Int32> _cantidadEntradas;
-        partial void OncantidadEntradasChanging(Nullable<global::System.Int32> value);
-        partial void OncantidadEntradasChanged();
+        private Nullable<global::System.Int32> _CantidadEntradas;
+        partial void OnCantidadEntradasChanging(Nullable<global::System.Int32> value);
+        partial void OnCantidadEntradasChanged();
 
         #endregion
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_HorarioPelicula", "Cartelera")]
-        public Cartelera Cartelera
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cartelera>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "Cartelera").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cartelera>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "Cartelera").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Cartelera> CarteleraReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cartelera>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "Cartelera");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cartelera>("FideCineModel.FK_VisitaCliente_HorarioPelicula", "Cartelera", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2501,44 +2602,6 @@ namespace FIDECINEService
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("FideCineModel.FK_VisitaCliente_Cliente", "Cliente", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("FideCineModel", "FK_VisitaCliente_TarjetaCliente", "TarjetaCliente")]
-        public TarjetaCliente TarjetaCliente
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TarjetaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "TarjetaCliente").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TarjetaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "TarjetaCliente").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TarjetaCliente> TarjetaClienteReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TarjetaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "TarjetaCliente");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TarjetaCliente>("FideCineModel.FK_VisitaCliente_TarjetaCliente", "TarjetaCliente", value);
                 }
             }
         }
