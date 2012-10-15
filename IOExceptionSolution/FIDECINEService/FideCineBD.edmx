@@ -13,6 +13,7 @@
           <EntitySet Name="Pelicula" EntityType="FideCineModel.Store.Pelicula" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Producto" EntityType="FideCineModel.Store.Producto" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Promocion" EntityType="FideCineModel.Store.Promocion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PuntajeAcumulado" EntityType="FideCineModel.Store.PuntajeAcumulado" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Sala" EntityType="FideCineModel.Store.Sala" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TarjetaCliente" EntityType="FideCineModel.Store.TarjetaCliente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TipoPelicula" EntityType="FideCineModel.Store.TipoPelicula" store:Type="Tables" Schema="dbo" />
@@ -41,20 +42,16 @@
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Promocion" EntitySet="Promocion" />
           </AssociationSet>
+          <AssociationSet Name="FK_PuntajeAcumulado_Cliente" Association="FideCineModel.Store.FK_PuntajeAcumulado_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="PuntajeAcumulado" EntitySet="PuntajeAcumulado" />
+          </AssociationSet>
           <AssociationSet Name="FK_TarjetaCliente_Cliente" Association="FideCineModel.Store.FK_TarjetaCliente_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="TarjetaCliente" EntitySet="TarjetaCliente" />
           </AssociationSet>
           <AssociationSet Name="FK_VisitaCliente_Cliente" Association="FideCineModel.Store.FK_VisitaCliente_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VisitaCliente_HorarioPelicula" Association="FideCineModel.Store.FK_VisitaCliente_HorarioPelicula">
-            <End Role="Cartelera" EntitySet="Cartelera" />
-            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VisitaCliente_TarjetaCliente" Association="FideCineModel.Store.FK_VisitaCliente_TarjetaCliente">
-            <End Role="TarjetaCliente" EntitySet="TarjetaCliente" />
             <End Role="VisitaCliente" EntitySet="VisitaCliente" />
           </AssociationSet>
         </EntityContainer>
@@ -129,6 +126,13 @@
           <Property Name="vigenciaFin" Type="datetime" Nullable="false" />
           <Property Name="IdProducto" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PuntajeAcumulado">
+          <Key>
+            <PropertyRef Name="idcliente" />
+          </Key>
+          <Property Name="idcliente" Type="int" Nullable="false" />
+          <Property Name="Puntos" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Sala">
           <Key>
             <PropertyRef Name="IdSala" />
@@ -155,12 +159,12 @@
         </EntityType>
         <EntityType Name="VisitaCliente">
           <Key>
-            <PropertyRef Name="idvisita" />
+            <PropertyRef Name="IdVisitaCliente" />
           </Key>
-          <Property Name="idvisita" Type="int" Nullable="false" />
-          <Property Name="idhorario" Type="int" />
+          <Property Name="IdVisitaCliente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdCartelera" Type="int" />
           <Property Name="idcliente" Type="int" />
-          <Property Name="cantidadEntradas" Type="int" />
+          <Property Name="CantidadEntradas" Type="int" />
         </EntityType>
         <Association Name="FK_Cartelera_Pelicula">
           <End Role="Pelicula" Type="FideCineModel.Store.Pelicula" Multiplicity="1" />
@@ -234,6 +238,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PuntajeAcumulado_Cliente">
+          <End Role="Cliente" Type="FideCineModel.Store.Cliente" Multiplicity="1" />
+          <End Role="PuntajeAcumulado" Type="FideCineModel.Store.PuntajeAcumulado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idcliente" />
+            </Principal>
+            <Dependent Role="PuntajeAcumulado">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TarjetaCliente_Cliente">
           <End Role="Cliente" Type="FideCineModel.Store.Cliente" Multiplicity="1" />
           <End Role="TarjetaCliente" Type="FideCineModel.Store.TarjetaCliente" Multiplicity="0..1" />
@@ -258,30 +274,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitaCliente_HorarioPelicula">
-          <End Role="Cartelera" Type="FideCineModel.Store.Cartelera" Multiplicity="0..1" />
-          <End Role="VisitaCliente" Type="FideCineModel.Store.VisitaCliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cartelera">
-              <PropertyRef Name="IdCartelera" />
-            </Principal>
-            <Dependent Role="VisitaCliente">
-              <PropertyRef Name="idhorario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VisitaCliente_TarjetaCliente">
-          <End Role="TarjetaCliente" Type="FideCineModel.Store.TarjetaCliente" Multiplicity="0..1" />
-          <End Role="VisitaCliente" Type="FideCineModel.Store.VisitaCliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TarjetaCliente">
-              <PropertyRef Name="idcliente" />
-            </Principal>
-            <Dependent Role="VisitaCliente">
-              <PropertyRef Name="idcliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -294,6 +286,7 @@
           <EntitySet Name="Pelicula" EntityType="FideCineModel.Pelicula" />
           <EntitySet Name="Producto" EntityType="FideCineModel.Producto" />
           <EntitySet Name="Promocion" EntityType="FideCineModel.Promocion" />
+          <EntitySet Name="PuntajeAcumulado" EntityType="FideCineModel.PuntajeAcumulado" />
           <EntitySet Name="Sala" EntityType="FideCineModel.Sala" />
           <EntitySet Name="TarjetaCliente" EntityType="FideCineModel.TarjetaCliente" />
           <EntitySet Name="TipoPelicula" EntityType="FideCineModel.TipoPelicula" />
@@ -306,13 +299,13 @@
             <End Role="Sala" EntitySet="Sala" />
             <End Role="Cartelera" EntitySet="Cartelera" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitaCliente_HorarioPelicula" Association="FideCineModel.FK_VisitaCliente_HorarioPelicula">
-            <End Role="Cartelera" EntitySet="Cartelera" />
-            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
-          </AssociationSet>
           <AssociationSet Name="FK_Pelicula_CategoriaPelicula" Association="FideCineModel.FK_Pelicula_CategoriaPelicula">
             <End Role="CategoriaPelicula" EntitySet="CategoriaPelicula" />
             <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PuntajeAcumulado_Cliente" Association="FideCineModel.FK_PuntajeAcumulado_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="PuntajeAcumulado" EntitySet="PuntajeAcumulado" />
           </AssociationSet>
           <AssociationSet Name="FK_TarjetaCliente_Cliente" Association="FideCineModel.FK_TarjetaCliente_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
@@ -334,10 +327,6 @@
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Promocion" EntitySet="Promocion" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitaCliente_TarjetaCliente" Association="FideCineModel.FK_VisitaCliente_TarjetaCliente">
-            <End Role="TarjetaCliente" EntitySet="TarjetaCliente" />
-            <End Role="VisitaCliente" EntitySet="VisitaCliente" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cartelera">
           <Key>
@@ -349,7 +338,6 @@
           <Property Type="DateTime" Name="FechaHora" Nullable="false" />
           <NavigationProperty Name="Pelicula" Relationship="FideCineModel.FK_Cartelera_Pelicula" FromRole="Cartelera" ToRole="Pelicula" />
           <NavigationProperty Name="Sala" Relationship="FideCineModel.FK_Cartelera_Sala" FromRole="Cartelera" ToRole="Sala" />
-          <NavigationProperty Name="VisitaCliente" Relationship="FideCineModel.FK_VisitaCliente_HorarioPelicula" FromRole="Cartelera" ToRole="VisitaCliente" />
         </EntityType>
         <EntityType Name="CategoriaPelicula">
           <Key>
@@ -374,6 +362,7 @@
           <Property Type="String" Name="tipocliente" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="puntos" />
           <Property Type="String" Name="estado" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="PuntajeAcumulado" Relationship="FideCineModel.FK_PuntajeAcumulado_Cliente" FromRole="Cliente" ToRole="PuntajeAcumulado" />
           <NavigationProperty Name="TarjetaCliente" Relationship="FideCineModel.FK_TarjetaCliente_Cliente" FromRole="Cliente" ToRole="TarjetaCliente" />
           <NavigationProperty Name="VisitaCliente" Relationship="FideCineModel.FK_VisitaCliente_Cliente" FromRole="Cliente" ToRole="VisitaCliente" />
         </EntityType>
@@ -423,6 +412,14 @@
           <Property Type="Int32" Name="IdProducto" Nullable="false" />
           <NavigationProperty Name="Producto" Relationship="FideCineModel.FK_Promocion_Producto" FromRole="Promocion" ToRole="Producto" />
         </EntityType>
+        <EntityType Name="PuntajeAcumulado">
+          <Key>
+            <PropertyRef Name="idcliente" />
+          </Key>
+          <Property Type="Int32" Name="idcliente" Nullable="false" />
+          <Property Type="Int32" Name="Puntos" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="FideCineModel.FK_PuntajeAcumulado_Cliente" FromRole="PuntajeAcumulado" ToRole="Cliente" />
+        </EntityType>
         <EntityType Name="Sala">
           <Key>
             <PropertyRef Name="IdSala" />
@@ -441,7 +438,6 @@
           <Property Type="String" Name="estado" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Type="Int32" Name="puntos" />
           <NavigationProperty Name="Cliente" Relationship="FideCineModel.FK_TarjetaCliente_Cliente" FromRole="TarjetaCliente" ToRole="Cliente" />
-          <NavigationProperty Name="VisitaCliente" Relationship="FideCineModel.FK_VisitaCliente_TarjetaCliente" FromRole="TarjetaCliente" ToRole="VisitaCliente" />
         </EntityType>
         <EntityType Name="TipoPelicula">
           <Key>
@@ -453,15 +449,13 @@
         </EntityType>
         <EntityType Name="VisitaCliente">
           <Key>
-            <PropertyRef Name="idvisita" />
+            <PropertyRef Name="IdVisitaCliente" />
           </Key>
-          <Property Type="Int32" Name="idvisita" Nullable="false" />
-          <Property Type="Int32" Name="idhorario" />
+          <Property Type="Int32" Name="IdVisitaCliente" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IdCartelera" />
           <Property Type="Int32" Name="idcliente" />
-          <Property Type="Int32" Name="cantidadEntradas" />
-          <NavigationProperty Name="Cartelera" Relationship="FideCineModel.FK_VisitaCliente_HorarioPelicula" FromRole="VisitaCliente" ToRole="Cartelera" />
+          <Property Type="Int32" Name="CantidadEntradas" />
           <NavigationProperty Name="Cliente" Relationship="FideCineModel.FK_VisitaCliente_Cliente" FromRole="VisitaCliente" ToRole="Cliente" />
-          <NavigationProperty Name="TarjetaCliente" Relationship="FideCineModel.FK_VisitaCliente_TarjetaCliente" FromRole="VisitaCliente" ToRole="TarjetaCliente" />
         </EntityType>
         <Association Name="FK_Cartelera_Pelicula">
           <End Type="FideCineModel.Pelicula" Role="Pelicula" Multiplicity="1" />
@@ -487,18 +481,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitaCliente_HorarioPelicula">
-          <End Type="FideCineModel.Cartelera" Role="Cartelera" Multiplicity="0..1" />
-          <End Type="FideCineModel.VisitaCliente" Role="VisitaCliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cartelera">
-              <PropertyRef Name="IdCartelera" />
-            </Principal>
-            <Dependent Role="VisitaCliente">
-              <PropertyRef Name="idhorario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Pelicula_CategoriaPelicula">
           <End Type="FideCineModel.CategoriaPelicula" Role="CategoriaPelicula" Multiplicity="0..1" />
           <End Type="FideCineModel.Pelicula" Role="Pelicula" Multiplicity="*" />
@@ -508,6 +490,18 @@
             </Principal>
             <Dependent Role="Pelicula">
               <PropertyRef Name="idcategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PuntajeAcumulado_Cliente">
+          <End Type="FideCineModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="FideCineModel.PuntajeAcumulado" Role="PuntajeAcumulado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idcliente" />
+            </Principal>
+            <Dependent Role="PuntajeAcumulado">
+              <PropertyRef Name="idcliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -568,18 +562,6 @@
             </Principal>
             <Dependent Role="Promocion">
               <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VisitaCliente_TarjetaCliente">
-          <End Type="FideCineModel.TarjetaCliente" Role="TarjetaCliente" Multiplicity="0..1" />
-          <End Type="FideCineModel.VisitaCliente" Role="VisitaCliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TarjetaCliente">
-              <PropertyRef Name="idcliente" />
-            </Principal>
-            <Dependent Role="VisitaCliente">
-              <PropertyRef Name="idcliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -667,6 +649,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PuntajeAcumulado">
+            <EntityTypeMapping TypeName="FideCineModel.PuntajeAcumulado">
+              <MappingFragment StoreEntitySet="PuntajeAcumulado">
+                <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+                <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Sala">
             <EntityTypeMapping TypeName="FideCineModel.Sala">
               <MappingFragment StoreEntitySet="Sala">
@@ -697,10 +687,10 @@
           <EntitySetMapping Name="VisitaCliente">
             <EntityTypeMapping TypeName="FideCineModel.VisitaCliente">
               <MappingFragment StoreEntitySet="VisitaCliente">
-                <ScalarProperty Name="cantidadEntradas" ColumnName="cantidadEntradas" />
+                <ScalarProperty Name="CantidadEntradas" ColumnName="CantidadEntradas" />
                 <ScalarProperty Name="idcliente" ColumnName="idcliente" />
-                <ScalarProperty Name="idhorario" ColumnName="idhorario" />
-                <ScalarProperty Name="idvisita" ColumnName="idvisita" />
+                <ScalarProperty Name="IdCartelera" ColumnName="IdCartelera" />
+                <ScalarProperty Name="IdVisitaCliente" ColumnName="IdVisitaCliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -725,30 +715,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="FideCineBD" ZoomLevel="67">
-        <EntityTypeShape EntityType="FideCineModel.Cartelera" Width="1.5" PointX="5.25" PointY="1.625" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="FideCineModel.Cartelera" Width="1.5" PointX="5.25" PointY="1.625" Height="2.1725878906250031" />
         <EntityTypeShape EntityType="FideCineModel.CategoriaPelicula" Width="1.5" PointX="0.75" PointY="2" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="FideCineModel.Cliente" Width="1.5" PointX="5.25" PointY="7" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="FideCineModel.Cliente" Width="1.5" PointX="5.75" PointY="6.875" Height="3.7109993489583388" />
         <EntityTypeShape EntityType="FideCineModel.GeneroPelicula" Width="1.5" PointX="0.75" PointY="4.75" Height="1.5956835937500031" />
         <EntityTypeShape EntityType="FideCineModel.Pelicula" Width="1.5" PointX="3" PointY="1" Height="3.5186979166666674" />
-        <EntityTypeShape EntityType="FideCineModel.Producto" Width="1.5" PointX="7.75" PointY="5.125" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="FideCineModel.Promocion" Width="1.5" PointX="10" PointY="4.875" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="FideCineModel.Producto" Width="1.5" PointX="7.75" PointY="1.125" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="FideCineModel.Promocion" Width="1.5" PointX="10" PointY="0.875" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="FideCineModel.PuntajeAcumulado" Width="1.5" PointX="8" PointY="5.125" Height="1.5956835937500031" />
         <EntityTypeShape EntityType="FideCineModel.Sala" Width="1.5" PointX="3" PointY="5.875" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="FideCineModel.TarjetaCliente" Width="1.5" PointX="5.25" PointY="11.25" Height="2.172587890624996" />
-        <EntityTypeShape EntityType="FideCineModel.TipoPelicula" Width="1.5" PointX="0.75" PointY="8.125" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="FideCineModel.VisitaCliente" Width="1.5" PointX="7.5" PointY="1.625" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="FideCineModel.TarjetaCliente" Width="1.5" PointX="8" PointY="7.5" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="FideCineModel.TipoPelicula" Width="1.5" PointX="0.75" PointY="8.125" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="FideCineModel.VisitaCliente" Width="1.5" PointX="8" PointY="10.25" Height="1.9802864583333246" />
         <AssociationConnector Association="FideCineModel.FK_Cartelera_Pelicula" >
-          <ConnectorPoint PointX="4.5" PointY="2.8074446614583337" />
-          <ConnectorPoint PointX="5.25" PointY="2.8074446614583337" />
+          <ConnectorPoint PointX="4.5" PointY="2.7112939453125016" />
+          <ConnectorPoint PointX="5.25" PointY="2.7112939453125016" />
         </AssociationConnector>
         <AssociationConnector Association="FideCineModel.FK_Cartelera_Sala" >
-          <ConnectorPoint PointX="4.5" PointY="5.875" />
-          <ConnectorPoint PointX="4.875" PointY="5.5" />
-          <ConnectorPoint PointX="4.875" PointY="3.4299189921875013" />
-          <ConnectorPoint PointX="5.25" PointY="3.4299189921875013" />
-        </AssociationConnector>
-        <AssociationConnector Association="FideCineModel.FK_VisitaCliente_HorarioPelicula" >
-          <ConnectorPoint PointX="6.75" PointY="2.8074446614583337" />
-          <ConnectorPoint PointX="7.5" PointY="2.8074446614583337" />
+          <ConnectorPoint PointX="4.5" PointY="6.34375" />
+          <ConnectorPoint PointX="5.46875" PointY="6.34375" />
+          <ConnectorPoint PointX="5.46875" PointY="3.7975878906250031" />
         </AssociationConnector>
         <AssociationConnector Association="FideCineModel.FK_Pelicula_CategoriaPelicula" >
           <ConnectorPoint PointX="2.25" PointY="2.7978417968750016" />
@@ -756,14 +742,18 @@
           <ConnectorPoint PointX="2.8958333333333335" PointY="2.7978417968750016" />
           <ConnectorPoint PointX="3" PointY="2.7978417968750016" />
         </AssociationConnector>
+        <AssociationConnector Association="FideCineModel.FK_PuntajeAcumulado_Cliente" >
+          <ConnectorPoint PointX="6.5" PointY="6.875" />
+          <ConnectorPoint PointX="6.5" PointY="5.9228417968750016" />
+          <ConnectorPoint PointX="8" PointY="5.9228417968750016" />
+        </AssociationConnector>
         <AssociationConnector Association="FideCineModel.FK_TarjetaCliente_Cliente" >
-          <ConnectorPoint PointX="6" PointY="10.518697916666667" />
-          <ConnectorPoint PointX="6" PointY="11.25" />
+          <ConnectorPoint PointX="7.25" PointY="8.49014322916667" />
+          <ConnectorPoint PointX="8" PointY="8.49014322916667" />
         </AssociationConnector>
         <AssociationConnector Association="FideCineModel.FK_VisitaCliente_Cliente" >
-          <ConnectorPoint PointX="6.75" PointY="8.7593489583333337" />
-          <ConnectorPoint PointX="7.59375" PointY="8.7593489583333337" />
-          <ConnectorPoint PointX="7.59375" PointY="3.9898893229166674" />
+          <ConnectorPoint PointX="7.25" PointY="10.417999674479169" />
+          <ConnectorPoint PointX="8" PointY="10.417999674479169" />
         </AssociationConnector>
         <AssociationConnector Association="FideCineModel.FK_Pelicula_GeneroPelicula" >
           <ConnectorPoint PointX="2.25" PointY="4.75" />
@@ -780,13 +770,8 @@
           <ConnectorPoint PointX="3" PointY="1.8676688984375072" />
         </AssociationConnector>
         <AssociationConnector Association="FideCineModel.FK_Promocion_Producto" >
-          <ConnectorPoint PointX="9.25" PointY="6.0189925130208337" />
-          <ConnectorPoint PointX="10" PointY="6.0189925130208337" />
-        </AssociationConnector>
-        <AssociationConnector Association="FideCineModel.FK_VisitaCliente_TarjetaCliente" >
-          <ConnectorPoint PointX="6.75" PointY="12.336293945312498" />
-          <ConnectorPoint PointX="7.5624975" PointY="12.336293945312498" />
-          <ConnectorPoint PointX="7.5624975" PointY="3.9898893229166674" />
+          <ConnectorPoint PointX="9.25" PointY="2.0189925130208337" />
+          <ConnectorPoint PointX="10" PointY="2.0189925130208337" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
