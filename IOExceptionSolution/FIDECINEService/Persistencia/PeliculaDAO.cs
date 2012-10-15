@@ -19,7 +19,9 @@ namespace FIDECINEService.Persistencia
             if (!string.IsNullOrEmpty(objPeliculaBE.Estado))
             {
                 sbScript.Append(" ( ToUpper(it.Estado) = @pi_Estado )");
-                lstParameters.Add(new ObjectParameter("pi_Estado", objPeliculaBE.Estado.ToUpper()));
+               
+
+                
             }
 
             return (new FideCineEntities().Pelicula.Where(sbScript.ToString(), lstParameters.ToArray()).ToList<Pelicula>());
