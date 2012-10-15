@@ -17,7 +17,7 @@ namespace FIDECINETest
         [TestMethod]
         public void CRUDClienteTest()
         {
-            // Prueba de creación de alumno vía HTTP POST
+            // Prueba de creación de cliente vía HTTP POST
             string postdata = "{\"nombre\":\"Oscar\",\"apellidoPaterno\":\"Pimentel\",\"apellidoMaterno\":\"Angulo\",\"dni\":\"00327188\",\"direccion\":\"Jr. Saturno 932\",\"tipocliente\":\"P\",\"estado\":\"A\"}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
@@ -33,7 +33,7 @@ namespace FIDECINETest
             JavaScriptSerializer js = new JavaScriptSerializer();
             Cliente clienteCreado = js.Deserialize<Cliente>(alumnoJson);
             Assert.AreEqual("1", clienteCreado.idcliente);
-            Assert.AreEqual("Juan", clienteCreado.nombre);
+            Assert.AreEqual("Oscar", clienteCreado.nombre);
 
             /*
             // Prueba de Obtencion de alumno via HTTP GET
