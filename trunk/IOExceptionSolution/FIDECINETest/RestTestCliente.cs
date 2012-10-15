@@ -18,7 +18,7 @@ namespace FIDECINETest
         public void CRUDClienteTest()
         {
             // Prueba de creación de alumno vía HTTP POST
-            /*string postdata = "{\"nombre\":\"Juan\",\"apellidoPaterno\":\"Juan\",\"apellidoMaterno\":\"Juan\",\"dni\":\"7\",\"direccion\":\"AvS\",\"tipocliente\":\"P\",\"estado\":\"A\"}"; //JSON
+            string postdata = "{\"nombre\":\"Oscar\",\"apellidoPaterno\":\"Pimentel\",\"apellidoMaterno\":\"Angulo\",\"dni\":\"00327188\",\"direccion\":\"Jr. Saturno 932\",\"tipocliente\":\"P\",\"estado\":\"A\"}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
                 .Create("http://localhost:12139/Service/ClienteService.svc/Cliente");
@@ -31,10 +31,11 @@ namespace FIDECINETest
             StreamReader reader = new StreamReader(res.GetResponseStream());
             string alumnoJson = reader.ReadToEnd();
             JavaScriptSerializer js = new JavaScriptSerializer();
-            /*Cliente clienteCreado = js.Deserialize<Cliente>(alumnoJson);
+            Cliente clienteCreado = js.Deserialize<Cliente>(alumnoJson);
             Assert.AreEqual("1", clienteCreado.idcliente);
             Assert.AreEqual("Juan", clienteCreado.nombre);
 
+            /*
             // Prueba de Obtencion de alumno via HTTP GET
             HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:12139/Service/ClienteService.svc/Cliente/1");
             req2.Method = "GET";
