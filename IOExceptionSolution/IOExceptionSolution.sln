@@ -28,6 +28,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseDatos", "BaseDatos", "{4D210845-ECBB-459E-890D-8E498C23905B}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\FideCine.sql = BaseDatos\FideCine.sql
+		script_inserts.sql = script_inserts.sql
 	EndProjectSection
 EndProject
 Global
