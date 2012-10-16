@@ -14,8 +14,32 @@ namespace FIDECINEService.Service
     public interface IPeliculaService
     {
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "Pelicula", ResponseFormat = WebMessageFormat.Json)]
+        List<PeliculaBE> listar(string str_pNombre, string str_pEstado);
+
+        [OperationContract]
         PeliculaBE InsertarPelicula(PeliculaBE entidad);
+
+        [OperationContract]
+        PeliculaBE ObtenerPelicula(string idPelicula);
+
+        [OperationContract]
+        PeliculaBE ModificarPelicula(ClienteBE objClienteBE);
+
+        [OperationContract]
+        void EliminarPelicula(string idPelicula);
+
+        [OperationContract]
+        List<PeliculaBE> ListarPeliculas(string nombre, string idCategoria, string idTipo, string idGenero, string estado);
+
+        [OperationContract]
+        List<PeliculaBE> ListarGeneroPelicula();
+
+        [OperationContract]
+        List<PeliculaBE> ListarTipoPelicula();
+
+        [OperationContract]
+        List<PeliculaBE> ListarCategoriaPelicula();
+
    
     }
 }
