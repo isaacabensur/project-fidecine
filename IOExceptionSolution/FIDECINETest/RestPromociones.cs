@@ -14,15 +14,14 @@ namespace FIDECINETest
     [TestClass]
     public class RestPromociones
     {
-
-    [TestMethod]
-    public void CRUDPromocionesNewTest()
-    {    
+        [TestMethod]
+        public void CRUDPromocionesTest()
+        {
             // Prueba de creación de nueva promoción vía HTTP POST
-            string postdata = "{\"IdPromocion\":\"1\",\"nombrepromocion\":\"Entrada gratis\",\"puntos\":\"15\",\"regalo\":\"1\",\"vigenciaInicio\":\"01/10/2012\",\"vigenciaFin\":\"31/12/2012\"}"; //JSON
+            string postdata = "{\"IdPromocion\":\"1\",\"nombrepromocion\":\"Entrada gratis\",\"puntos\":\"15\",\"regalo\":\"1\",\"vigenciaInicio\":\"01/10/2012\",\"vigenciaFin\":\"31/12/2012\",\"IdProducto\":\"1\",\"ProductoNombre\":\"P1\",\"Estado\":\"A\"}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-                .Create("http://localhost:12139/Service/PromocionService.svc/Promocion");
+                .Create("http://localhost:12136//Service/PromocionService.svc/Promocion");
             req.Method = "POST";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -32,12 +31,13 @@ namespace FIDECINETest
             StreamReader reader = new StreamReader(res.GetResponseStream());
             string alumnoJson = reader.ReadToEnd();
             JavaScriptSerializer js = new JavaScriptSerializer();
+
             /*Cliente clienteCreado = js.Deserialize<Cliente>(alumnoJson);
             Assert.AreEqual("1", clienteCreado.idcliente);
             Assert.AreEqual("Juan", clienteCreado.nombre);
 
             // Prueba de Obtencion de la promoción via HTTP GET
-            HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:12139/Service/ClienteService.svc/Cliente/1");
+            HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:12136//Service/ClienteService.svc/Cliente/1");
             req2.Method = "GET";
             HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
             StreamReader reader2 = new StreamReader(res2.GetResponseStream());
@@ -47,5 +47,7 @@ namespace FIDECINETest
             Assert.AreEqual(1, alumnoObtenido.idcliente);
             */
 
+
+        }
     }
 }
