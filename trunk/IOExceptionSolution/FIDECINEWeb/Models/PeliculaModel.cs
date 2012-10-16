@@ -6,7 +6,8 @@ using FIDECINEWeb.Common;
 
 namespace FIDECINEWeb.Models
 {
-    public class PeliculaModel : GenericModel
+    public class PeliculaModel : GenericModel  
+
     {
 
 
