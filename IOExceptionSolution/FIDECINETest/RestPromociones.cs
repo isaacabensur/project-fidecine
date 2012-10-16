@@ -65,9 +65,9 @@ namespace FIDECINETest
             // Prueba de Eliminacion de promociones via HTTP DELETE
             HttpWebRequest req4 = (HttpWebRequest)WebRequest.Create("http://localhost:12136/Service/PromocionService.svc/Promocion/1");
             req4.Method = "DELETE";
-            HttpWebResponse reg4 = (HttpWebResponse)req4.GetResponse();
+            HttpWebResponse res4 = (HttpWebResponse)req4.GetResponse();
             StreamReader reader4 = new StreamReader(res2.GetResponseStream());
-            string promocionJaon4 = reader2.ReadToEnd();
+            string promocionJaon4 = reader4.ReadToEnd();
             JavaScriptSerializer  js4 = new JavaScriptSerializer();
 
         }
