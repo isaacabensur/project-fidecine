@@ -6,34 +6,30 @@ using System.ServiceModel;
 using System.Text;
 using FIDECINEService.Dominio;
 using FIDECINEService.Persistencia;
+using System.Globalization;
 
 namespace FIDECINEService.Service
 {
-    
     public class PeliculaService : IPeliculaService
     {
+        private PeliculaDAO dao = new PeliculaDAO();
 
-        public List<PeliculaBE> listar(string str_pNombre, string str_pEstado)
+        public PeliculaBE InsertarPelicula(PeliculaBE entidad)
         {
+            Pelicula objeto = new Pelicula();
 
-            PeliculaBE obj_pPeliculaBE = new PeliculaBE();
-            obj_pPeliculaBE.Nombre = str_pNombre;
-            obj_pPeliculaBE.Estado = str_pEstado;
-
-            List<PeliculaBE> listaPelicula = new List<PeliculaBE>();
-            PeliculaBE objPeliculaBE = null;
-
-            foreach(Pelicula objPelicula in new PeliculaDAO().listar(obj_pPeliculaBE))
-            {
-                objPeliculaBE = new PeliculaBE();
-                objPeliculaBE.IdPelicula = objPelicula.IdPelicula;
-                objPeliculaBE.Nombre = objPelicula.Nombre;
-                objPeliculaBE.Estado = objPelicula.Estado;
-                listaPelicula.Add(objPeliculaBE);
-            }
-
-            return listaPelicula;
+            objeto.IdPelicula = entidad.IdPelicula;
+            objeto.Nombre = entidad.Nombre;
+            objeto.idcategoria = entidad.IdCategoria;
+            objeto.trailer = entidad.Trailer;
+            objeto.descripcion = entidad.Descripcion;
+            objeto.idtipo = entidad.IdTipo;
+            objeto.Estado = entidad.Estado;
+            objeto.idgenero = entidad.IdGenero;
+            objeto.duracion = entidad.Duracion;
+            dao.insertar(objeto);
+            return null;
         }
-
+   
     }
 }
