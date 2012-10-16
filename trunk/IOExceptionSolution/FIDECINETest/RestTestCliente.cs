@@ -17,8 +17,8 @@ namespace FIDECINETest
         [TestMethod]
         public void CRUDClienteTest()
         {
-            // Prueba de creación de cliente vía HTTP POST
-            string postdata = "{\"nombre\":\"Oscar\",\"apellidoPaterno\":\"Pimentel\",\"apellidoMaterno\":\"Angulo\",\"dni\":\"00327188\",\"direccion\":\"Jr. Saturno 932\",\"tipocliente\":\"P\",\"estado\":\"A\"}"; //JSON
+            // Prueba de creación de alumno vía HTTP POST
+            /*string postdata = "{\"nombre\":\"Juan\",\"apellidoPaterno\":\"Juan\",\"apellidoMaterno\":\"Juan\",\"dni\":\"7\",\"direccion\":\"AvS\",\"tipocliente\":\"P\",\"estado\":\"A\"}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
                 .Create("http://localhost:12139/Service/ClienteService.svc/Cliente");
@@ -31,11 +31,10 @@ namespace FIDECINETest
             StreamReader reader = new StreamReader(res.GetResponseStream());
             string alumnoJson = reader.ReadToEnd();
             JavaScriptSerializer js = new JavaScriptSerializer();
-            Cliente clienteCreado = js.Deserialize<Cliente>(alumnoJson);
+            /*Cliente clienteCreado = js.Deserialize<Cliente>(alumnoJson);
             Assert.AreEqual("1", clienteCreado.idcliente);
-            Assert.AreEqual("Oscar", clienteCreado.nombre);
+            Assert.AreEqual("Juan", clienteCreado.nombre);
 
-            /*
             // Prueba de Obtencion de alumno via HTTP GET
             HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:12139/Service/ClienteService.svc/Cliente/1");
             req2.Method = "GET";
@@ -45,10 +44,10 @@ namespace FIDECINETest
             JavaScriptSerializer js2 = new JavaScriptSerializer();
             ClienteBE alumnoObtenido = js2.Deserialize<ClienteBE>(alumnoJson2);
             Assert.AreEqual(1, alumnoObtenido.idcliente);
-            
-            
+            */
+
             //Prueba de Modificación de alumnos via HTTP POST
-            string postdata3 = "{\"idcliente\":\"1\",\"nombre\":\"Juan\",\"direccion\":\"NuvaDireccion\",\"tipocliente\":\"C\"}"; // JSON
+            string postdata3 = "{\"idcliente\":\"1\",\"nombre\":\"Juan2\",\"direccion\":\"NuvaDireccion\",\"tipocliente\":\"C\"}"; // JSON
             byte[] data3 = Encoding.UTF8.GetBytes(postdata3);
             HttpWebRequest req3 = (HttpWebRequest)WebRequest.Create("http://localhost:12139/Service/ClienteService.svc/Cliente");
             req3.Method = "PUT";
@@ -62,9 +61,9 @@ namespace FIDECINETest
             JavaScriptSerializer js3 = new JavaScriptSerializer();
             ClienteBE alumnoModificado = js3.Deserialize<ClienteBE>(alumnoJson3);
             Assert.AreEqual(1, alumnoModificado.idcliente);
-            //Assert.AreEqual("Juan", alumnoModificado.nombre);*/
+            //Assert.AreEqual("Juan", alumnoModificado.nombre);
 
-            
+
             // Prueba de Eliminacion de alumno via HTTP DELETE
             /*HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:12139/Service/ClienteService.svc/Cliente/1");
             req2.Method = "DELETE";
@@ -73,9 +72,9 @@ namespace FIDECINETest
             string alumnoJson2 = reader2.ReadToEnd();
             JavaScriptSerializer  js2 = new JavaScriptSerializer();*/
 
-            
+
             //Prueba de obtencion de listado via HTTP GET
-            HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:12139/Service/ClienteService.svc/Cliente/Juan/7/AvS/A");
+            /*HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:12139/Service/ClienteService.svc/Cliente/Juan/7/AvS/A");
             req2.Method = "GET";
             HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
             StreamReader reader2 = new StreamReader(res2.GetResponseStream());
@@ -83,7 +82,7 @@ namespace FIDECINETest
             JavaScriptSerializer js2 = new JavaScriptSerializer();
             List<ClienteBE> alumnosAll = js2.Deserialize<List<ClienteBE>>(alumnoJson2);
             Assert.AreEqual(1, alumnosAll.Count);
-           
+           */
         }
     }
 }
