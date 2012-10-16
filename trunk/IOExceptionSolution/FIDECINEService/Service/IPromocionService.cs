@@ -23,6 +23,10 @@ namespace FIDECINEService.Service
         [OperationContract]
         [WebInvoke(Method = "DELETE", UriTemplate = "Promocion", ResponseFormat = WebMessageFormat.Json)]
         ResultadoBE eliminar(int IdPromocion);
+        
+        [OperationContract]
+        [WebInvoke(Method = "PUT", UriTemplate = "Promocion", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        ResultadoBE modificar(int IdPromocion);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "Promociones", ResponseFormat = WebMessageFormat.Json)]
