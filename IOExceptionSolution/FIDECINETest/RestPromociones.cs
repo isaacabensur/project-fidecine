@@ -45,6 +45,11 @@ namespace FIDECINETest
             PromocionBE promocionObtenido = js2.Deserialize<PromocionBE>(promocionJson2);
             Assert.AreEqual(1, promocionObtenido.IdPromocion);
 
+        }
+
+        [TestMethod]
+        public void Modificar()
+        {
             //Prueba de Modificación de promociones via HTTP POST
             string postdata3 = "{\"IdPromocion\":\"1\",\"nombrepromocion\":\"Entrada gratis 3D\",\"puntos\":\"15\",\"regalo\":\"1\",\"vigenciaInicio\":\"01/10/2012\",\"vigenciaFin\":\"31/12/2012\",\"IdProducto\":\"1\",\"ProductoNombre\":\"P2\",\"Estado\":\"A\"}"; //JSON
             byte[] data3 = Encoding.UTF8.GetBytes(postdata3);
@@ -62,11 +67,16 @@ namespace FIDECINETest
             Assert.AreEqual(1, promocionModificado.IdPromocion);
             // Assert.AreEqual("Entrada gratis 3D", promocionModificado.ProductoNombre);          
 
+         }
+
+        [TestMethod]
+        public void Eliminar()
+        {
             // Prueba de Eliminacion de promociones via HTTP DELETE
             HttpWebRequest req4 = (HttpWebRequest)WebRequest.Create("http://localhost:12136/Service/PromocionService.svc/Promocion/1");
             req4.Method = "DELETE";
             HttpWebResponse res4 = (HttpWebResponse)req4.GetResponse();
-            StreamReader reader4 = new StreamReader(res2.GetResponseStream());
+            StreamReader reader4 = new StreamReader(res4.GetResponseStream());
             string promocionJaon4 = reader4.ReadToEnd();
             JavaScriptSerializer  js4 = new JavaScriptSerializer();
 
