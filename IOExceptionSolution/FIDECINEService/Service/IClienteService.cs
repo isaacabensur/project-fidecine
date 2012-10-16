@@ -9,7 +9,7 @@ using FIDECINEService.Dominio;
 
 namespace FIDECINEService.Service
 {
-    
+
     [ServiceContract]
     public interface IClienteService
     {

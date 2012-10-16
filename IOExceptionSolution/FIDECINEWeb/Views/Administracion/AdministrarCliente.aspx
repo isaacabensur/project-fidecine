@@ -10,7 +10,7 @@
 </script>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <form id="form1" runat="server">
+    <form id="frmBuscarClientes" runat="server">
 
  <script type="text/javascript">
 
@@ -93,7 +93,7 @@
                                  $("#dialog_modal").dialog("close");
                              },
                             "json")
-                            .success(function () { buscarHorarios() });
+                            .success(function () { buscarClientes() });
                          });
                          confirmacion('¿Desea guardar los datos ingresados?');
                      }
@@ -120,32 +120,57 @@
          return false;
      }
 
-     function buscar() {
+     function buscarClientes() {
 
-         $.post('/AdministrarHorario/buscar', $('#frmBusqueda').serializeArray(), function (data) {
-             $("#Table1 > tbody").empty();
-
-             $.each(data, function (i, objeto) {
-                 var newRow = '';
-                 newRow = "<tr>";
-                 newRow = newRow + "<td class='ui-widget-content'>" + objeto.Pelicula + "</td>";
-                 newRow = newRow + "<td class='ui-widget-content'>" + objeto.Sala + "</td>";
-                 newRow = newRow + "<td class='ui-widget-content'>" + objeto.FechaHora + "</td>";
-                 newRow = newRow + "<td class='ui-widget-content'><img src='../../Content/images/iconos/mantenimiento/eliminar.png'/></td>";
-                 newRow = newRow + "</tr>";
-
-                 $("#Table1").append(newRow);
-
-             });
+         $.post('/AdministrarCliente/buscarCliente', $('#frmBuscarClientes').serializeArray(), function (data) {
+             procesarLista(data.lstClientes);
          },
          "json");
 
-         $("#Table1").styleTable();
+         $("#tbClientes").styleTable();
 
          return false;
      }
+     function procesarLista(lista) {
 
+         $("#tbClientes > tbody").empty();
+
+         $.each(lista, function (i, objeto) {
+             var newRow = '';
+             newRow = "<tr>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.idcliente + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.nombre + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.apellidoPaterno + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.apellidoMaterno + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.dni + "</td>";
+             newRow = newRow + "<td class='ui-widget-content'>" + objeto.tipocliente + "</td>";
+             newRow = newRow + "<td class='ui-widget-content' align='center' valign='middle'><img src='../../Content/images/iconos/mantenimiento/eliminar.png' onclick='eliminarCliente(" + objeto.idcliente + ");' title='eliminar' style='cursor:hand;'/></td>";
+             newRow = newRow + "</tr>";
+
+             $("#tbClientes").append(newRow);
+
+         });
+     }
      function cmbSala_onclick() {
+
+     }
+
+     function eliminarCliente(idCliente) {
+
+         $('#btnSi').unbind('click');
+         $("#btnSi").click(function () {
+
+             $.post('/AdministrarCliente/eliminarCliente', { 'IdCliente': idCliente }, function (data) {
+
+                 informacion(data.Mensaje);
+
+             },
+             "json")
+             .success(function () { buscarClientes() });
+
+         });
+
+         confirmacion('¿Desea eliminar el Cliente seleccionado?');
 
      }
 
@@ -159,27 +184,28 @@
             <tr>
                 <td>Nombre o Apellidos :</td>
                 <td>                    
-                    <input type="text" style="width: 200px;"/>
+                    <input type="text" style="width: 200px;" name="strNombre" />
                 </td>
                 <td>DNI :</td>
                 <td>                    
-                    <input type="text" style="width: 100px;"/>
+                    <input type="text" style="width: 100px;" name="strDNI" />
                 </td> 
             </tr>   
             <tr>
                 <td>Tipo : </td>
                 <td>
-                    <select id="cmbSala" name="D2" style="width: 100px;" onclick="return cmbSala_onclick()">
-                        <option>Premiun</option>
-                        <option>Oro</option>                        
-                        <option>Corporativo</option>                        
+                    <select id="cmbSala" name="strTipoCliente" style="width: 100px;" onclick="return cmbSala_onclick()">
+                        <option value="T">Todos</option>
+                        <option value="P">Premiun</option>
+                        <option value="O">Oro</option>
+                        <option value="C">Corporativo</option>                      
                     </select>
                 </td>
                 <td>Estado : </td>
                 <td>
-                    <select id="Select2" name="D2" style="width: 100px;">
-                        <option>Activo</option>
-                        <option>Inactivo</option>                        
+                    <select id="Select2" name="strEstado" style="width: 100px;">
+                        <option value="A" >Activo</option>
+                        <option value="I" >Inactivo</option>                        
                     </select>
                 </td>
             </tr>     
@@ -193,57 +219,24 @@
 	    <div style="margin: 3px 3px 3px 3px;">
 
             <button id="btnNuevo" onclick="return nuevoHorario();">Nuevo</button>
-            <button id="btnBuscar" onclick="return buscar();">Buscar</button>            
+            <button id="btnBuscar" onclick="return buscarClientes();">Buscar</button>            
         </div>
 	</div>
 
-	    <table  id="Table1" width="790px" class="styleTable">
+	    <table  id="tbClientes" width="790px" class="styleTable" >
 			<thead>
 			<tr>
-				<th width="140px">Nombre</th>
-				<th width="120px">Apellito Paterno</th>
-				<th width="130px">Apellido Materno</th>	
-                <th width="80px">DNI</th>		
-                <th width="150px">Fecha de Nacimiento</th>
-                <th width="80px">Tipo</th> 
-                <th width="100px">Estado</th>                
-                <th width="20px"></th>	
+				<th width="300px">ID Cliente</th>
+				<th width="300px">Nombre</th>
+                <th width="300px">Apellido Parterno</th>
+                <th width="300px">Apellido Marterno</th>
+				<th width="170px">Dni</th>		
+                <th width="20px">Tipo Cliente</th>
+                <th width="20px"></th>
 			</tr>
 			</thead>
-			<tbody>
-            <tr>
-                <td>aa</td>
-                <td>aaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                 <td>aaaa</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
-            </tr>   
-            <tr>
-                <td>bbbb</td>
-                <td>bbb</td>
-                <td>bbbb</td>
-                <td>bbbbbb</td>
-                <td>bbbbbbbbb</td>
-                <td>bbbbbbbbbbb</td>
-                <td>bbbbbbbbbbb</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
-            </tr> 
-            <tr>
-                <td>cccccccccc</td>
-                <td>ccccccccccc</td>
-                <td>ccccccccccc</td>
-                <td>ccccccccccc</td>
-                <td>cccccccccccccc</td>
-                <td>ccccccccccccc</td>
-                <td>ccccccccccccc</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
-            </tr>         
+			<tbody>            
 			</tbody>
-			<tfoot>
-			</tfoot>
 	    </table>
     </form>
 
