@@ -36,4 +36,6 @@ namespace FIDECINEService.Dominio
         [DataMember]
         public int Duracion { get; set; }
     }
+
+
 }
