@@ -27,6 +27,7 @@ namespace FIDECINEWeb.Controllers
             PeliculaModel objeto = new PeliculaModel();
 
             try
+
             {
                 string postdata = "{\"Nombre\":\"" + nombre +
                     "\",\"IdGenero\":\"" + cboGenero +
