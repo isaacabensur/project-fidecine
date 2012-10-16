@@ -22,6 +22,7 @@ namespace FIDECINEService.Persistencia
                 lstParameters.Add(new ObjectParameter("pi_Estado", objPeliculaBE.Estado.ToUpper()));
             }
 
+
             return (new FideCineEntities1().Pelicula.Where(sbScript.ToString(), lstParameters.ToArray()).ToList<Pelicula>());
         }
 
@@ -34,4 +35,5 @@ namespace FIDECINEService.Persistencia
             }
         }
     }
+
 }
