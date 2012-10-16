@@ -6,21 +6,22 @@ using System.Runtime.Serialization;
 
 namespace FIDECINEService.Dominio
 {
+
     [DataContract]
-    public class CarteleraBE
+    public class VisitaBE
     {
+
+        [DataMember]
+        public int IdVisita { get; set; }
 
         [DataMember]
         public int IdCartelera { get; set; }
 
         [DataMember]
-        public int IdPelicula { get; set; }
+        public int IdCliente { get; set; }
 
         [DataMember]
-        public int IdSala { get; set; }
-
-        [DataMember]
-        public String FechaHora { get; set; }
+        public int CantidadEntradas { get; set; }
 
         [DataMember]
         public string PeliculaNombre { get; set; }
@@ -29,7 +30,7 @@ namespace FIDECINEService.Dominio
         public string SalaNombre { get; set; }
 
         [DataMember]
-        public string CantidadEntradas { get; set; }
+        public string FechaHora { get; set; }
 
     }
 }

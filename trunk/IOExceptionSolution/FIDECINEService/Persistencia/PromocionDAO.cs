@@ -21,27 +21,6 @@ namespace FIDECINEService.Persistencia
             }
         }
 
-        public Promocion obtener(Promocion objPromocion)
-        {
-            return new FideCineEntities().Promocion.Where(" it.IdPromocion = @pi_IdPromocion", new ObjectParameter[] { new ObjectParameter("pi_IdPromocion", objPromocionCon.IdPromocion) }).First<PromocionBE>();
-        }
-
-        public Promocion modificar(Promocion objPromocion)
-        {
-          Promocion objPromocionCon = null;
-            using (var context = new FideCineEntities())
-            {
-                objPromocionCon = context.Promocion.Where(" it.IdPromocion = @pi_IdPromocion", new ObjectParameter[] { new ObjectParameter("pi_IdPromocion", objPromocionCon.IdPromocion) }).First<Promocion>();
-                objPromocionCon.IdPromocion = objPromocion.IdPromocion;
-                objPromocionCon.Puntos = objPromocion.Puntos;
-                objPromocionCon.vigenciaInicio = objPromocion.vigenciaInicio;
-                objPromocionCon.vigenciaFin = objPromocion.vigenciaFin;
-                objPromocionCon.IdProducto = objPromocion.IdProducto;
-                context.SaveChanges();
-            }
-            return obtener(objPromocionCon)
-        }
-
         public void eliminar(int int_pIdPromocion)
         {
 

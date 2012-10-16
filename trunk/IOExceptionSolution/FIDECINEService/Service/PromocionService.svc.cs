@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Messaging;
 
 using FIDECINEService.Dominio;
 using System.Globalization;
@@ -24,7 +25,14 @@ namespace FIDECINEService.Service
             objPromocion.vigenciaInicio = DateTime.ParseExact(objPromocionBE.VigenciaInicio, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             objPromocion.vigenciaFin = DateTime.ParseExact(objPromocionBE.VigenciaFin, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            new PromocionDAO().insertar(objPromocion);
+            string rutaColaOut = @".\private$\fidecine_promocion";
+            if (!MessageQueue.Exists(rutaColaOut))
+                MessageQueue.Create(rutaColaOut);
+            MessageQueue colaOut = new MessageQueue(rutaColaOut);
+            Message mensajeOut = new Message();
+            mensajeOut.Label = "Nueva Prmocion";
+            mensajeOut.Body = objPromocion;
+            colaOut.Send(mensajeOut);
 
             return new ResultadoBE() { Mensaje = "La Oferta ingresada fue registrada con éxito" };
 
@@ -38,6 +46,16 @@ namespace FIDECINEService.Service
 
         public List<PromocionBE> listar(PromocionBE objPromocionBE)
         {
+
+            string rutaColaIn = @".\private$\fidecine_promocion";
+            if (!MessageQueue.Exists(rutaColaIn))
+                MessageQueue.Create(rutaColaIn);
+            MessageQueue colaIn = new MessageQueue(rutaColaIn);
+            colaIn.Formatter = new XmlMessageFormatter(new Type[] { typeof(Promocion) });
+            Message mensajeIn = colaIn.Receive();
+            Promocion obj = (Promocion)mensajeIn.Body;
+            new PromocionDAO().insertar(obj);
+
             List<PromocionBE> listaPromocion = new List<PromocionBE>();
             PromocionBE tempPromocionBE = null;
 
@@ -54,5 +72,6 @@ namespace FIDECINEService.Service
 
             return listaPromocion;
         }
+
     }
 }
