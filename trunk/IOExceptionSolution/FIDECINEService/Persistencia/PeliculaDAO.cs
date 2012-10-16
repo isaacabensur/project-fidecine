@@ -23,12 +23,12 @@ namespace FIDECINEService.Persistencia
             }
 
 
-            return (new FideCineEntities1().Pelicula.Where(sbScript.ToString(), lstParameters.ToArray()).ToList<Pelicula>());
+            return (new FideCineEntities().Pelicula.Where(sbScript.ToString(), lstParameters.ToArray()).ToList<Pelicula>());
         }
 
         public void insertar(Pelicula entidad)
         {
-            using (var context = new FideCineEntities1())
+            using (var context = new FideCineEntities())
             {
                 context.Pelicula.AddObject(entidad);
                 context.SaveChanges();
