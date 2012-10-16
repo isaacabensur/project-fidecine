@@ -35,6 +35,14 @@ namespace FIDECINEService.Dominio
 
         [DataMember]
         public int Duracion { get; set; }
+
+        [DataMember]
+        public string descGenero { get; set; }
+        [DataMember]
+        public string descCategoria { get; set; }
+        [DataMember]
+        public string descTipo { get; set; }
+
     }
 
 

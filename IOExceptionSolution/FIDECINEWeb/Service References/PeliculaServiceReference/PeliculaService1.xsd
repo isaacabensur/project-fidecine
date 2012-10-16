@@ -8,10 +8,35 @@
   <xs:element name="ArrayOfPeliculaBE" nillable="true" type="tns:ArrayOfPeliculaBE" />
   <xs:complexType name="PeliculaBE">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Duracion" type="xs:int" />
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdCategoria" type="xs:int" />
+      <xs:element minOccurs="0" name="IdGenero" type="xs:int" />
       <xs:element minOccurs="0" name="IdPelicula" type="xs:int" />
+      <xs:element minOccurs="0" name="IdTipo" type="xs:int" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Trailer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="descCategoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="descGenero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="descTipo" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PeliculaBE" nillable="true" type="tns:PeliculaBE" />
+  <xs:complexType name="ClienteBE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dni" type="xs:int" />
+      <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaNacimiento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idcliente" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="puntos" type="xs:int" />
+      <xs:element minOccurs="0" name="tipocliente" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClienteBE" nillable="true" type="tns:ClienteBE" />
 </xs:schema>

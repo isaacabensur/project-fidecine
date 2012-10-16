@@ -13,16 +13,168 @@
   <wsdl:message name="IPeliculaService_listar_OutputMessage">
     <wsdl:part name="parameters" element="tns:listarResponse" />
   </wsdl:message>
+  <wsdl:message name="IPeliculaService_InsertarPelicula_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarPelicula" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_InsertarPelicula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ObtenerPelicula_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPelicula" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ObtenerPelicula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ModificarPelicula_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPelicula" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ModificarPelicula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_EliminarPelicula_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPelicula" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_EliminarPelicula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ListarPeliculas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPeliculas" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ListarPeliculas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPeliculasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ListarGeneroPelicula_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGeneroPelicula" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ListarGeneroPelicula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGeneroPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ListarTipoPelicula_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTipoPelicula" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ListarTipoPelicula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTipoPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ListarCategoriaPelicula_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCategoriaPelicula" />
+  </wsdl:message>
+  <wsdl:message name="IPeliculaService_ListarCategoriaPelicula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCategoriaPeliculaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPeliculaService">
     <wsdl:operation name="listar">
       <wsdl:input wsaw:Action="http://tempuri.org/IPeliculaService/listar" message="tns:IPeliculaService_listar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPeliculaService/listarResponse" message="tns:IPeliculaService_listar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarPelicula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPeliculaService/InsertarPelicula" message="tns:IPeliculaService_InsertarPelicula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPeliculaService/InsertarPeliculaResponse" message="tns:IPeliculaService_InsertarPelicula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPelicula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPeliculaService/ObtenerPelicula" message="tns:IPeliculaService_ObtenerPelicula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPeliculaService/ObtenerPeliculaResponse" message="tns:IPeliculaService_ObtenerPelicula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPelicula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPeliculaService/ModificarPelicula" message="tns:IPeliculaService_ModificarPelicula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPeliculaService/ModificarPeliculaResponse" message="tns:IPeliculaService_ModificarPelicula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPelicula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPeliculaService/EliminarPelicula" message="tns:IPeliculaService_EliminarPelicula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPeliculaService/EliminarPeliculaResponse" message="tns:IPeliculaService_EliminarPelicula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPeliculas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPeliculaService/ListarPeliculas" message="tns:IPeliculaService_ListarPeliculas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPeliculaService/ListarPeliculasResponse" message="tns:IPeliculaService_ListarPeliculas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarGeneroPelicula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPeliculaService/ListarGeneroPelicula" message="tns:IPeliculaService_ListarGeneroPelicula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPeliculaService/ListarGeneroPeliculaResponse" message="tns:IPeliculaService_ListarGeneroPelicula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoPelicula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPeliculaService/ListarTipoPelicula" message="tns:IPeliculaService_ListarTipoPelicula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPeliculaService/ListarTipoPeliculaResponse" message="tns:IPeliculaService_ListarTipoPelicula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCategoriaPelicula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPeliculaService/ListarCategoriaPelicula" message="tns:IPeliculaService_ListarCategoriaPelicula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPeliculaService/ListarCategoriaPeliculaResponse" message="tns:IPeliculaService_ListarCategoriaPelicula_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IPeliculaService" type="tns:IPeliculaService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="listar">
       <soap:operation soapAction="http://tempuri.org/IPeliculaService/listar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarPelicula">
+      <soap:operation soapAction="http://tempuri.org/IPeliculaService/InsertarPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPelicula">
+      <soap:operation soapAction="http://tempuri.org/IPeliculaService/ObtenerPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPelicula">
+      <soap:operation soapAction="http://tempuri.org/IPeliculaService/ModificarPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPelicula">
+      <soap:operation soapAction="http://tempuri.org/IPeliculaService/EliminarPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPeliculas">
+      <soap:operation soapAction="http://tempuri.org/IPeliculaService/ListarPeliculas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarGeneroPelicula">
+      <soap:operation soapAction="http://tempuri.org/IPeliculaService/ListarGeneroPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoPelicula">
+      <soap:operation soapAction="http://tempuri.org/IPeliculaService/ListarTipoPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCategoriaPelicula">
+      <soap:operation soapAction="http://tempuri.org/IPeliculaService/ListarCategoriaPelicula" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
