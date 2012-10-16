@@ -154,55 +154,74 @@
             <tr>
                 <td style="width: 68px">DNI :</td>
                 <td>                    
-                    <input type="text" style="width: 156px;"/>&nbsp;
+                    <input type="text" style="width: 156px;" maxlength="8"/>&nbsp;<button id="btnBuscar" onclick="return buscar();">Buscar</button>   
                 </td>
             </tr>   
             </table>
 	</div>
 	</div>
 
+ 
+
+    <div class="ui-widget-content ui-corner-all"
+		style="width: 99%; margin: 3px 3px 3px 3px;">
+    <div class="ui-widget-header ui-corner-all"><label>Datos de Cliente</label></div>
+	<div align="left" style="margin: 5px 5px 5px 5px;">
+	     <table width="400px">
+            <tr>
+                <td>DNI :</td>
+                <td>                    
+                    <input type="text" maxlength="8" readonly="readonly"/>  
+                </td>
+            </tr> 
+            <tr>
+                <td>Nombres :</td>
+                <td>                    
+                    <input type="text" readonly="readonly"/>  
+                </td>
+            </tr>  
+            <tr>
+                <td>Apellido Paterno :</td>
+                <td>                    
+                    <input type="text" readonly="readonly"/>  
+                </td>
+            </tr> 
+             <tr>
+                <td>Apellido Materno :</td>
+                <td>                    
+                    <input type="text" readonly="readonly"/>  
+                </td>
+            </tr> 
+            <tr>
+                <td>Tipo de Cliente :</td>
+                <td>                    
+                    <input type="text" maxlength="8" readonly="readonly"/>  
+                </td>
+            </tr> 
+         </table>
+	</div>
+	</div>
 
 	<div class="ui-widget-content ui-corner-all" align="center"
 		style="width: 99%; margin: 3px 3px 3px 3px;">
 	    <div style="margin: 3px 3px 3px 3px;">
 
             <button id="btnNuevo" onclick="return nuevoHorario();">Nuevo</button>
-            <button id="btnBuscar" onclick="return buscar();">Buscar</button>            
+                     
         </div>
 	</div>
 
 	    <table  id="Table1" width="790px" class="styleTable">
 			<thead>
 			<tr>
-				<th width="185px">Nombres</th>
-				<th width="100px">Apellidos</th>
-				<th width="100px">Puntos</th>	
-                <th width="100px">Tipo de Cliente</th>		
+				<th width="185px">Pelicula</th>
+				<th width="100px">Sala</th>
+				<th width="100px">Fcha y Hora</th>	
+                <th width="100px">Entradas</th>		
                 <th width="20px"></th>	
 			</tr>
 			</thead>
-			<tbody>
-            <tr>
-                <td>aa</td>
-                <td>aaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
-            </tr>   
-            <tr>
-                <td>bbbb</td>
-                <td>bbb</td>
-                <td>bbbb</td>
-                <td>bbbbbb</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
-            </tr> 
-            <tr>
-                <td>cccccccccc</td>
-                <td>ccccccccccc</td>
-                <td>ccccccccccc</td>
-                <td>ccccccccccc</td>
-                <td><img src="../../Content/images/iconos/mantenimiento/editar.png"/></td>
-            </tr>         
+			<tbody>                   
 			</tbody>
 			<tfoot>
 			</tfoot>
