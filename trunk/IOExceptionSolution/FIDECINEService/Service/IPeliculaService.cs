@@ -5,15 +5,18 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using FIDECINEService.Dominio;
+using System.ServiceModel.Web;
 
 namespace FIDECINEService.Service
 {
-   
+
     [ServiceContract]
     public interface IPeliculaService
     {
         [OperationContract]
-        List<PeliculaBE> listar(string str_pNombre, string str_pEstado);
-
+        [WebInvoke(Method = "POST", UriTemplate = "Pelicula", ResponseFormat = WebMessageFormat.Json)]
+        PeliculaBE InsertarPelicula(PeliculaBE entidad);
+   
     }
 }
+
