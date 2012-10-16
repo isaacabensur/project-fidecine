@@ -30,7 +30,7 @@ namespace FIDECINEService.Service
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Promocion/{IdPromocion}", ResponseFormat = WebMessageFormat.Json)]
-        ResultadoBE modificar(int IdPromocion);
+        ResultadoBE obtener(int IdPromocion);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "Promociones", ResponseFormat = WebMessageFormat.Json)]
