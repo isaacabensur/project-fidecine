@@ -9,5 +9,6 @@ namespace FIDECINEWeb.Models
     public class PeliculaModel : GenericModel
     {
 
+
     }
 }
