@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/flip.js"></script>
+    <title>jQuery plugin</title>
+    <style type="text/css">
+      .card {
+        width: 604px;
+        height: 404px;
+        margin: 20px;
+      }
+      .front, .back {
+        border: 2px gray solid;
+        padding: 0px;
+      }
+      .front {
+        background-color: #ccc;
+      }
+      .back {
+        #background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    
+	<div id="card-0" class="card" >
+      <div class="front" style="text-align:center;" >
+          <img src="unnamed.jpg" width="600px" height="400px" />
+      </div>
+      <div class="back">
+          <img src="minie_fondo.png" width="600px" height="400px" />
+      </div> 
+    </div>
+
+    <script type="text/javascript">
+    $(function(){
+      // $(".card").flip();
+      
+      $("#card-1").flip({
+        axis: "y", // y or x
+        reverse: false, // true and false
+        trigger: "hover", // click or hover
+        speed: 1000
+      });
+      $("#card-2").flip({
+        axis: "x",
+        reverse: true,
+        trigger: "click"
+      });
+	  $("#card-0").flip({
+        axis: "y",
+        reverse: true,
+        trigger: "click",
+		speed: 1000
+		
+      });
+    });
+    </script>
+  </body>
+</html>
